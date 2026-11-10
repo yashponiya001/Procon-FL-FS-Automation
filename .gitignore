@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Run output (keep the folders, not the contents)
+logs/*
+REPORTS/*
+RESULTS/*
+SCREENSHOT/*
+screenshots/
+!**/.gitkeep
+*.log
+*.err
+
+# Backups
+*Backup*
+
+# Playwright / pytest
+.pytest_cache/
+test-results/
+playwright-report/
+
+# Editors / OS
+.idea/
+.vscode/
+Thumbs.db

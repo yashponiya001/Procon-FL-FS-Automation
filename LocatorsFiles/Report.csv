@@ -1,0 +1,115 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@04_16PMOctober26
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@04_16PMOctober26
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@04_16PMOctober26
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@04_16PMOctober26
+Click on REPORTS menu option,menu,XPATH,"//li[contains(@class,'reportsCheck')]//a[@href='#'][normalize-space()='Reports']",CLICK,,N,,SKIPPED
+Switch to active tab,tab,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Open Reports page in same tab since Reports menu opens a new browser tab,page,,,OPEN_URL,https://fleetv5-st.fleetlocate.com.au/report,Y,10,Executed@04_16PMOctober26
+Wait for Reports page to load,image,XPATH,//img[@name='Continuous Drive Time'],WAIT_FOR_ELEMENT,,Y,5,FAIL@Executed@04_16PMOctober26
+Select Continues Drive time,image,XPATH,//img[@name='Continuous Drive Time'],CLICK,,Y,3,FAIL@Executed@04_16PMOctober26
+Open Date range dropdown,dropdownlist,XPATH,//div[@class='report-params']//span[@id='select2-daterange-container'],CLICK,,Y,3,FAIL@Executed@04_17PMOctober26
+Select Last 30 Days date range option,dropdownlist,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 30 Days']",CLICK,,Y,2,FAIL@Executed@04_17PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,,FAIL@Executed@04_17PMOctober26
+Wait for list view,table,ID,report-table,WAIT_FOR_ELEMENT,,Y,15,FAIL@Executed@04_17PMOctober26
+Check for alert message,popup,CSS_SELECTOR,h4.modal-title text-center,IF_EXISTS,h4.modal-title.text-center,N,5,SKIPPED
+Check for Report Generation message,popup,CSS_SELECTOR,h4.modal-title text-center,IF_EXISTS,h4.modal-title.text-center,N,5,SKIPPED
+Get Report name,text,XPATH,//li[@class='active']//div[@class='tabName'],GET_ATTRIBUTE,innerHTML,Y,5,FAIL@Executed@04_17PMOctober26
+Close Continuous Drive Time report tab,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,3,FAIL@Executed@04_17PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_18PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_18PMOctober26
+Select Daily Overview report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Daily Overview,Y,2,FAIL@Executed@04_18PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_18PMOctober26
+Wait for list view,table,ID,report-table,WAIT_FOR_ELEMENT,,Y,20,FAIL@Executed@04_18PMOctober26
+Get Report name,text,XPATH,//li[@class='active']//div[@class='tabName'],GET_ATTRIBUTE,innerHTML,Y,5,FAIL@Executed@04_18PMOctober26
+Check total count is returned,text,XPATH,"//span[contains(@class,'k-pager-info') and contains(.,'items')]",WAIT_FOR_ELEMENT,,Y,5,FAIL@Executed@04_18PMOctober26
+Get total records count,text,XPATH,"//span[contains(@class,'k-pager-info') and contains(.,'items')]",GET_ATTRIBUTE,innerHTML,Y,,FAIL@Executed@04_18PMOctober26
+Click on view summary icon,icon,XPATH,"//button[contains(@class,'summary')]",CLICK,,Y,5,FAIL@Executed@04_19PMOctober26
+Check report summary is opened,text,XPATH,"//*[@id='accordion']//*[contains(normalize-space(.),'Report Summary')]",WAIT_FOR_ELEMENT,,Y,25,FAIL@Executed@04_19PMOctober26
+Click on Export csv icon,icon,XPATH,"//button[contains(@class,'exportFilterBtn')]",CLICK,,Y,,FAIL@Executed@04_19PMOctober26
+click in export as csv,button,XPATH,"//div[contains(@class,'exportFilter') and contains(@class,'open')]//span[contains(text(),'Export CSV')]",CLICK,,Y,2,FAIL@Executed@04_19PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,3,FAIL@Executed@04_19PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_20PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_20PMOctober26
+Select Alert History report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Alert History,Y,2,FAIL@Executed@04_20PMOctober26
+Open Date range dropdown,dropdownlist,XPATH,//div[@class='report-params']//span[@id='select2-daterange-container'],CLICK,,Y,3,FAIL@Executed@04_20PMOctober26
+Select Last 7 Days date range option,dropdownlist,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 7 Days']",CLICK,,Y,2,FAIL@Executed@04_20PMOctober26
+Select all vehicles checkbox,checkbox,XPATH,//form[@id='report-sidebar-form']//label[@for='selectAllVehicles'],CLICK,,Y,3,FAIL@Executed@04_20PMOctober26
+Filter Vehicle,dropdownlist,XPATH,//span[@class='params param-asset']//input[@placeholder='-- None --'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,Geotab,N,5,SKIPPED
+Filter Vehicle 2nd drop down,dropdownlist,XPATH,//span[@class='params param-asset']//input[@placeholder='-- All --'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,Geotab->maybe..,N,2,SKIPPED
+select Vehicle,dropdownlist,XPATH,//span[@class='params param-asset']//input[@placeholder='-- Select Vehicle --'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,(vi)Test Device for Shubha,N,3,SKIPPED
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_20PMOctober26
+Wait for Alert History report to finish loading,,,,SLEEP,45,Y,,Executed@04_21PMOctober26
+Wait for list view,button,XPATH,"//button[contains(@class,'mailButton')]",WAIT_FOR_ELEMENT,,Y,,FAIL@Executed@04_21PMOctober26
+Get Report name,text,XPATH,//li[@class='active']//div[@class='tabName'],GET_ATTRIBUTE,innerHTML,Y,3,FAIL@Executed@04_21PMOctober26
+Get total records count,text,XPATH,"//span[contains(@class,'k-pager-info')]",GET_ATTRIBUTE,innerHTML,Y,3,FAIL@Executed@04_21PMOctober26
+Check total count is returned,text,XPATH,//span[@class='k-pager-info k-label'],CHECK_TEXT_IN_STRING,items,N,5,SKIPPED
+click on send mail,button,XPATH,"//button[contains(@class,'mailButton')]",CLICK,,Y,3,FAIL@Executed@04_21PMOctober26
+Enter Email,textbox,XPATH,//div[@id='email-popup']//input[@name='email-address'],ENTER_TEXT,yash.poniya@thoughts2binary.com,Y,3,FAIL@Executed@04_22PMOctober26
+Send mail,button,ID,send_mail_btn,CLICK,,Y,,FAIL@Executed@04_22PMOctober26
+Close mail sent message if shown,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,3,Executed@04_22PMOctober26
+Select Filter,button,XPATH,"//button[contains(@class,'filterButton')]",CLICK,,Y,5,FAIL@Executed@04_22PMOctober26
+Select subscriber,dropdownlist,XPATH,//div[@data-code='subscriberName']//input[@type='text'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,,N,,SKIPPED
+Select Notification scheme,textbox,XPATH,//div[@data-code='channelName']//input[@type='text'],ENTER_TEXT,yash notify,Y,3,FAIL@Executed@04_22PMOctober26
+Select Vehicle,dropdownlist,XPATH,//div[@data-code='assetName']//input[@type='text'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,,N,,SKIPPED
+Select Driver,dropdownlist,XPATH,//div[@data-code='driver']//input[@type='text'],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,,N,,SKIPPED
+Apply filter,button,XPATH,//button[normalize-space()='Apply'],CLICK,,Y,3,FAIL@Executed@04_22PMOctober26
+Horizontal split view,button,XPATH,"//form[contains(@class,'toolbar-layout')]//button[@title='Horizontal Split View']",CLICK,,Y,15,FAIL@Executed@04_22PMOctober26
+Vertical split view,button,XPATH,"//form[contains(@class,'toolbar-layout')]//button[@title='Vertical Split View']",CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+Map only view,button,XPATH,"//form[contains(@class,'toolbar-layout')]//button[@title='Map Only View']",CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+List view,button,XPATH,"//form[contains(@class,'toolbar-layout')]//button[@title='List Only View']",CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_23PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+Select Detailed History report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Detailed History,Y,2,FAIL@Executed@04_23PMOctober26
+Add button (saved report),button,XPATH,//button[@name='Add Saved Report'],CLICK,,Y,3,FAIL@Executed@04_23PMOctober26
+Saved report name,input,XPATH,//*[@name='modal_report_name'],ENTER_TEXT_WITH_TIMESTAMP,Abhi,Y,3,FAIL@Executed@04_23PMOctober26
+Select vehicle in saved report,dropdownlist,XPATH,//*[@id='saved-report']//span[@class='params param-asset']//input[@placeholder='-- Select Vehicle --'],ENTER_TEXT_ENTER,Test Device for Shubha,Y,3,FAIL@Executed@04_24PMOctober26
+Filter Vehicle,dropdownlist,XPATH,"//*[@id=""saved-report""]//span[@class='params param-asset']//input[@placeholder='-- None --']",ENTER_VALUE_FROM_DROPDOWN_OPTIONS,Geotab,N,5,SKIPPED
+Filter Vehicle 2nd drop down,dropdownlist,XPATH,"//*[@id=""saved-report""]//span[@class='params param-asset']//input[@placeholder='-- All --']",ENTER_VALUE_FROM_DROPDOWN_OPTIONS,Geotab->maybe..,N,5,SKIPPED
+select Vehicle,dropdownlist,XPATH,"//*[@id=""saved-report""]//span[@class='params param-asset']//input[@placeholder='-- Select Vehicle --']",ENTER_VALUE_FROM_DROPDOWN_OPTIONS,(vi)Test Device for Shubha,N,,SKIPPED
+Save button,button,XPATH,"//div[@id='reportModal']//button[contains(@class,'btn-primary') and contains(@class,'save')]",CLICK,,Y,3,FAIL@Executed@04_24PMOctober26
+Close saved report message if shown,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,3,Executed@04_24PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,5,FAIL@Executed@04_24PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_24PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_25PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_25PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_25PMOctober26
+Select Detail Idle  report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Detailed Idle,Y,2,FAIL@Executed@04_25PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_25PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_25PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_26PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_26PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_26PMOctober26
+Select Device Issues Reports report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Device Issues Report,Y,2,FAIL@Executed@04_26PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_26PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_26PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_27PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_27PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_27PMOctober26
+Select Device Health report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Device Health,Y,2,FAIL@Executed@04_27PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_27PMOctober26
+Click on ok button,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK,,Y,10,FAIL@Executed@04_27PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,5,FAIL@Executed@04_27PMOctober26
+Select Driver Behaviour Point report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Driver Behaviour Points,Y,2,FAIL@Executed@04_27PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_28PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_28PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_28PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_28PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_28PMOctober26
+Select Driver Behaviour Point Summary report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Driver Behaviour Points Summary,Y,2,FAIL@Executed@04_28PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_29PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_29PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_29PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_29PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_29PMOctober26
+Select ESS Report report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,ESS Report,Y,2,FAIL@Executed@04_30PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_30PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_30PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_30PMOctober26
+Click on expand run report icon,icon,XPATH,//span[@id='openTrip'],CLICK,,Y,5,FAIL@Executed@04_30PMOctober26
+Open report list dropdown,dropdownlist,XPATH,//form[@id='report-sidebar-form']//span[@aria-labelledby='select2-reportList-container'],CLICK,,Y,3,FAIL@Executed@04_31PMOctober26
+Select ESS Summary Report report,dropdownlist,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,ESS Summary Report,Y,2,FAIL@Executed@04_31PMOctober26
+Click on Run Report button,button,ID,submitReport,CLICK,,Y,3,FAIL@Executed@04_31PMOctober26
+Close long report popup if shown,button,XPATH,//*[@id='longReport-popup']//button[normalize-space()='Ok'],CLICK_IF_PRESENT,10,Y,,Executed@04_31PMOctober26
+Click on report close icon,icon,XPATH,//li[@class='active']//button[@title='Remove this page'],CLICK,,Y,30,FAIL@Executed@04_31PMOctober26

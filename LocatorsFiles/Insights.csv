@@ -1,0 +1,250 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@11_24PMNovember06
+# ===== INSIGHTS MODULE - Login =====,,,,,,,,SKIPPED
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,Executed@00_42AMJune04,Executed@11_24PMNovember06
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,Executed@00_42AMJune04,Executed@11_24PMNovember06
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,Executed@00_43AMJune04,Executed@11_24PMNovember06
+Wait 3 seconds for login to complete,,,,SLEEP,3,Y,Executed@00_43AMJune04,Executed@11_24PMNovember06
+# ===== Section 1: Driver Behaviour =====,,,,,,Y,,SKIPPED
+Wait 8 seconds for console dashboard to load,,,,SLEEP,8,Y,Executed@00_43AMJune04,Executed@11_25PMNovember06
+Click on Insights menu option,dropdownmenu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_43AMJune04,Executed@11_25PMNovember06
+Wait 3 seconds for Insights dashboard to load,,,,SLEEP,3,Y,Executed@00_43AMJune04,Executed@11_25PMNovember06
+Wait until Driver Behaviour card is visible on Insights dashboard,div card,XPATH,//h4[normalize-space()='Driver Behaviour'],WAIT_FOR_ELEMENT,,Y,,Executed@11_25PMNovember06
+Click on Driver Behaviour card,div card,XPATH,//h4[normalize-space()='Driver Behaviour'],CLICK,,Y,Executed@00_43AMJune04,Executed@11_25PMNovember06
+Wait 7 seconds for Driver Behaviour page to load,,,,SLEEP,7,Y,Executed@00_43AMJune04,Executed@11_25PMNovember06
+Click on Manage Filters button,button,XPATH,//button[@id='manage_filters'],CLICK,,Y,Executed@00_44AMJune04,Executed@11_25PMNovember06
+Wait 10 seconds for filter panel to open,,,,SLEEP,10,Y,Executed@00_44AMJune04,Executed@11_26PMNovember06
+Type in Filter Driver By (User Fields) search box,dropdown,XPATH,"(//*[@type=""search""] [@placeholder=""Select User Fields""])[1]",ENTER_TEXT,a,Y,3,Executed@11_26PMNovember06
+Select last option from Filter Driver By list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_26PMNovember06
+Wait 3 seconds after selecting Filter Driver By,,,,SLEEP,3,Y,Executed@00_44AMJune04,Executed@11_26PMNovember06
+Open Driver Field Values dropdown,dropdown,XPATH,//div[@id='Driver_category_values']//span[@role='combobox'],CLICK,,Y,3,Executed@11_26PMNovember06
+Select last option from Driver Field Values list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_26PMNovember06
+Wait 3 seconds after selecting Driver Field Value,,,,SLEEP,3,Y,Executed@00_44AMJune04,Executed@11_26PMNovember06
+Open Date Range dropdown on Driver Behaviour filter,dropdown,XPATH,"//*[@id=""driver-behaviour""]//span[@aria-labelledby='select2-daterange-container']",CLICK,,Y,3,Executed@11_26PMNovember06
+Select Last 30 Days from Date Range list,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 30 Days']",CLICK,,Y,3,Executed@11_26PMNovember06
+Open Timezone dropdown on Driver Behaviour filter,dropdown,XPATH,"//*[@id=""select2-timezone-container""]",CLICK,,Y,3,Executed@11_26PMNovember06
+Select Sydney Canberra Melbourne GMT+10 timezone,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Sydney, Canberra, Melbourne (GMT+10:00)']",CLICK,,Y,3,Executed@11_26PMNovember06
+Wait 3 seconds before applying filters,,,,SLEEP,3,Y,Executed@00_44AMJune04,Executed@11_26PMNovember06
+Click Go button to apply Driver Behaviour filters,button,XPATH,//button[normalize-space()='Go'],CLICK,,Y,Executed@00_44AMJune04,Executed@11_27PMNovember06
+Wait 3 seconds for Driver Behaviour report to load,,,,SLEEP,3,Y,Executed@00_44AMJune04,Executed@11_27PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_27PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_28PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,Executed@00_45AMJune04,Executed@11_28PMNovember06
+Close the email sent confirmation popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,Executed@00_45AMJune04,Executed@11_28PMNovember06
+Get Company Score Card trend graph height value,graph,XPATH,//div[@id='trend-chart']//*[name()='svg'],GET_ATTRIBUTE,height,Y,Executed@00_45AMJune04,Executed@11_29PMNovember06
+Get Company Score Card trend graph width value,graph,XPATH,//div[@id='trend-chart']//*[name()='svg'],GET_ATTRIBUTE,width,Y,Executed@00_45AMJune04,Executed@11_29PMNovember06
+Get Driver Behaviour table data,table data,ID,behavior-table,GET_TEXT,,Y,,Executed@11_29PMNovember06
+Close any remaining message popup if displayed,popup,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,Executed@22_52PMJuly26,Executed@11_29PMNovember06
+# ===== Section 2: Driver Report Card =====,,,,,,Y,,SKIPPED
+Wait 10 seconds before navigating to Driver Report Card,sleep,,,SLEEP,10,Y,,Executed@11_30PMNovember06
+Click on Insights menu option,dropdownmenu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_45AMJune04,Executed@11_30PMNovember06
+Click on Driver Report Card,div card,XPATH,"//h4[contains(text(),'Driver Report Card')]",CLICK,,Y,Executed@00_45AMJune04,Executed@11_30PMNovember06
+Wait 5 seconds for Driver Report Card page to load,sleep,,,SLEEP,5,Y,,Executed@11_30PMNovember06
+Close Driver Report Card message popup if displayed,popup,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,Executed@09_35AMJanuary21,Executed@11_31PMNovember06
+Wait 3 seconds before opening filters,sleep,,,SLEEP,3,Y,Executed@00_45AMJune04,Executed@11_31PMNovember06
+Click on Manage Filters button,button,XPATH,//button[@id='manage_filters'],CLICK,,Y,Executed@00_45AMJune04,Executed@11_31PMNovember06
+Wait 10 seconds for filter panel to open,sleep,,,SLEEP,10,Y,Executed@00_45AMJune04,Executed@11_31PMNovember06
+Open Date Range dropdown on Driver Report Card filter,dropdown,XPATH,//form[@id='driver-report-card']//span[@id='select2-daterange-container'],CLICK,,Y,3,Executed@11_31PMNovember06
+Select Last 30 Days from Date Range list,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 30 Days']",CLICK,,Y,3,Executed@11_31PMNovember06
+Open Select Driver dropdown,dropdown,XPATH,//div[@class='form-group driver_wrapper custom-select custom-select-margin']//span[@id='select2-driverselect-container'],CLICK,,Y,3,Executed@11_31PMNovember06
+Select last driver from Driver list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_31PMNovember06
+Open Timezone dropdown on Driver Report Card filter,dropdown,XPATH,//form[@id='driver-report-card']//div//div[4]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_31PMNovember06
+Select Sydney Canberra Melbourne GMT+10 timezone,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Sydney, Canberra, Melbourne (GMT+10:00)']",CLICK,,Y,3,Executed@11_31PMNovember06
+Wait 5 seconds before applying filters,sleep,,,SLEEP,5,Y,Executed@00_45AMJune04,Executed@11_31PMNovember06
+Click Go button to apply Driver Report Card filters,button,XPATH,//div[@class='form-group']//button[normalize-space()='Go'],CLICK,,Y,Executed@00_46AMJune04,Executed@11_32PMNovember06
+Wait 15 seconds for Driver Report Card data to load,sleep,,,SLEEP,15,Y,Executed@00_46AMJune04,Executed@11_32PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_32PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_32PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,Executed@00_46AMJune04,Executed@11_33PMNovember06
+Close the email sent confirmation popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,Executed@00_46AMJune04,Executed@11_33PMNovember06
+Switch focus to active element after closing popup,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,Executed@22_53PMJuly26,Executed@11_33PMNovember06
+Close any remaining message popup if displayed,popup,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,Executed@22_53PMJuly26,Executed@11_33PMNovember06
+Get ranking label for Speeding,Label name,XPATH,//span[normalize-space()='Speeding |'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking value for Speeding,value,ID,driver_speedingRank_text,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get Acceleration gauge label in Overall Rank section,Label name,XPATH,//span[normalize-space()='Acceleration |'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get Overall Rank value,value,XPATH,"//div[@id=""rank-text""]/span",GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking label for Cornering,Label name,XPATH,//span[normalize-space()='Cornering |'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking value for Cornering,value,ID,driver_corneringRank_text,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking label for Idle,Label name,XPATH,//span[normalize-space()='Idle |'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking value for Idle,value,ID,driver_idleRank_text,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking label for Acceleration score tooltip,Label name,XPATH,//div[@class='acceleration_scoreTooltip col-sm-4 col-xs-6']//label[@class='cursor-pointer'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking value for Acceleration,value,ID,driver_accelerationRank_text,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_33PMNovember06
+Get ranking label for Braking,Label name,XPATH,//span[normalize-space()='Braking |'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get ranking value for Braking,value,ID,driver_brakingRank_text,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Score card title text,div card,XPATH,//p[normalize-space()='Score'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Score value,value,ID,totalScore,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Avg Driver Score title text,div card,XPATH,//p[normalize-space()='Avg Driver Score'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Avg Driver Score value,value,XPATH,//div[@id='fleet-avg'],GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Score Trend card header text,div card,XPATH,//div[@class='col-md-12 score_trend']//div[@class='col-xs-12 custom-card-header'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Score Trend graph height attribute,value,XPATH,//div[@id='report-trend'],GET_ATTRIBUTE,height,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Total Kms title text,div card,XPATH,//p[normalize-space()='Total Kms'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Total Kms value,value,ID,totalKms,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Total Engine On (hr) title text,div card,XPATH,//p[normalize-space()='Total Engine On (hr)'],GET_ATTRIBUTE,innerHTML,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Total Engine On (hr) value,value,ID,total-engine-on,GET_TEXT,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Company Score Trend comparison graph height attribute,graph,XPATH,"//div[@id=""trend-score-comparison""]",GET_ATTRIBUTE,height,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+Get Driver Event table data,table data,ID,reportcard-table,GET_TABLE,,Y,Executed@12_13PMJune18,Executed@11_34PMNovember06
+# ===== Section 3: Trip Analysis =====,,,,,,Y,,SKIPPED
+Click on Insights menu option,dropdownmenu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_46AMJune04,Executed@11_35PMNovember06
+Wait 5 seconds for Insights dashboard to load,,,,SLEEP,5,Y,Executed@00_47AMJune04,Executed@11_35PMNovember06
+Click on Trip Analysis card,div card,XPATH,//h4[normalize-space()='Trip Analysis'],CLICK,,Y,Executed@00_47AMJune04,Executed@11_35PMNovember06
+Click on Manage Filters button,button,XPATH,//button[@id='manage_filters'],CLICK,,Y,Executed@00_47AMJune04,Executed@11_35PMNovember06
+Type in Filter Vehicle By (Vehicle Fields) search box,dropdown,XPATH,//form[@id='trips-analysis']//input[@placeholder='Select Vehicle Fields'],ENTER_TEXT,a,Y,3,Executed@11_35PMNovember06
+Select last option from Filter Vehicle By list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_35PMNovember06
+Type in Vehicle Field Values search box,dropdown,XPATH,//div[@id='tripsAnalysis_category_values']//input[@placeholder='Select Vehicle Fields Values'],ENTER_TEXT,a,Y,3,Executed@11_35PMNovember06
+Select last option from Vehicle Field Values list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_35PMNovember06
+Type in Select Vehicle search box,dropdown,XPATH,//div[@class='form-group custom-select custom-select-margin']//input[@placeholder='Select Vehicle'],ENTER_TEXT,a,Y,3,Executed@11_35PMNovember06
+Select last vehicle from Vehicle list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_35PMNovember06
+Open Date Range dropdown on Trip Analysis filter,dropdown,XPATH,//form[@id='trips-analysis']//span[@id='select2-daterange-container'],CLICK,,Y,3,Executed@11_35PMNovember06
+Select Last 30 Days from Date Range list,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 30 Days']",CLICK,,Y,3,Executed@11_35PMNovember06
+Open Timezone dropdown on Trip Analysis filter,dropdown,XPATH,"//form[@id='trips-analysis']//span[starts-with(@id,'select2-timezone-')]",CLICK,,Y,3,Executed@11_35PMNovember06
+Select Sydney Canberra Melbourne GMT+10 timezone,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Sydney, Canberra, Melbourne (GMT+10:00)']",CLICK,,Y,3,Executed@11_36PMNovember06
+Click Go button to apply Trip Analysis filters,button,XPATH,"//*[@id=""trips-analysis""]/div/div[7]/button",CLICK,,Y,Executed@00_47AMJune04,Executed@11_36PMNovember06
+Wait 3 seconds for Trip Analysis report to load,,,,SLEEP,3,Y,Executed@00_47AMJune04,Executed@11_36PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_36PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_37PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,Executed@00_47AMJune04,Executed@11_37PMNovember06
+Close the email sent confirmation popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,Executed@00_48AMJune04,Executed@11_37PMNovember06
+Get Avg KMS per day title text,div card,XPATH,"//*[@id=""kmstravelled""]/div[2]/div[1]/div/p",GET_TEXT,,Y,5,Executed@11_38PMNovember06
+Get Avg KMS per day value,div card,ID,kms_per_day,GET_TEXT,,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Private vs Business title text,div card,ID,pri_vs_buss,GET_TEXT,,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Private percentage value,Label name,CSS_SELECTOR,span.trips-stats-private-color,GET_TEXT,,Y,,Executed@11_38PMNovember06
+Get Business percentage value,Label name,CSS_SELECTOR,span.trips-stats-business-color,GET_TEXT,,Y,,Executed@11_38PMNovember06
+Get Non-Specified Distance title text,div card,XPATH,"//*[@id=""kmstravelled""]/div[2]/div[3]/div/p",GET_TEXT,,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Non-Specified Distance value,div card,ID,not_spec,GET_TEXT,,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Avg KMS travelled chart height attribute,graph,XPATH,"//div[@id=""avg-kmstravelled-chart""]",GET_ATTRIBUTE,height,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Trip Analysis donut chart height attribute,graph,XPATH,"//div[@id=""pot-chart""]",GET_ATTRIBUTE,height,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Trip Analysis donut chart width attribute,graph,XPATH,"//div[@id=""pot-chart""]",GET_ATTRIBUTE,width,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Get Avg KMS per day vs Business table data,table  data,ID,db-kms,GET_TEXT,,Y,,Executed@11_38PMNovember06
+# ===== Section 4: Health =====,,,,,,Y,,SKIPPED
+Wait 10 seconds before navigating to Health,sleep,,,SLEEP,10,Y,Executed@00_48AMJune04,Executed@11_38PMNovember06
+Click on Insights menu option,dropdownmenu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_48AMJune04,Executed@11_39PMNovember06
+Wait 3 seconds for Insights dashboard to load,,,,SLEEP,3,Y,Executed@00_48AMJune04,Executed@11_39PMNovember06
+Click on Health card,div card,XPATH,//h4[normalize-space()='Health'],CLICK,,Y,Executed@00_48AMJune04,Executed@11_39PMNovember06
+Get Devices health table data,table data,ID,health-list,GET_TEXT,,Y,,Executed@11_39PMNovember06
+Search device by serial number in Devices tab,textbox,NAME,search,ENTER_TEXT,4562053813,Y,Executed@00_48AMJune04,Executed@11_39PMNovember06
+Click search icon on Devices tab,button,XPATH,"//*[@id=""health_devices""]/i",CLICK,,Y,Executed@00_49AMJune04,Executed@11_39PMNovember06
+Click on Vehicles tab,div card,LINK_TEXT,Vehicles,CLICK,,Y,Executed@00_49AMJune04,Executed@11_39PMNovember06
+Get Vehicles health table data,table data,ID,asset-health-list,GET_TEXT,,Y,,Executed@11_39PMNovember06
+Search vehicle by name in Vehicles tab,textbox,NAME,search,ENTER_TEXT,ZMZ,Y,Executed@00_49AMJune04,Executed@11_39PMNovember06
+Click search icon on Vehicles tab,icon,CSS_SELECTOR,span.input-group-addon,CLICK,,Y,Executed@00_49AMJune04,Executed@11_39PMNovember06
+Get filtered Vehicles health table data,table data,ID,asset-health-list,GET_TEXT,,Y,,Executed@11_39PMNovember06
+Clear the search text box,clear search text,NAME,search,CLEAR_TEXT,,Y,Executed@00_49AMJune04,Executed@11_39PMNovember06
+# ===== Section 5: Servicing =====,,,,,,Y,,SKIPPED
+Wait 10 seconds before navigating to Servicing,,,,SLEEP,10,Y,Executed@00_49AMJune04,Executed@11_40PMNovember06
+Click on Insights menu option,menu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_49AMJune04,Executed@11_40PMNovember06
+Click on Servicing card,divcard,XPATH,//h4[normalize-space()='Servicing'],CLICK,,Y,Executed@00_50AMJune04,Executed@11_40PMNovember06
+Wait 5 seconds for Servicing page to load,,,,SLEEP,5,Y,Executed@00_50AMJune04,Executed@11_40PMNovember06
+Click on Manage Filters button,button,XPATH,//button[@id='manage_filters'],CLICK,,Y,Executed@00_50AMJune04,Executed@11_40PMNovember06
+Type in Filter Vehicle By (Vehicle Fields) search box,dropdown,XPATH,//form[@id='servicing']//input[@placeholder='Select Vehicle Fields'],ENTER_TEXT,a,Y,3,Executed@11_40PMNovember06
+Select last option from Filter Vehicle By list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_40PMNovember06
+Type in Vehicle Field Values search box,dropdown,XPATH,//div[@id='servicing_category_values']//input[@placeholder='Select Vehicle Fields Values'],ENTER_TEXT,a,Y,3,Executed@11_40PMNovember06
+Select last option from Vehicle Field Values list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_40PMNovember06
+Type in Select Vehicle search box,dropdown,XPATH,//form[@id='servicing']//input[@placeholder='Select Vehicle'],ENTER_TEXT,a,Y,3,Executed@11_40PMNovember06
+Select last vehicle from Vehicle list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_40PMNovember06
+Type in Select Service Types search box,dropdown,XPATH,"//*[@id=""servicing""]//input[@placeholder='Select Service Types']",ENTER_TEXT,a,Y,3,Executed@11_40PMNovember06
+Select last service type from Service Types list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_40PMNovember06
+Click Go button to apply Servicing filters,button,XPATH,"//*[@id=""servicing""]//button[@name='Go']",CLICK,,Y,Executed@00_50AMJune04,Executed@11_41PMNovember06
+Wait 3 seconds for Servicing report to load,,,,SLEEP,3,Y,Executed@00_50AMJune04,Executed@11_41PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_41PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_42PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,Executed@00_50AMJune04,Executed@11_42PMNovember06
+Close the email sent confirmation popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,Executed@00_50AMJune04,Executed@11_42PMNovember06
+Click on Upcoming tab,table option,XPATH,//a[@aria-label='upcoming'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_43PMNovember06
+Get Upcoming tab table data,tabledata,XPATH,"//*[@id=""upcomingTabTable""]",GET_TEXT,,Y,,Executed@11_43PMNovember06
+Click on Overdue tab,table option,XPATH,//a[@aria-label='Overdue'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_43PMNovember06
+Wait 5 seconds for Overdue table to load,,,,SLEEP,5,Y,Executed@00_51AMJune04,Executed@11_44PMNovember06
+Click on Scheduled tab,tablleop,XPATH,//a[@aria-label='Scheduled'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_44PMNovember06
+Wait 4 seconds for Scheduled table to load,,,,SLEEP,4,Y,Executed@00_51AMJune04,Executed@11_45PMNovember06
+Get Scheduled tab table data,tabledata,XPATH,"//*[@id=""scheduleTabTable""]",GET_TABLE,,Y,,Executed@11_45PMNovember06
+Click on Not Scheduled tab,tableop,XPATH,//a[@aria-label='Not Scheduled'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_45PMNovember06
+Wait 5 seconds for Not Scheduled table to load,,,,SLEEP,5,Y,Executed@00_51AMJune04,Executed@11_46PMNovember06
+Get Not Scheduled tab table data,tabledata,XPATH,"//*[@id=""unscheduleTabTable""]",GET_TABLE,,Y,,Executed@11_46PMNovember06
+Click on Completed tab,tableoption,XPATH,//a[@aria-label='Completed'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_46PMNovember06
+Wait 5 seconds for Completed table to load,,,,SLEEP,5,Y,Executed@00_51AMJune04,Executed@11_47PMNovember06
+Get Completed tab table data,tabledata,XPATH,"//*[@id=""completeTabTable""]",GET_TABLE,,Y,,Executed@11_47PMNovember06
+Click on Grouped by Vehicles tab,tableoption,XPATH,//a[@aria-label='Grouped by Vehicles'],CLICK,,Y,Executed@00_51AMJune04,Executed@11_47PMNovember06
+Wait 5 seconds for Grouped by Vehicles table to load,,,,SLEEP,5,Y,Executed@00_52AMJune04,Executed@11_48PMNovember06
+Click Export button to download Servicing CSV,button,XPATH,//button[@name='Export'],CLICK,,Y,Executed@00_52AMJune04,Executed@11_48PMNovember06
+Get Grouped by Vehicles tab table data,tabledata,XPATH,"//*[@id=""allStatusTabTable""]",GET_TABLE,,Y,,Executed@11_48PMNovember06
+Get Scheduled Service Types card heading,divcard,XPATH,//h5[normalize-space()='Scheduled Service Types'],GET_TEXT,,Y,Executed@00_52AMJune04,Executed@11_49PMNovember06
+Get Scheduled Service Types card values,divcard,XPATH,"//*[@id=""servicingDashboard""]/div[4]/div/div/div/div[2]",GET_TEXT,,Y,Executed@00_52AMJune04,Executed@11_49PMNovember06
+Wait 5 seconds before leaving Servicing,,,,SLEEP,5,Y,Executed@00_52AMJune04,Executed@11_49PMNovember06
+# ===== Section 6: 6 Month Summary =====,,,,,,Y,,SKIPPED
+Click on Insights menu option,menu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_52AMJune04,Executed@11_50PMNovember06
+Click on 6 Month Summary card,divcard,XPATH,//h4[normalize-space()='6 Month Summary'],CLICK,,Y,8,Executed@11_50PMNovember06
+Open Filter Vehicle By dropdown in 6 Month Summary popup,dropdown,XPATH,//form[@id='summaryFirstPopup-view']//div//div[2]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_50PMNovember06
+Select last option from Filter Vehicle By list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_50PMNovember06
+Open Timezone dropdown in 6 Month Summary popup,dropdown,XPATH,//form[@id='summaryFirstPopup-view']//div//div[3]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_51PMNovember06
+Select last option from Timezone list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_51PMNovember06
+Click OK button on 6 Month Summary popup,button,XPATH,//button[@id='close_info_msg'],CLICK,,Y,Executed@00_52AMJune04,Executed@11_52PMNovember06
+Wait 3 seconds for 6 Month Summary report to load,,,,SLEEP,3,Y,Executed@00_52AMJune04,Executed@11_52PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_52PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_52PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,Executed@00_53AMJune04,Executed@11_52PMNovember06
+Close the email sent confirmation popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+# ===== Section 7: Landmark =====,,,,,,Y,,SKIPPED
+Wait 5 seconds before navigating to Landmark,,,,SLEEP,5,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Click on Insights menu option,menu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Click on Landmark card,divcard,XPATH,//h4[normalize-space()='Landmark'],CLICK,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Total Landmarks and Kms Travelled title and value,heading,XPATH,"//*[@id=""geofence""]/div[2]/div[1]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Total Visits title and value,get data,XPATH,"//*[@id=""geofence""]/div[2]/div[2]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Average Duration title and value,get data,XPATH,"//*[@id=""geofence""]/div[2]/div[3]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Hours in Landmark title and value,get data,XPATH,"//*[@id=""geofence""]/div[2]/div[4]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Total Alerts title and value,get data,XPATH,"//*[@id=""geofence""]/div[3]/div[2]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get Triggered Alerts title and value,get data,XPATH,"//*[@id=""geofence""]/div[3]/div[3]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Get remaining Landmark alert card title and value,get data,XPATH,"//*[@id=""geofence""]/div[3]/div[4]/div",GET_TEXT,,Y,Executed@00_53AMJune04,Executed@11_53PMNovember06
+Click on Send Email icon,button,ID,sendEmail,CLICK,,Y,5,Executed@11_53PMNovember06
+Enter email address in Send Email popup,textbox,XPATH,//input[@name='email-address'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,10,Executed@11_54PMNovember06
+Click Send Mail button to confirm email,button,ID,send_mail_btn,CLICK,,Y,4,Executed@11_54PMNovember06
+Wait 10 seconds for email sent popup,sleep,,,SLEEP,10,Y,Executed@00_54AMJune04,Executed@11_54PMNovember06
+Close the email sent confirmation popup,button,XPATH,"//*[@id=""close_send_msg""]",CLICK,,Y,Executed@00_54AMJune04,Executed@11_55PMNovember06
+Click Export CSV button on Landmark page,button,XPATH,//button[@class='btn btn-primary btn-sm pull-right exportCSV'],CLICK,,Y,Executed@00_54AMJune04,Executed@11_55PMNovember06
+Switch focus to export popup,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,Executed@00_54AMJune04,Executed@11_55PMNovember06
+# ===== Section 8: FBT Best 12 Week =====,,,,,,Y,,SKIPPED
+Click on Insights menu option,menu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_55AMJune04,Executed@11_55PMNovember06
+Click on FBT Best 12 Week card,divcard,XPATH,//h4[normalize-space()='FBT Best 12 Week'],CLICK,,Y,Executed@00_55AMJune04,Executed@11_55PMNovember06
+Get FBT Best 12 Week summary card data,data,XPATH,"//*[@id=""fbtScreen""]/div/div[3]/div",GET_TEXT,,Y,5,Executed@11_55PMNovember06
+Open Select Vehicle dropdown on FBT filter,dropdown,XPATH,//form[@id='fbtFilter']//div//div[1]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_55PMNovember06
+Select last vehicle from Vehicle list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_55PMNovember06
+Open Timezone dropdown on FBT filter,dropdown,XPATH,//form[@id='fbtFilter']//div//div[2]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_55PMNovember06
+Select Sydney Canberra Melbourne GMT+10 timezone,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Sydney, Canberra, Melbourne (GMT+10:00)']",CLICK,,Y,3,Executed@11_55PMNovember06
+Wait 10 seconds after selecting timezone,,,,SLEEP,10,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Open Select Year dropdown on FBT filter,dropdown,XPATH,//form[@id='fbtFilter']//div//div[3]//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_56PMNovember06
+Select last year option from Year list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_56PMNovember06
+Click Go button to load FBT Best 12 Week data,button,XPATH,"//*[@id=""fbtExecuteBtn""]",CLICK,,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Close FBT message popup if displayed,popup,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,Executed@22_57PMJuly26,Executed@11_56PMNovember06
+Wait 7 seconds for FBT data to load,sleep,,,SLEEP,7,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Switch focus to active element,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,Executed@09_45AMJanuary21,Executed@11_56PMNovember06
+Get System Best 12 Week distance card data,data,XPATH,//div[@class='geofence-trend-box totalKms-border dashbaord-custom-card'],GET_TEXT,,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Get User Best 12 Week card data,data,XPATH,//div[@class='geofence-trend-box totalVisits-border dashbaord-custom-card'],GET_TEXT,,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Click Next Vehicle button,button,XPATH,"//*[@id=""nextVehicleBtn""]",CLICK,,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Switch focus to active element after Next Vehicle,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,Executed@00_55AMJune04,Executed@11_56PMNovember06
+Wait 10 seconds for next vehicle data to load,,,,SLEEP,10,Y,Executed@00_55AMJune04,Executed@11_57PMNovember06
+Close Next Vehicle message popup if displayed,button,XPATH,"//*[@id=""close_send_msg""]",CLICK_IF_PRESENT,10,Y,,Executed@11_57PMNovember06
+Click Reprocess Data button,button,XPATH,//button[normalize-space()='Reprocess Data'],CLICK,,Y,Executed@00_56AMJune04,Executed@11_57PMNovember06
+Switch focus to Reprocess confirmation popup,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,Executed@22_58PMJuly26,Executed@11_57PMNovember06
+Click Yes on Reprocess confirmation popup,button,XPATH,//button[@id='confirm_send_msg'],CLICK,,Y,Executed@00_56AMJune04,Executed@11_57PMNovember06
+Wait 10 seconds for reprocess to complete,,,,SLEEP,10,Y,Executed@00_56AMJune04,Executed@11_57PMNovember06
+# ===== Section 9: Utilisation By Landmark =====,,,,,,Y,,SKIPPED
+Click on Insights menu option,menu,XPATH,//a[@role='option'][normalize-space()='Insights'],CLICK,,Y,Executed@00_56AMJune04,Executed@11_58PMNovember06
+Wait 5 seconds for Insights dashboard to load,sleep,,,SLEEP,5,Y,Executed@00_56AMJune04,Executed@11_58PMNovember06
+Click on Utilisation By Landmark card,div card,XPATH,//h4[normalize-space()='Utilisation By Landmark'],CLICK,,Y,Executed@00_56AMJune04,Executed@11_58PMNovember06
+Wait 10 seconds for Utilisation By Landmark page to load,,,,SLEEP,10,Y,Executed@00_56AMJune04,Executed@11_59PMNovember06
+Click on Manage Filters button,button,XPATH,"//*[@id=""manage_filters""]",CLICK,,Y,Executed@00_56AMJune04,Executed@11_59PMNovember06
+Open Landmark dropdown on Utilisation filter,dropdown,XPATH,//form[@id='fleet-utilisation']//div//div[1]//span[@class='select2-selection__placeholder'],CLICK,,Y,3,Executed@11_59PMNovember06
+Select last landmark from Landmark list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_59PMNovember06
+Type in Filter Vehicle By (Vehicle Fields) search box,dropdown,XPATH,//div[@id='vehicle-category']//input[@placeholder='Select Vehicle Fields'],ENTER_TEXT,a,Y,3,Executed@11_59PMNovember06
+Select last option from Filter Vehicle By list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_59PMNovember06
+Type in Vehicle Field Values search box,dropdown,XPATH,//div[@id='vehicle-category-value']//input[@placeholder='Select Vehicle Fields Values'],ENTER_TEXT,a,Y,3,Executed@11_59PMNovember06
+Select last option from Vehicle Field Values list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_59PMNovember06
+Open Date Range dropdown on Utilisation filter,dropdown,XPATH,//form[@id='fleet-utilisation']//div[@class='form-group custom-select custom-select-margin']//span[@id='select2-daterange-container'],CLICK,,Y,3,Executed@11_59PMNovember06
+Select Last 30 Days from Date Range list,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Last 30 Days']",CLICK,,Y,3,Executed@11_59PMNovember06
+Open Timezone dropdown on Utilisation filter,dropdown,XPATH,//div[@class='form-group custom-select mt-16-xs custom-select-margin']//span[@class='select2-selection__rendered'],CLICK,,Y,3,Executed@11_59PMNovember06
+Select Sydney Canberra Melbourne GMT+10 timezone,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Sydney, Canberra, Melbourne (GMT+10:00)']",CLICK,,Y,3,Executed@11_59PMNovember06
+Type in Select Vehicle search box,dropdown,XPATH,//form[@id='fleet-utilisation']//input[@placeholder='Select Vehicle'],ENTER_TEXT,a,Y,3,Executed@11_59PMNovember06
+Select last vehicle from Vehicle list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[last()]",CLICK,,Y,3,Executed@11_59PMNovember06
+Click Go button to apply Utilisation filters,button,XPATH,//button[@class='btn btn-primary btn-execute btn-sm'],CLICK,,Y,Executed@00_56AMJune04,Executed@11_59PMNovember06
+Wait 5 seconds for Utilisation report to load,sleep,,,SLEEP,5,Y,Executed@00_56AMJune04,Executed@12_00AMNovember07
+Get Total Kms trend card data,div card,XPATH,//div[@class='geofence-trend-box totalKms-border dashbaord-custom-card'],GET_TEXT,,Y,Executed@00_56AMJune04,Executed@12_00AMNovember07
+Get Utilisation By Landmark table data,table,XPATH,//div[@class='dashbaord-custom-card dashbaord-custom-card-padding'],GET_TEXT,,Y,,Executed@12_00AMNovember07
+Click Export CSV button on Utilisation page,button,XPATH,//button[@class='btn btn-primary btn-sm pull-right exportCSV'],CLICK,,Y,Executed@00_56AMJune04,Executed@12_00AMNovember07

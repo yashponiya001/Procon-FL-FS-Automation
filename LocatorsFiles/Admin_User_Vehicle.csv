@@ -1,0 +1,79 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_17AMNovember07
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@12_17AMNovember07
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@12_17AMNovember07
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@12_18AMNovember07
+Click on Admin menu option,button,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,5,Executed@12_18AMNovember07
+Click on Admin menu option and select USERS,button,XPATH,//div[@class='admin-card-circle card-user'],CLICK,,Y,35,Executed@12_18AMNovember07
+Click on Add user button,button,XPATH,//button[@name='Add User'],CLICK,,Y,10,Executed@12_19AMNovember07
+Select Role,dropdown list,XPATH,(//span[normalize-space()='-- Select Role --'])[4],CLICK,,Y,,Executed@12_19AMNovember07
+select value from role drpdown,drpdown,XPATH,//li[normalize-space(.)='Driver'],CLICK,,Y,,Executed@12_19AMNovember07
+Enter First Name,textbox,NAME,user_firstName,ENTER_TEXT_WITH_TIMESTAMP,AutoUser,Y,,Executed@12_19AMNovember07
+Enter Last Name,textbox,NAME,user_lastName,ENTER_TEXT_WITH_TIMESTAMP,AutoUserLast,Y,,Executed@12_19AMNovember07
+Enter Email Address,textbox,NAME,user_email,ENTER_TEXT,AutoUser$VARCOUNTER$@mailinator.com,Y,,Executed@12_19AMNovember07
+Enter Login,textbox,NAME,user_loginName,ENTER_TEXT_WITH_TIMESTAMP,AutoLoginUser,Y,,Executed@12_19AMNovember07
+Click on SAVE button,button,CSS_SELECTOR,button.btn.btn-primary.pull-right.mr-10.btn-save,CLICK,,Y,,Executed@12_19AMNovember07
+popup,popup,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Click on SEND EMAIL button,button,ID,confirm_send_msg,CLICK,,Y,20,Executed@12_20AMNovember07
+get data,table,XPATH,/html/body/div[5]/div[5]/div/div[2],GET_TABLE,,Y,,Executed@12_20AMNovember07
+#Click on Admin menu option,button,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@09_08AMJuly23
+#Click on Admin menu option and select USERS,button,XPATH,//div[@class='admin-card-circle card-user'],DROPDOWN_MENU_OPTION,,Y,40,FAIL@Executed@09_08AMJuly23
+Search user with name,textbox,NAME,search,CLEAR_TEXT,,Y,5,Executed@12_20AMNovember07
+Search user with name,textbox,NAME,search,ENTER_TEXT,AutoLoginUser,Y,,Executed@12_20AMNovember07
+Click on search icon,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,10,Executed@12_20AMNovember07
+Get searched employees records,searched list,,,GET_LIST,,Y,,FAIL@Executed@12_20AMNovember07
+Click on Edit icon of a user,icon,XPATH,(//i[@alt='Edit'])[1],CLICK,,Y,,Executed@12_20AMNovember07
+clear login name,textbox,NAME,user_loginName,CLEAR_TEXT,,Y,,Executed@12_20AMNovember07
+Edit Login Name,textbox,NAME,user_loginName,ENTER_TEXT_WITH_TIMESTAMP,AutoLoginUseredited,Y,,Executed@12_20AMNovember07
+Click on SAVE button,button,CSS_SELECTOR,button.btn.btn-primary.pull-right.mr-10.btn-save,CLICK,,Y,20,Executed@12_21AMNovember07
+Click on Admin menu option,button,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@12_21AMNovember07
+Click on Admin menu option and select USERS,button,XPATH,//div[@class='admin-card-circle card-user'],CLICK,,Y,30,Executed@12_21AMNovember07
+Search edited user with login name,textbox,NAME,search,CLEAR_TEXT,,Y,5,Executed@12_22AMNovember07
+Search edited user with login name,textbox,NAME,search,ENTER_TEXT,AutoLoginUseredited,Y,15,Executed@12_22AMNovember07
+Get searched employees records,searched list,,,GET_LIST,,Y,10,FAIL@Executed@12_22AMNovember07
+Now delete the searched user,icon,XPATH,(//span[@title='Inactivate User'])[1],CLICK,,Y,,Executed@12_22AMNovember07
+popup,popup,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Click on YES button,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,30,Executed@12_23AMNovember07
+Get searched employees records,searched list,,,GET_LIST,,Y,,FAIL@Executed@12_23AMNovember07
+Click on upload,click,XPATH,//*[@name='Upload'],CLICK,,Y,,Executed@12_23AMNovember07
+click on upload new user,Click,XPATH,//a[normalize-space()='Upload New Users'],CLICK,,Y,,Executed@12_23AMNovember07
+Click on getting start 1st row,click,CSS_SELECTOR,.download-link,CLICK,,Y,,Executed@12_23AMNovember07
+Click on cancel,click,XPATH,//div[@id='bulkImport']//button[@name='Cancel'][normalize-space()='Cancel'],CLICK,,Y,5,Executed@12_23AMNovember07
+Search user with name,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@12_23AMNovember07
+Search user with name,textbox,NAME,search,ENTER_TEXT,Yash,Y,,Executed@12_24AMNovember07
+Click on search icon,icon,XPATH,//span[@id='admin-search-icon']//span//i[@alt='Search'],CLICK,,Y,5,Executed@12_24AMNovember07
+Click on next page,click,XPATH,//span[@class='k-icon k-i-arrow-e'],CLICK,,Y,5,Executed@12_24AMNovember07
+Click 1st user,icon,XPATH,(//tr//td//input)[1],CLICK,,Y,,Executed@12_24AMNovember07
+Click 2nd user,icon,XPATH,(//tr//td//input)[2],CLICK,,Y,,Executed@12_24AMNovember07
+Click 3rd user,icon,XPATH,(//tr//td//input)[3],CLICK,,Y,,FAIL@Executed@12_24AMNovember07
+Click 4th user,icon,XPATH,(//tr//td//input)[4],CLICK,,Y,,Executed@12_25AMNovember07
+Click 5th user,icon,XPATH,(//tr//td//input)[5],CLICK,,Y,,Executed@12_25AMNovember07
+Click on bulk update,icon,NAME,Bulk Update,CLICK,,Y,,Executed@12_25AMNovember07
+Select zone,dropdown,XPATH,/html[1]/body[1]/div[5]/div[11]/div[1]/div[1]/div[2]/div[1]/div[2]/span[1]/span[1]/div[4]/span[1]/span[1]/span[1]/span[1],CLICK,,Y,,Executed@12_25AMNovember07
+select zone option,dropdown,XPATH,//li[normalize-space(.)='North Zone'],CLICK,,Y,,Executed@12_25AMNovember07
+click on update,button,XPATH,"//*[@id=""bulkUpdateUsers""]//button[@name='Update']",CLICK,,Y,20,Executed@12_26AMNovember07
+Click on Admin menu option,button,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@12_26AMNovember07
+Click on Admin menu option and select VEHICLES,button,XPATH,//div[@class='admin-card assets']//div[@class='media-body card-title'],CLICK,,Y,20,Executed@12_26AMNovember07
+Get Vehicle Table List,tabledata,ID,assets-table,GET_TABLE,,Y,,Executed@12_27AMNovember07
+clear Search vehicle with name,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@12_27AMNovember07
+Search vehicle with name,textbox,NAME,search,ENTER_TEXT,4562053813,Y,,Executed@12_27AMNovember07
+Click on search icon,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,,Executed@12_27AMNovember07
+Get searched vehicle,searched list,,,GET_LIST,,Y,,FAIL@Executed@12_27AMNovember07
+Clear search string,textbox,NAME,search,CLEAR_TEXT,,Y,30,Executed@12_28AMNovember07
+Click on upload,click,XPATH,//*[@name='Upload'],CLICK,,Y,,Executed@12_28AMNovember07
+Click on getting start 1st row,click,CSS_SELECTOR,.download-link,CLICK,,Y,,Executed@12_28AMNovember07
+Click on cancel,click,XPATH,"//*[@id=""bulkImport""]//button[@name='Cancel']",CLICK,,Y,5,Executed@12_28AMNovember07
+Search vehicle with name,textbox,NAME,search,ENTER_TEXT,yash,Y,,Executed@12_28AMNovember07
+Click on search icon,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,5,Executed@12_28AMNovember07
+Click 1st vehicle,click,XPATH,(//tr[1]/td[1]/input)[1],CLICK,,Y,,Executed@12_29AMNovember07
+Click 2nd vehicle,click,XPATH,(//tr[2]/td[1]/input)[1],CLICK,,Y,,Executed@12_29AMNovember07
+Click 3rd vehicle,click,XPATH,(//tr[3]/td[1]/input)[1],CLICK,,Y,,Executed@12_29AMNovember07
+Click 4th vehicle,click,XPATH,(//tr[4]/td[1]/input)[1],CLICK,,Y,,Executed@12_29AMNovember07
+Click 5th vehicle,click,XPATH,(//tr[5]/td[1]/input)[1],CLICK,,N,,SKIPPED
+Click on bulk update,click,NAME,Bulk Update,CLICK,,Y,5,Executed@12_29AMNovember07
+Clear color name,click,NAME,assetColor,CLEAR_TEXT,,Y,,Executed@12_29AMNovember07
+Enter color name,click,NAME,assetColor,ENTER_TEXT,White,Y,,Executed@12_29AMNovember07
+Clear Model,click,NAME,assetModel,CLEAR_TEXT,,Y,,Executed@12_30AMNovember07
+Enter Model,click,NAME,assetModel,ENTER_TEXT,2020,Y,,Executed@12_30AMNovember07
+Click on Update,click,XPATH,"//*[@id=""bulkUpdateVehicles""]//button[@name='Update']",CLICK,,Y,,Executed@12_30AMNovember07
+Click on YES button,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,,Executed@12_30AMNovember07

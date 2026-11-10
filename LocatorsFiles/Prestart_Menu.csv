@@ -1,0 +1,134 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@10_48AMOctober30
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@10_48AMOctober30
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@10_48AMOctober30
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@10_49AMOctober30
+# ===== Section 1: Manage Faults =====,,,,,,Y,,
+Click on PreStart menu,menuitem,XPATH,//a[@href='/prestart/main'],CLICK,,Y,,Executed@10_49AMOctober30
+Click on Manage Faults card,divcard,XPATH,//h4[normalize-space()='Manage Faults'],CLICK,,Y,5,Executed@10_49AMOctober30
+Press Enter in Filter Vehicle By field to select first option,dropdown,XPATH,//div[@id='vehicle-category']//span//input[@placeholder='Filter Vehicle By'],PRESS_ENTER,,Y,2,Executed@10_49AMOctober30
+Press Enter in Vehicles field to select first vehicle,dropdown,XPATH,//form[@id='prestartManageFaultFilter']//input[@placeholder='Vehicles'],PRESS_ENTER,,Y,2,Executed@10_50AMOctober30
+Open Severity dropdown,dropdown,XPATH,//span[@id='select2-managefault_selectAll-container'],CLICK,,Y,,Executed@10_50AMOctober30
+Select first option from Severity list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[1]",CLICK,,Y,3,Executed@10_50AMOctober30
+Open Status dropdown,dropdown,XPATH,//span[@id='select2-managefault_status_filter-container'],CLICK,,Y,,Executed@10_50AMOctober30
+Select first option from Status list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[1]",CLICK,,Y,3,Executed@10_50AMOctober30
+Press Enter in Sub Status field to select first option,dropdown,XPATH,//input[@placeholder='Sub Status'],PRESS_ENTER,,Y,,Executed@10_50AMOctober30
+Click Go button to apply Manage Faults filters,button,XPATH,//form[@id='prestartManageFaultFilter']//button[@name='Go'][normalize-space()='Go'],CLICK,,Y,10,Executed@10_50AMOctober30
+Search fault list for Test Device for Shubha,search,CSS_SELECTOR,.search-input > input:nth-child(2),ENTER_TEXT,(vi)Test Device for Shubha (7000182560),Y,,Executed@10_50AMOctober30
+Click on Open status link of first fault,table item,XPATH,"//a[@class='manageFaultIssue']//span[contains(text(),'Open')]",CLICK,,Y,,Executed@10_50AMOctober30
+Click Open button in fault status panel,button,XPATH,//button[normalize-space()='Open'],CLICK,,Y,,Executed@10_50AMOctober30
+Enter comment in Add comments box,textbox,XPATH,//textarea[@placeholder='Add comments'],ENTER_TEXT,testing,Y,,Executed@10_50AMOctober30
+Click Save button in fault status panel,button,XPATH,"//div[@id='manageFaultsModel']//button[contains(@class,'saveManageFault')]",CLICK,,Y,,Executed@10_50AMOctober30
+Click on Closed status tab,div,XPATH,//a[normalize-space()='Closed'],CLICK,,Y,,Executed@10_50AMOctober30
+Click Export CSV button on Manage Faults page,button,XPATH,//button[normalize-space()='Export CSV'],CLICK,,Y,10,Executed@10_51AMOctober30
+# ===== Section 2: Checklists =====,,,,,,Y,,
+Click on Checklists in side menu,menuoption,XPATH,//span[normalize-space()='Checklists'],CLICK,,Y,3,Executed@10_51AMOctober30
+Open Date Range dropdown on Checklists filter,dropdown,XPATH,//form[@id='prestartChecklistFilter']//span[@id='select2-daterange-container'],CLICK,,Y,,Executed@10_51AMOctober30
+Select second option (Today) from Date Range list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,Executed@10_51AMOctober30
+Click Go button to apply Checklists filter,button,XPATH,//form[@id='prestartChecklistFilter']//button[@name='Go'][normalize-space()='Go'],CLICK,,Y,5,Executed@10_51AMOctober30
+Get Checklists table data,table,XPATH,"//*[@id=""checklist-table_wrapper""]/div",GET_TABLE,,Y,5,Executed@10_51AMOctober30
+Click Add New Checklist button,button,XPATH,//button[normalize-space()='Add New Checklist'],CLICK,,Y,,Executed@10_51AMOctober30
+Enter checklist name with timestamp,textbox,XPATH,//input[@id='checklistName'],ENTER_TEXT_WITH_TIMESTAMP,AutoCheckList,Y,8,Executed@10_52AMOctober30
+Search and select question category Test_cat_explore_n,dropdown,XPATH,//input[@placeholder='Search Question Category'],ENTER_TEXT_ENTER,Test_cat_explore_n,Y,3,Executed@10_52AMOctober30
+Get selected question category chip text,chip,XPATH,"//form[@id='add-checklist']//li[contains(@class,'select2-selection__choice')]",GET_TEXT,,Y,3,Executed@10_52AMOctober30
+Get Add New Checklist button text,gettext,XPATH,//button[@name='Add New Checklist'],GET_TEXT,,Y,,Executed@10_52AMOctober30
+Click on question search box,dropdown,CSS_SELECTOR,.checklistQuestiondiv > input:nth-child(1),CLICK,,Y,5,Executed@10_52AMOctober30
+Click first question from question list,option,XPATH,(//a[@class='checklistQuestionRow'])[1],CLICK,,Y,,Executed@10_53AMOctober30
+Click Save button to create checklist,button,XPATH,//button[@value='Save'],CLICK,,Y,5,Executed@10_53AMOctober30
+Close error popup if displayed after saving checklist,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,,Executed@10_53AMOctober30
+Get Checklists table data after save,table,XPATH,"//*[@id=""checklist-table""]",GET_TABLE,,Y,,Executed@10_53AMOctober30
+Open Date Range dropdown on Checklists filter,dropdown,XPATH,//form[@id='prestartChecklistFilter']//span[@id='select2-daterange-container'],CLICK,,Y,,Executed@10_53AMOctober30
+Select second option (Today) from Date Range list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,8,Executed@10_53AMOctober30
+Click Go button to apply Checklists filter,button,XPATH,//form[@id='prestartChecklistFilter']//button[@name='Go'][normalize-space()='Go'],CLICK,,Y,5,Executed@10_53AMOctober30
+Clear the Checklists search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@10_53AMOctober30
+Search for created checklist AutoCheckList,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoCheckList_,Y,,Executed@10_54AMOctober30
+Click search icon,click,XPATH,//span[@class='hidden-xs search-icon']//span//i[@alt='Search'],CLICK,,Y,3,Executed@10_54AMOctober30
+Click edit icon on first checklist row,icon,XPATH,//div[@id='checklist-table_wrapper']//tbody[@role='rowgroup']//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@10_54AMOctober30
+Clear checklist name field,textbox,XPATH,//input[@id='checklistName'],CLEAR_TEXT,,Y,,Executed@10_54AMOctober30
+Enter updated checklist name with timestamp,textbox,XPATH,//input[@id='checklistName'],ENTER_TEXT_WITH_TIMESTAMP,AutoUpdatedChecklist,Y,,Executed@10_54AMOctober30
+Click Save button to update checklist,button,XPATH,//button[@value='Save'],CLICK,,Y,5,Executed@10_54AMOctober30
+Close error popup if displayed after updating checklist,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,,Executed@10_55AMOctober30
+Clear the Checklists search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@10_55AMOctober30
+Open Date Range dropdown on Checklists filter,dropdown,XPATH,//form[@id='prestartChecklistFilter']//span[@id='select2-daterange-container'],CLICK,,Y,,Executed@10_55AMOctober30
+Select second option (Today) from Date Range list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,8,Executed@10_55AMOctober30
+Click Go button to apply Checklists filter,button,XPATH,//form[@id='prestartChecklistFilter']//button[@name='Go'][normalize-space()='Go'],CLICK,,Y,,Executed@10_55AMOctober30
+Search for updated checklist AutoUpdatedChecklist,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoUpdatedChecklist,Y,5,Executed@10_55AMOctober30
+Click delete icon on first checklist row,icon,XPATH,//tbody/tr[1]/td[1]/span[3]/i[1],CLICK,,Y,,Executed@10_55AMOctober30
+Click Yes on delete confirmation popup,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,1,Executed@10_55AMOctober30
+Close error popup if displayed after deleting checklist,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,,Executed@10_55AMOctober30
+Click Export CSV button on Checklists page,button,XPATH,//button[normalize-space()='Export CSV'],CLICK,,Y,,Executed@10_55AMOctober30
+# ===== Section 3: Allocate Checklists =====,,,,,,Y,,
+Click on Allocate Checklists in side menu,sidemenu,XPATH,//a[@href='#prestartAllocateChecklist'],CLICK,,Y,5,Executed@10_56AMOctober30
+Click Allocate Checklist button,button,XPATH,//button[normalize-space()='Allocate Checklist'],CLICK,,Y,5,Executed@10_56AMOctober30
+Enter allocation name with timestamp,textbox,XPATH,//input[@name='allocationName'],ENTER_TEXT_WITH_TIMESTAMP,AutoAllocatedChecklist,Y,5,Executed@10_56AMOctober30
+Open Associate Checklist dropdown,dropdown,XPATH,//input[@placeholder='Associate Checklist'],CLICK,,Y,,Executed@10_57AMOctober30
+Select first checklist from Associate Checklist list,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[1]",CLICK,,Y,3,Executed@10_57AMOctober30
+Tick Ask driver for any additional information checkbox,Checkbox,XPATH,//input[@name='addMiscQuestion'],CLICK,,Y,3,Executed@10_58AMOctober30
+Search and select notification scheme Yash_admin,dropdown,XPATH,//form[@id='add-allocateChecklist']//input[@placeholder='Notification Scheme'],ENTER_TEXT_ENTER,Yash_admin,Y,3,Executed@10_58AMOctober30
+Click Save button to create allocation,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 save-allocateChecklist'],CLICK,,Y,3,Executed@10_58AMOctober30
+Switch focus to confirmation popup,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,,Executed@10_59AMOctober30
+Click Yes on save confirmation popup,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,3,Executed@10_59AMOctober30
+Close message popup if displayed after saving allocation,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK_IF_PRESENT,5,Y,,Executed@10_59AMOctober30
+Clear the Allocate Checklists search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@10_59AMOctober30
+Search for created allocation AutoAllocatedChecklist,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoAllocatedChecklist,Y,,Executed@11_00AMOctober30
+Get Allocate Checklists table data,table,XPATH,"//*[@id=""allocateChecklist-table""]",GET_TABLE,,Y,,Executed@11_00AMOctober30
+Click edit icon on first allocation row,icon,XPATH,//div[@id='allocateChecklist-table_wrapper']//tbody[@role='rowgroup']//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@11_00AMOctober30
+Clear allocation name field,textbox,XPATH,//input[@name='allocationName'],CLEAR_TEXT,,Y,,Executed@11_01AMOctober30
+Enter updated allocation name with timestamp,textbox,XPATH,//input[@name='allocationName'],ENTER_TEXT_WITH_TIMESTAMP,AutoUpdatedAllocated,Y,,Executed@11_01AMOctober30
+Click Save button to update allocation,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 save-allocateChecklist'],CLICK,,Y,10,Executed@11_01AMOctober30
+Click Yes on update confirmation popup,,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,10,Executed@11_02AMOctober30
+Get Allocate Checklists table data after update,table,XPATH,"//*[@id=""allocateChecklist-table""]",GET_TABLE,,Y,,Executed@11_02AMOctober30
+Clear the Allocate Checklists search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@11_03AMOctober30
+Search for updated allocation AutoUpdatedAllocated,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoUpdatedAllocated_,Y,13,Executed@11_03AMOctober30
+Click delete icon on first allocation row,icon,XPATH,//div[@id='allocateChecklist-table_wrapper']//tbody[@role='rowgroup']//tr[1]//span[@title='Remove'],CLICK,,Y,,Executed@11_03AMOctober30
+Click Yes on delete confirmation popup,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,13,Executed@11_04AMOctober30
+# ===== Section 4: Question Category =====,,,,,,Y,,
+Click on Question Category in side menu,menu item,XPATH,//span[normalize-space()='Question Category'],CLICK,,Y,,Executed@11_04AMOctober30
+Click Add Question Category button,button,XPATH,//button[normalize-space()='Add Question Category'],CLICK,,Y,,Executed@11_05AMOctober30
+Enter question category name with timestamp,textbox,XPATH,//input[@name='questionCategoryName'],ENTER_TEXT_WITH_TIMESTAMP,AutoQuestionCategory,Y,,Executed@11_05AMOctober30
+Click Save button to create question category,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 save-questionCategory'],CLICK,,Y,5,Executed@11_06AMOctober30
+Clear the Question Category search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@11_06AMOctober30
+Search for created question category AutoQuestionCategory,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoQuestionCategory,Y,,Executed@11_06AMOctober30
+Click edit icon on first question category row,icon,XPATH,//div[@id='prestartQuestionCategory']//tbody[@role='rowgroup']//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@11_07AMOctober30
+Clear question category name field,textbox,XPATH,//input[@name='questionCategoryName'],CLEAR_TEXT,,Y,,Executed@11_07AMOctober30
+Enter updated question category name with timestamp,textbox,XPATH,//input[@name='questionCategoryName'],ENTER_TEXT_WITH_TIMESTAMP,AutoUpdatedQuestionCategory,Y,,Executed@11_07AMOctober30
+Click Save button to update question category,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 save-questionCategory'],CLICK,,Y,3,Executed@11_07AMOctober30
+Clear the Question Category search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@11_08AMOctober30
+Search for updated question category AutoUpdatedQuestionCategory,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoUpdatedQuestionCategory,Y,5,Executed@11_08AMOctober30
+Click delete icon on first question category row,icon,XPATH,//div[@id='prestartQuestionCategory']//tbody[@role='rowgroup']//tr[1]//span[@title='Remove'],CLICK,,Y,,Executed@11_08AMOctober30
+Switch focus to delete confirmation popup,popup,,,SWITCH_TO_ACTIVE_ELEMENT,,Y,,Executed@11_09AMOctober30
+Click Yes on delete confirmation popup,button,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,5,Executed@11_09AMOctober30
+# ===== Section 5: Question Bank =====,,,,,,Y,,
+Click on Question Bank in side menu,button,XPATH,//a[@href='#prestartQuestionBank']//div[@class='sidebar_parent'],CLICK,,Y,,Executed@11_09AMOctober30
+Click Add New Question button,button,XPATH,//button[@name='Add New Question'],CLICK,,Y,5,Executed@11_09AMOctober30
+Enter question text with timestamp,textbox,XPATH,//input[@id='question_text'],ENTER_TEXT_WITH_TIMESTAMP,AutoQuestionNew,Y,5,Executed@11_10AMOctober30
+Press Enter on Associate Question Category dropdown to open it,dropdown,XPATH,//span[@aria-labelledby='select2-question-category-container'],PRESS_ENTER,,Y,5,Executed@11_10AMOctober30
+Search and select question category iui,dropdown,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,iui,Y,5,Executed@11_10AMOctober30
+Enter first answer option with timestamp,textbox,XPATH,//input[@name='answer_text1'],ENTER_TEXT_WITH_TIMESTAMP,Auto option,Y,5,Executed@11_10AMOctober30
+Click Save button to create question,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveButton save-question'],CLICK,,Y,5,Executed@11_11AMOctober30
+Clear the Question Bank search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,8,Executed@11_11AMOctober30
+Search for created question AutoQuestionNew,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoQuestionNew,Y,,Executed@11_11AMOctober30
+Click edit icon on first question row,icon,XPATH,//div[@id='questionBank-table']//tbody[@role='rowgroup']//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@11_11AMOctober30
+Clear question text field,textbox,XPATH,//input[@name='question_text'],CLEAR_TEXT,,Y,,Executed@11_11AMOctober30
+Enter updated question text with timestamp,textbox,XPATH,//input[@name='question_text'],ENTER_TEXT_WITH_TIMESTAMP,AutoupdatedQuestionNew,Y,,Executed@11_12AMOctober30
+Enter updated answer option with timestamp,textbox,XPATH,//input[@name='answer_text1'],ENTER_TEXT_WITH_TIMESTAMP,Auto option edited,Y,5,Executed@11_12AMOctober30
+Click Save button to update question,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveButton save-question'],CLICK,,Y,5,Executed@11_12AMOctober30
+Clear the Question Bank search box,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,,Executed@11_12AMOctober30
+Search for updated question AutoupdatedQuestionNew,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoupdatedQuestionNew,Y,8,Executed@11_12AMOctober30
+Click delete icon on first question row,icon,XPATH,//div[@id='questionBank-table']//tbody[@role='rowgroup']//tr[1]//span[@title='Remove'],CLICK,,Y,,Executed@11_12AMOctober30
+Click Yes on delete confirmation popup,,XPATH,"//*[@id=""confirm_send_msg""]",CLICK,,Y,,Executed@11_13AMOctober30
+Close the delete success popup,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,5,Executed@11_13AMOctober30
+# ===== Section 6: Submitted Prestart =====,,,,,,Y,,
+Click on Submitted Prestart in side menu,button,XPATH,//span[normalize-space()='Submitted Prestart'],CLICK,,Y,3,Executed@11_13AMOctober30
+Open Filter Vehicle By dropdown,textbox,XPATH,//div[@id='prestartSubChecklist']//div//div[1]//span[@class='select2-selection select2-selection--multiple'],CLICK,,Y,,Executed@11_13AMOctober30
+Search and select first Filter Vehicle By option,textbox,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,a,Y,3,Executed@11_13AMOctober30
+Open Vehicles dropdown,textbox,XPATH,//div[@id='prestartSubChecklist']//div//div[2]//span[@class='select2-selection select2-selection--multiple'],CLICK,,Y,,Executed@11_13AMOctober30
+Search and select first vehicle,textbox,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,a,Y,3,Executed@11_13AMOctober30
+Open Drivers dropdown,textbox,XPATH,//div[@id='prestartSubChecklist']//div//div[3]//span[@class='select2-selection select2-selection--multiple'],CLICK,,Y,,Executed@11_13AMOctober30
+Search and select first driver,textbox,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,a,Y,3,Executed@11_13AMOctober30
+Open Prestart Status dropdown,textbox,XPATH,//div[@id='prestartSubChecklist']//div//div[4]//span[@class='select2-selection select2-selection--multiple'],CLICK,,Y,,Executed@11_13AMOctober30
+Search and select first Prestart Status option,textbox,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,a,Y,3,Executed@11_13AMOctober30
+Press Enter on Date Range dropdown to open it,dropdown,XPATH,"//div[@id='prestartSubChecklist']//span[contains(@class,'select2-selection--single')]",PRESS_ENTER,,Y,3,Executed@11_13AMOctober30
+Search and select Today from Date Range list,dropdown,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Today,Y,8,Executed@11_13AMOctober30
+Click Go button to apply Submitted Prestart filters,button,XPATH,//button[@class='btn btn-primary btn-searchSubmitPrestart btn-sm'],CLICK,,Y,5,Executed@11_14AMOctober30
+Click Export CSV button on Submitted Prestart page,button,XPATH,//button[@name='Export CSV'],CLICK,,Y,5,Executed@11_14AMOctober30

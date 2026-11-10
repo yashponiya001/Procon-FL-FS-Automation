@@ -1,0 +1,94 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@11_21PMOctober27
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@11_21PMOctober27
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@11_22PMOctober27
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@11_22PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,3,Executed@11_22PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,Y,,Executed@11_22PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,N,3,SKIPPED
+Click on Scheduled Dashboard Tab,divcard,XPATH,//span[normalize-space()='Scheduled Dashboards'],CLICK,,Y,,Executed@11_22PMOctober27
+Click on add schedule,button,XPATH,//button[@type='button'][normalize-space()='Add Schedule'],CLICK,,Y,,Executed@11_22PMOctober27
+Enter Schedule name,textbox,XPATH,//form[@id='scheduled-dashboard']//input[@placeholder='Enter Schedule Name'],ENTER_TEXT_WITH_TIMESTAMP,AutoSchedule,Y,,Executed@11_22PMOctober27
+Select dashboard name,dropdown,XPATH,//*[normalize-space(text())='-- Select Dashboard --'],CLICK,,Y,,Executed@11_22PMOctober27
+select dashboard name option,dropdown,XPATH,(//input[@class='select2-search__field'])[last()],PRESS_ENTER,,Y,,Executed@11_23PMOctober27
+Select Dashboard View,dropdown arrow,XPATH,//span[@class='dashboardViewField']//span[@class='select2-selection select2-selection--single'],CLICK,,Y,,Executed@11_23PMOctober27
+select dashboard view option,dropdown arrow,XPATH,"(//li[contains(@class,'select2-results__option')])[1]",CLICK,,Y,,Executed@11_23PMOctober27
+Select name of scheme,dropdown list,XPATH,//span[@class='notificationField']//input[@placeholder='-- Select Channels --'],ENTER_TEXT_ENTER,123,Y,,Executed@11_23PMOctober27
+Select Recurrence Method(Date and Time),radiobox,XPATH,//form[@id='scheduled-dashboard']//input[@id='modal_report_schedule_MONTHLY'],CLICK,,Y,,Executed@11_23PMOctober27
+Click on SAVE button,button,XPATH,//div[@class='modal-scheduled-dashboards modals']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,20,Executed@11_23PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@11_23PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,Y,,Executed@11_23PMOctober27
+Click on Scheduled Dashboard Tab,divcard,XPATH,//span[normalize-space()='Scheduled Dashboards'],CLICK,,Y,,Executed@11_23PMOctober27
+Search Saved Report with name,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@11_24PMOctober27
+Search Saved Report with name,textbox,NAME,search,ENTER_TEXT,AutoSchedule_,Y,,Executed@11_24PMOctober27
+Click on search icon,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,,Executed@11_24PMOctober27
+Get searched scheduled report,searched list,ID,dashboard-table,GET_TABLE,,Y,10,Executed@11_24PMOctober27
+click edit,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoSchedule_')]]//span[contains(@class,'sd_edit_btn')])[1]",CLICK,,Y,,Executed@11_24PMOctober27
+clear schedule name,textbox,XPATH,//form[@id='scheduled-dashboard']//input[@placeholder='Enter Schedule Name'],CLEAR_TEXT,,Y,,Executed@11_24PMOctober27
+Enter Schedule name,textbox,XPATH,//form[@id='scheduled-dashboard']//input[@placeholder='Enter Schedule Name'],ENTER_TEXT_WITH_TIMESTAMP,AutoScheduleeditted,Y,,Executed@11_24PMOctober27
+Click on SAVE button,button,XPATH,//div[@class='modal-scheduled-dashboards modals']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,,Executed@11_24PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@11_24PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,Y,,Executed@11_24PMOctober27
+Click on Scheduled Dashboard Tab,divcard,XPATH,//span[normalize-space()='Scheduled Dashboards'],CLICK,,Y,,Executed@11_24PMOctober27
+Search Saved Report with name,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@11_24PMOctober27
+Search editted Report with name,textbox,NAME,search,ENTER_TEXT,AutoScheduleeditted_,Y,5,Executed@11_25PMOctober27
+click delete,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoScheduleeditted_')]]//span[contains(@class,'sd_dlt_btn')])[1]",CLICK,,Y,,Executed@11_25PMOctober27
+click yes on popup,button,CSS_SELECTOR,#confirm_send_msg,CLICK,,Y,5,Executed@11_25PMOctober27
+Clear search string,textbox,NAME,search,CLEAR_TEXT,,Y,5,FAIL@Executed@11_25PMOctober27
+,,,,,,Y,,Executed@11_25PMOctober27
+,,,,,,Y,,Executed@11_25PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@11_25PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,Y,7,Executed@11_26PMOctober27
+check schedule report btn,button,XPATH,//button[@class='btn btn-default add-report'],CLICK,,Y,7,Executed@11_26PMOctober27
+Enter schedule name,textbox,XPATH,//form[@id='scheduled-report']//input[@name='scheduleName'],ENTER_TEXT_WITH_TIMESTAMP,AutoScheduleReport,Y,,Executed@11_26PMOctober27
+Enter saved report,dropdown,XPATH,//button[@id='current-savedreport'],CLICK,,Y,,Executed@11_26PMOctober27
+Select alert report from dropdown,dropdown option,XPATH,"//*[@id=""headingAlertHistory""]/h4/a",CLICK,,Y,,Executed@11_26PMOctober27
+Select 00001 alert report,options,XPATH,//div[@id='collapseAlertHistory']/div/li[1]/a,CLICK,,Y,,Executed@11_26PMOctober27
+Select reccurece daily,radiobox,XPATH,//form[@id='scheduled-report']//input[@id='modal_report_schedule_DAILY'],CLICK,,Y,,Executed@11_26PMOctober27
+Select notification scheme,textbox,XPATH,//form[@id='scheduled-report']//div[@class='form-group schedule-channels']//span[@class='select2-selection select2-selection--multiple'],CLICK,,Y,,Executed@11_26PMOctober27
+select notification scheme option 1,textbox,XPATH,//form[@id='scheduled-report']//input[@class='select2-search__field'],PRESS_ENTER,,Y,,Executed@11_26PMOctober27
+select notification scheme option 2,textbox,XPATH,//form[@id='scheduled-report']//input[@class='select2-search__field'],PRESS_ENTER,,Y,,Executed@11_26PMOctober27
+click save,button,XPATH,//div[@class='modal-scheduled-reports modals']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,5,Executed@11_26PMOctober27
+Search added report,textbox,NAME,search,CLEAR_TEXT,,Y,20,Executed@11_27PMOctober27
+Search added report,textbox,NAME,search,ENTER_TEXT,AutoScheduleReport_,Y,,Executed@11_27PMOctober27
+Click on search icon,icon,XPATH,//button[@name='Search'],CLICK,,Y,5,Executed@11_27PMOctober27
+Click edit,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoScheduleReport_')]]//span[contains(@class,'sr_edit_btn')])[last()]",CLICK,,Y,5,Executed@11_27PMOctober27
+Clear name of report,textbox,XPATH,//form[@id='scheduled-report']//input[@name='scheduleName'],CLEAR_TEXT,,Y,,Executed@11_27PMOctober27
+Enter new name,textbox,XPATH,//form[@id='scheduled-report']//input[@name='scheduleName'],ENTER_TEXT_WITH_TIMESTAMP,AutoScheduleReporteditted,Y,,Executed@11_27PMOctober27
+Click save,button,XPATH,//div[@class='modal-scheduled-reports modals']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,,Executed@11_27PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,,Executed@11_27PMOctober27
+Click on Admin menu option and select Scheduled Reports,dropdown,XPATH,//h4[normalize-space()='Scheduled Reports'],CLICK,,Y,10,Executed@11_27PMOctober27
+Search added report,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,20,Executed@11_28PMOctober27
+Search editted Report with name,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoScheduleReporteditted_,Y,10,Executed@11_28PMOctober27
+Click on search icon,icon,XPATH,//button[@name='Search'],CLICK,,Y,5,Executed@11_28PMOctober27
+click delete,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoScheduleReporteditted_')]]//span[contains(@class,'sr_dlt_btn')])[1]",CLICK,,Y,,Executed@11_28PMOctober27
+click yes on popup,button,CSS_SELECTOR,#confirm_send_msg,CLICK,,Y,,Executed@11_28PMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,7,Executed@11_29PMOctober27
+Click On Alert,dropdown,XPATH,//h4[normalize-space()='Alerts'],CLICK,,Y,20,Executed@11_29PMOctober27
+Click  on Export,button,XPATH,//button[@name='Export CSV'],CLICK,,Y,,Executed@11_29PMOctober27
+Click on Add Alert button,button,XPATH,//button[@name='Add Alerts'],CLICK,,Y,5,Executed@11_29PMOctober27
+Enter Alert name,textbox,XPATH,//input[@id='nameAlert'],ENTER_TEXT_WITH_TIMESTAMP,AutoAlert,Y,,Executed@11_29PMOctober27
+Select type,drpdown,XPATH,(//span[@class='select2-selection select2-selection--single'])[2]//span[2],CLICK,,Y,,Executed@11_29PMOctober27
+Select type,drpdown,XPATH,//span[@class='select2-search select2-search--dropdown']//input[@role='textbox'],ENTER_TEXT_ENTER,End of Trip,Y,3,Executed@11_29PMOctober27
+Select active Period,dropdown,XPATH,"//*[@id=""active_period""]//span[@class='select2-selection__rendered']",CLICK,,Y,3,Executed@11_29PMOctober27
+select active period option,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Always Active']",CLICK,,Y,3,Executed@11_30PMOctober27
+Filter vehicle by,dropdown,XPATH,//input[@placeholder='-- All --'],ENTER_TEXT_ENTER,Geotab,Y,10,Executed@11_30PMOctober27
+Select vehicle,textbox,XPATH,//input[@placeholder='-- Select Vehicle --'],ENTER_TEXT,a,Y,3,Executed@11_30PMOctober27
+select vehicle option,textbox,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,Executed@11_30PMOctober27
+Select notification scheme,dropdown,XPATH,//input[@placeholder='-- Select Channels --'],ENTER_TEXT,a,Y,3,Executed@11_30PMOctober27
+select notification scheme option,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,Executed@11_30PMOctober27
+Enter notes,textbox,ID,notesAlert,ENTER_TEXT,Done,Y,,Executed@11_30PMOctober27
+Click on save button,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveForm'],CLICK,,Y,15,Executed@11_30PMOctober27
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,5,SKIPPED
+Enter text in Search,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoAlert,Y,15,Executed@11_31PMOctober27
+Click on search icon,button,XPATH,(//button[@name='Search'])[1],CLICK,,Y,,Executed@11_31PMOctober27
+Click on Edit icon of a user,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoAlert_')]]//span[contains(@class,'alert_edit_btn')])[1]",CLICK,,Y,15,Executed@11_31PMOctober27
+Enter Alert name,textbox,CSS_SELECTOR,#nameAlert,CLEAR_TEXT,,Y,5,Executed@11_31PMOctober27
+Enter Alert name,textbox,CSS_SELECTOR,#nameAlert,ENTER_TEXT_WITH_TIMESTAMP,AutoAlertUpdate,Y,,Executed@11_31PMOctober27
+Click on save button,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveForm'],CLICK,,Y,,Executed@11_31PMOctober27
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,5,SKIPPED
+Clear text in Search,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,15,Executed@11_31PMOctober27
+Enter text in Search,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoAlertUpdate,Y,,Executed@11_31PMOctober27
+Click on search icon,button,XPATH,(//button[@name='Search'])[1],CLICK,,Y,,Executed@11_31PMOctober27
+Click on delete,icon,XPATH,"(//tr[.//*[contains(normalize-space(),'AutoAlertUpdate_')]]//span[contains(@class,'alert_dlt_btn')])[1]",CLICK,,Y,15,Executed@11_32PMOctober27
+Click on YES button,button,ID,confirm_send_msg,CLICK,,Y,3,Executed@11_32PMOctober27

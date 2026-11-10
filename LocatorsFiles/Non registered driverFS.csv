@@ -1,0 +1,41 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_53PMNovember05
+# ===== NON REGISTERED DRIVER MODULE - Login =====,,,,,,,,
+Open login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@12_53PMNovember05
+wait for login page,,,,SLEEP,4,Y,,Executed@12_53PMNovember05
+Enter username in Login Form,textbox,NAME,email,ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@12_53PMNovember05
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@12_53PMNovember05
+Click on Sign In button,button,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@12_53PMNovember05
+wait until dashboard loads after login,,,,WAIT_FOR_URL,dashboard,Y,,Executed@12_53PMNovember05
+wait after login,,,,SLEEP,8,Y,,Executed@12_54PMNovember05
+# ===== Section 1: Open Non Registered Drivers =====,,,,,,Y,,
+Open non registered drivers page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/non-registered-drivers,Y,,Executed@12_54PMNovember05
+wait for non registered drivers page,,,,SLEEP,6,Y,,Executed@12_54PMNovember05
+wait for search box,search,XPATH,//input[@placeholder='Search Non Registered Drivers'],WAIT_FOR_ELEMENT,,Y,,Executed@12_54PMNovember05
+# ===== Section 2: Add Non Registered Driver =====,,,,,,Y,,
+click on add new user,button,XPATH,//button[normalize-space()='Add New User'],CLICK,,Y,,Executed@12_54PMNovember05
+wait for add user menu,,,,SLEEP,2,Y,,Executed@12_54PMNovember05
+click on Create NR User option in the add user menu,menu option,XPATH,//span[normalize-space()='Create NR User'],CLICK,,Y,,Executed@12_54PMNovember05
+wait for add form,,,,SLEEP,4,Y,,Executed@12_54PMNovember05
+enter first name,textbox,XPATH,//input[@name='firstName'],ENTER_TEXT,AutoNRD,Y,,Executed@12_55PMNovember05
+enter last name,textbox,XPATH,//input[@name='lastName'],ENTER_TEXT,Driver1105b,Y,,Executed@12_55PMNovember05
+enter email,textbox,XPATH,//input[@name='email'],ENTER_TEXT,autonrd1105b@mailinator.com,Y,,Executed@12_55PMNovember05
+click on create,button,XPATH,//button[normalize-space()='Create'],CLICK,,Y,,Executed@12_55PMNovember05
+wait for create,,,,SLEEP,5,Y,,Executed@12_56PMNovember05
+Reopen non registered drivers page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/non-registered-drivers,Y,,Executed@12_56PMNovember05
+wait for list,,,,SLEEP,6,Y,,Executed@12_56PMNovember05
+search created driver,search,XPATH,//input[@placeholder='Search Non Registered Drivers'],ENTER_TEXT_ENTER,autonrd1105b,Y,,Executed@12_56PMNovember05
+wait for search results,,,,SLEEP,4,Y,,Executed@12_56PMNovember05
+verify created driver row,row,XPATH,"//*[@role='row'][contains(.,'autonrd1105b@mailinator.com')]",WAIT_FOR_ELEMENT,,Y,,FAIL@Executed@12_56PMNovember05
+# ===== Section 3: Delete Non Registered Driver =====,,,,,,Y,,
+Click on delete icon of created driver,icon,XPATH,"//*[@role='row'][contains(.,'autonrd1105b@mailinator.com')]//abbr//button",CLICK,,Y,,FAIL@Executed@12_56PMNovember05
+wait for confirm popup,,,,SLEEP,3,Y,,Executed@12_56PMNovember05
+Click on yes,button,XPATH,(//button[normalize-space()='Yes' or normalize-space()='YES'])[last()],CLICK,,Y,,FAIL@Executed@12_56PMNovember05
+wait for delete,,,,SLEEP,5,Y,,Executed@12_57PMNovember05
+# ===== Section 4: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@12_57PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@12_57PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@12_57PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@12_57PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,//button[normalize-space()='Logout'],CLICK,,Y,,Executed@12_57PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@12_57PMNovember05

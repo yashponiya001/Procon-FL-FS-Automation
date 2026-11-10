@@ -1,0 +1,178 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_19PMNovember05
+# ===== BOOKING MODULE - Login =====,,,,,,,,
+Open login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@12_19PMNovember05
+wait for login page,,,,SLEEP,4,Y,,Executed@12_19PMNovember05
+Enter username in Login Form,textbox,NAME,email,ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@12_19PMNovember05
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@12_19PMNovember05
+Click on Sign In button,button,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@12_19PMNovember05
+wait until dashboard loads after login,,,,WAIT_FOR_URL,dashboard,Y,,Executed@12_19PMNovember05
+wait after login,,,,SLEEP,8,Y,,Executed@12_20PMNovember05
+# ===== Section 1: Add Booking =====,,,,,,Y,,
+Open all bookings,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list,Y,,Executed@12_20PMNovember05
+wait for bookings list,,,,SLEEP,6,Y,,Executed@12_20PMNovember05
+wait for create booking button,button,XPATH,//button[normalize-space()='Create Booking'],WAIT_FOR_ELEMENT,,Y,,Executed@12_20PMNovember05
+click on create booking,button,XPATH,//button[normalize-space()='Create Booking'],CLICK,,Y,,Executed@12_20PMNovember05
+wait for general details,,,,SLEEP,5,Y,,Executed@12_20PMNovember05
+open branch dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='branch']]",CLICK,,Y,,Executed@12_20PMNovember05
+select first branch,option,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_20PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_20PMNovember05
+enter destination India,textbox,XPATH,//input[@name='destination'],ENTER_TEXT,India,Y,,Executed@12_20PMNovember05
+wait for address suggestions,,,,SLEEP,4,Y,,Executed@12_20PMNovember05
+select first India destination suggestion,suggestion,XPATH,"(//div[@tabindex='0']/span[contains(text(),'India')])[1]",CLICK,,Y,,Executed@12_20PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_21PMNovember05
+select driver Yash_driver_Automation who has a valid license,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='driver']]//input[@type='text']",ENTER_TEXT_ENTER,Yash_driver_Automation,Y,,Executed@12_21PMNovember05
+wait for driver license check,,,,SLEEP,4,Y,,Executed@12_21PMNovember05
+type start date 20 Nov 2026 - the typed date registers on its own,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[1],ENTER_TEXT,20/11/2026,Y,,Executed@12_21PMNovember05
+wait for the start date calendar to finish rendering,,,,SLEEP,5,Y,,Executed@12_21PMNovember05
+wait for the start date to register,,,,SLEEP,2,Y,,Executed@12_21PMNovember05
+Click Business Hours label to close calendar,label,XPATH,"//*[starts-with(normalize-space(text()),'Business Hours')]",CLICK,,Y,,Executed@12_21PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_21PMNovember05
+select start time 8 AM inside business hours,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='startTime']]//input[@type='text']",ENTER_TEXT_ENTER,8:00 AM,Y,,Executed@12_21PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_21PMNovember05
+select end time 10 AM inside business hours,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='endTime']]//input[@type='text']",ENTER_TEXT_ENTER,10:00 AM,Y,,Executed@12_21PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_21PMNovember05
+click next on general details,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_22PMNovember05
+wait for vehicle list,,,,SLEEP,8,Y,,Executed@12_22PMNovember05
+Select first vehicle,button,XPATH,(//button[normalize-space()='Select'])[1],CLICK,,Y,,Executed@12_22PMNovember05
+wait for additional details,,,,SLEEP,6,Y,,Executed@12_22PMNovember05
+open purpose of trip dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='purposeOfTrip']]",CLICK,,Y,,Executed@12_22PMNovember05
+select first purpose of trip,option,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_22PMNovember05
+open booking type dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='bookingType']]",CLICK,,Y,,Executed@12_22PMNovember05
+select first booking type,option,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_22PMNovember05
+open cost centre dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='costCentre']]",CLICK,,Y,,Executed@12_22PMNovember05
+select first cost centre,option,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_22PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_22PMNovember05
+# ===== Section 2: Other Details - Custom Date Fields =====,,,,,,Y,,
+type date in required custom date field 1,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[1],ENTER_TEXT,19/11/2026,Y,,Executed@12_22PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 1,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_23PMNovember05
+type date in required custom date field 2,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[2],ENTER_TEXT,19/11/2026,Y,,Executed@12_23PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 2,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_23PMNovember05
+type date in required custom date field 3,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[3],ENTER_TEXT,19/11/2026,Y,,Executed@12_23PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 3,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_23PMNovember05
+type date in required custom date field 4,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[4],ENTER_TEXT,19/11/2026,Y,,Executed@12_23PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 4,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_23PMNovember05
+type date in required custom date field 5,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[5],ENTER_TEXT,19/11/2026,Y,,Executed@12_23PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 5,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_23PMNovember05
+type date in required custom date field 6,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[6],ENTER_TEXT,19/11/2026,Y,,Executed@12_23PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_23PMNovember05
+click day 20 Nov 2026 for custom date field 6,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_24PMNovember05
+type date in required custom date field 7,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[7],ENTER_TEXT,19/11/2026,Y,,Executed@12_24PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_24PMNovember05
+click day 20 Nov 2026 for custom date field 7,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_24PMNovember05
+type date in required custom date field 8,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[8],ENTER_TEXT,19/11/2026,Y,,Executed@12_24PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_24PMNovember05
+click day 20 Nov 2026 for custom date field 8,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_24PMNovember05
+type date in required custom date field 9,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[9],ENTER_TEXT,19/11/2026,Y,,Executed@12_24PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_24PMNovember05
+click day 20 Nov 2026 for custom date field 9,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_24PMNovember05
+type date in required custom date field 10,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[10],ENTER_TEXT,19/11/2026,Y,,Executed@12_24PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_24PMNovember05
+click day 20 Nov 2026 for custom date field 10,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_24PMNovember05
+type date in required custom date field 11,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[11],ENTER_TEXT,19/11/2026,Y,,Executed@12_24PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_24PMNovember05
+click day 20 Nov 2026 for custom date field 11,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_25PMNovember05
+type date in required custom date field 12,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[12],ENTER_TEXT,19/11/2026,Y,,Executed@12_25PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_25PMNovember05
+click day 20 Nov 2026 for custom date field 12,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_25PMNovember05
+type date in required custom date field 13,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[13],ENTER_TEXT,19/11/2026,Y,,Executed@12_25PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_25PMNovember05
+click day 20 Nov 2026 for custom date field 13,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_25PMNovember05
+type date in required custom date field 14,textbox,XPATH,(//input[@placeholder='dd/mm/yyyy'])[14],ENTER_TEXT,19/11/2026,Y,,Executed@12_25PMNovember05
+wait,,,,SLEEP,1,Y,,Executed@12_25PMNovember05
+click day 20 Nov 2026 for custom date field 14,calendar day,XPATH,//button[@aria-label='Fri Nov 20 2026'],CLICK,,Y,,Executed@12_25PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_25PMNovember05
+click next on additional details,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_25PMNovember05
+wait for confirmation page,,,,SLEEP,6,Y,,Executed@12_25PMNovember05
+click next on confirmation,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_25PMNovember05
+wait for approval reason popup,,,,SLEEP,3,Y,,Executed@12_26PMNovember05
+enter approval justification reason,textarea,XPATH,//textarea[@name='reasonForBooking'],ENTER_TEXT,AutoBookReason1105b,Y,,Executed@12_26PMNovember05
+click submit on approval reason popup,button,XPATH,(//button[normalize-space()='Submit'])[last()],CLICK,,Y,,Executed@12_26PMNovember05
+wait for terms popup,,,,SLEEP,4,Y,,Executed@12_26PMNovember05
+Click on accept,button,XPATH,(//button[normalize-space()='Accept'])[last()],CLICK,,Y,,Executed@12_27PMNovember05
+wait after accept,,,,SLEEP,8,Y,,Executed@12_27PMNovember05
+# ===== Section 3: Find New Booking =====,,,,,,Y,,
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_27PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_27PMNovember05
+verify new booking row exists with Pending Approval status,row,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 08:00 AM') and contains(.,'Pending Approval')])[1]",WAIT_FOR_ELEMENT,,Y,,Executed@12_27PMNovember05
+# ===== Section 4: Approve Booking =====,,,,,,Y,,
+open pending booking details,booking id,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 08:00 AM') and contains(.,'Pending Approval')])[1]//span[string-length(normalize-space(text()))=6][1]",CLICK,,Y,,Executed@12_27PMNovember05
+wait for details panel,,,,SLEEP,5,Y,,Executed@12_28PMNovember05
+click Approve in booking details,button,XPATH,//button[normalize-space()='Approve'],CLICK,,Y,,Executed@12_28PMNovember05
+wait for approve confirmation,,,,SLEEP,3,Y,,Executed@12_28PMNovember05
+click YES to confirm approval,button,XPATH,(//button[normalize-space()='YES'])[last()],CLICK,,Y,,Executed@12_28PMNovember05
+wait after approval,,,,SLEEP,5,Y,,Executed@12_29PMNovember05
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_29PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_29PMNovember05
+verify booking row is Approved,row,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 08:00 AM') and contains(.,'Approved')])[1]",WAIT_FOR_ELEMENT,,Y,,Executed@12_29PMNovember05
+# ===== Section 5: Booking Notes =====,,,,,,Y,,
+open approved booking details,booking id,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 08:00 AM') and contains(.,'Approved')])[1]//span[string-length(normalize-space(text()))=6][1]",CLICK,,Y,,Executed@12_29PMNovember05
+wait for details panel,,,,SLEEP,5,Y,,Executed@12_29PMNovember05
+open notes tab,button,XPATH,//button[normalize-space()='Notes'],CLICK,,Y,,Executed@12_30PMNovember05
+wait,,,,SLEEP,3,Y,,Executed@12_30PMNovember05
+open note type dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='type']]",CLICK,,Y,,Executed@12_30PMNovember05
+select first note type,option,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_30PMNovember05
+Insert notes,textbox,XPATH,//textarea[@name='note'],ENTER_TEXT,AutoBookNote1105b,Y,,Executed@12_31PMNovember05
+click add note,button,XPATH,//button[normalize-space()='Add Note'],CLICK,,Y,,Executed@12_31PMNovember05
+wait,,,,SLEEP,4,Y,,Executed@12_31PMNovember05
+verify note added,text,XPATH,"//*[contains(text(),'AutoBookNote1105b')]",WAIT_FOR_ELEMENT,,Y,,Executed@12_31PMNovember05
+# ===== Section 6: Edit Booking End Time =====,,,,,,Y,,
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_32PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_32PMNovember05
+Click on Edit,button,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 08:00 AM') and contains(.,'Approved')])[1]//button[@name='edit']",CLICK,,Y,,Executed@12_32PMNovember05
+wait for edit page,,,,SLEEP,7,Y,,Executed@12_32PMNovember05
+select end time 9 30 AM,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='endTime']]//input[@type='text']",ENTER_TEXT_ENTER,9:30 AM,Y,,Executed@12_32PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_32PMNovember05
+click next on general details,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_32PMNovember05
+wait for vehicle step,,,,SLEEP,8,Y,,Executed@12_32PMNovember05
+keep selected vehicle and click next,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_33PMNovember05
+wait for additional details,,,,SLEEP,6,Y,,Executed@12_33PMNovember05
+click next on additional details,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_33PMNovember05
+wait for confirmation page,,,,SLEEP,6,Y,,Executed@12_33PMNovember05
+click next on confirmation,button,XPATH,(//button[normalize-space()='Next'])[1],CLICK,,Y,,Executed@12_33PMNovember05
+wait for approval reason popup,,,,SLEEP,3,Y,,Executed@12_33PMNovember05
+Screenshot edit submit popup,,,,TAKE_SCREENSHOT,booking_edit_submit_popup,Y,,Executed@12_34PMNovember05
+enter approval justification reason for edit,textarea,XPATH,//textarea[@name='reasonForBooking'],ENTER_TEXT,AutoBookEditReason1105b,Y,,Executed@12_34PMNovember05
+click submit on approval reason popup,button,XPATH,(//button[normalize-space()='Submit'])[last()],CLICK,,Y,,Executed@12_34PMNovember05
+wait for terms popup,,,,SLEEP,4,Y,,Executed@12_34PMNovember05
+Click on accept,button,XPATH,(//button[normalize-space()='Accept'])[last()],CLICK,,Y,,Executed@12_35PMNovember05
+wait after accept,,,,SLEEP,8,Y,,Executed@12_35PMNovember05
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_35PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_35PMNovember05
+Verify edited booking is Pending Approval,row,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 09:30 AM') and contains(.,'Pending Approval')])[1]//span[string-length(normalize-space(text()))=6][1]",WAIT_FOR_ELEMENT,,Y,,Executed@12_35PMNovember05
+Screenshot booking list after edit,,,,TAKE_SCREENSHOT,booking_after_edit,Y,,Executed@12_35PMNovember05
+# ===== Section 7: Approve Edited Booking =====,,,,,,Y,,
+open edited pending booking details,booking id,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 09:30 AM') and contains(.,'Pending Approval')])[1]//span[string-length(normalize-space(text()))=6][1]",CLICK,,Y,,Executed@12_35PMNovember05
+wait for details panel,,,,SLEEP,5,Y,,Executed@12_36PMNovember05
+click Approve in edited booking details,button,XPATH,//button[normalize-space()='Approve'],CLICK,,Y,,Executed@12_36PMNovember05
+wait for approve confirmation,,,,SLEEP,3,Y,,Executed@12_36PMNovember05
+click YES to confirm approval of edited booking,button,XPATH,(//button[normalize-space()='YES'])[last()],CLICK,,Y,,Executed@12_36PMNovember05
+wait after approval,,,,SLEEP,5,Y,,Executed@12_37PMNovember05
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_37PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_37PMNovember05
+Verify edited booking is Approved,row,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 09:30 AM') and contains(.,'Approved')])[1]//span[string-length(normalize-space(text()))=6][1]",WAIT_FOR_ELEMENT,,Y,,Executed@12_37PMNovember05
+# ===== Section 8: Cancel Booking =====,,,,,,Y,,
+open edited booking details,booking id,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation') and contains(.,'20/11/2026 09:30 AM') and contains(.,'Approved')])[1]//span[string-length(normalize-space(text()))=6][1]",CLICK,,Y,,Executed@12_37PMNovember05
+wait for details panel,,,,SLEEP,5,Y,,Executed@12_37PMNovember05
+Click on cancel booking,button,XPATH,//button[normalize-space()='Cancel Booking'],CLICK,,Y,,Executed@12_37PMNovember05
+wait,,,,SLEEP,3,Y,,Executed@12_38PMNovember05
+Add cancel notes,textbox,XPATH,//textarea[@name='notes'],ENTER_TEXT,AutoBookCancel1105b,Y,,Executed@12_38PMNovember05
+Click on Save,button,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@12_38PMNovember05
+wait,,,,SLEEP,3,Y,,Executed@12_38PMNovember05
+Click YES on cancel confirmation,button,XPATH,(//button[normalize-space()='YES'])[last()],CLICK,,Y,,Executed@12_39PMNovember05
+wait,,,,SLEEP,5,Y,,Executed@12_39PMNovember05
+Open bookings newest first for driver,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/bookings/list?q=%7B%22ordering%22%3A%22-pk%22%2C%22search%22%3A%22Yash_driver%22%7D,Y,,Executed@12_39PMNovember05
+wait for list,,,,SLEEP,8,Y,,Executed@12_39PMNovember05
+Verify edited booking is Cancelled,row,XPATH,"(//*[@role='row'][contains(.,'Yash_driver_Automation')])[1][contains(.,'20/11/2026 09:30 AM') and contains(.,'Cancelled')]//span[string-length(normalize-space(text()))=6][1]",WAIT_FOR_ELEMENT,,Y,,Executed@12_39PMNovember05
+# ===== Section 9: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@12_39PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@12_40PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@12_40PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@12_40PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,//button[normalize-space()='Logout'],CLICK,,Y,,Executed@12_40PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@12_40PMNovember05

@@ -1,0 +1,70 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@01_08PMOctober27
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@01_08PMOctober27
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@01_09PMOctober27
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@01_09PMOctober27
+Click on servicing menu,Menu item,XPATH,//a[@href='/servicing'],CLICK,,Y,,FAIL@Executed@01_09PMOctober27
+CLICK On logged services,button,XPATH,//h4[normalize-space()='Logged Services'],CLICK,,Y,15,FAIL@Executed@01_09PMOctober27
+Click on log service,button,XPATH,//button[@name='Log Service'],CLICK,,Y,,FAIL@Executed@01_09PMOctober27
+Enter Schedule Services,dropdown,XPATH,//span[@id='Wrapper-Scheduled']//span[@class='select2-selection__rendered'],CLICK,,Y,3,FAIL@Executed@01_09PMOctober27
+select schedule service option,dropdown,XPATH,"//span[contains(@class,'select2-container--open')]//input[contains(@class,'select2-search__field')]",ENTER_TEXT_ENTER,Test Device for Shubha,Y,3,FAIL@Executed@01_10PMOctober27
+Click save,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveLogServiceModal'],CLICK,,Y,10,FAIL@Executed@01_10PMOctober27
+popup,,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Click close,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,10,FAIL@Executed@01_10PMOctober27
+click on edit icon,icon,XPATH,//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,45,FAIL@Executed@01_11PMOctober27
+click on edit icon retry,icon,XPATH,//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,10,FAIL@Executed@01_11PMOctober27
+Clear cost,textbox,XPATH,"//*[@id=""cost_logService""]",CLEAR_TEXT,,Y,3,FAIL@Executed@01_12PMOctober27
+Update cost to 100,textbox,XPATH,//input[@id='cost_logService'],ENTER_TEXT,100,Y,,FAIL@Executed@01_12PMOctober27
+Update calender date,calender,XPATH,//input[@name='service_date'],CLICK,,Y,,FAIL@Executed@01_12PMOctober27
+calender,,,,SWITCH_TO_ACTIVE_WINDOW,,N,5,SKIPPED
+Select date from calender,,XPATH,//a[@class='ui-state-default'][normalize-space()='3'],CLICK,,Y,,FAIL@Executed@01_12PMOctober27
+Click save,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveLogServiceModal'],CLICK,,Y,10,FAIL@Executed@01_12PMOctober27
+popup,,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Click close,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,10,FAIL@Executed@01_13PMOctober27
+CLICK on delete icon,icon,XPATH,/html[1]/body[1]/div[5]/div[7]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[1]/span[2]/i[1],CLICK,,Y,,FAIL@Executed@01_13PMOctober27
+popup,,,,SWITCH_TO_ACTIVE_WINDOW,,N,,SKIPPED
+Click on YES button,button,XPATH,//button[@id='confirm_send_msg'],CLICK,,Y,,FAIL@Executed@01_14PMOctober27
+Click on servicing menu,Menu item,XPATH,//a[@href='/servicing'],CLICK,,Y,,FAIL@Executed@01_14PMOctober27
+Select scheduled services,Menu item,XPATH,//h4[normalize-space()='Scheduled Services'],CLICK,,Y,10,FAIL@Executed@01_14PMOctober27
+Click on show upcoming services,button,XPATH,//button[@name='Show Upcoming Services'],CLICK,,Y,10,FAIL@Executed@01_14PMOctober27
+Click onshow overdue services,button,XPATH,//button[@name='Show Overdue Services'],CLICK,,Y,10,FAIL@Executed@01_15PMOctober27
+click on scheduled services,button,XPATH,//button[@name='Show Scheduled Services'],CLICK,,Y,10,FAIL@Executed@01_15PMOctober27
+click completed services,button,XPATH,//button[@name='Show Completed Services'],CLICK,,Y,10,FAIL@Executed@01_15PMOctober27
+click unchedule events,button,XPATH,//button[@name='Show Unscheduled Vehicles'],CLICK,,Y,10,FAIL@Executed@01_15PMOctober27
+Click on servicing menu,Menu item,XPATH,//a[@href='/servicing'],CLICK,,Y,,FAIL@Executed@01_15PMOctober27
+Select scheduled services,Menu item,XPATH,//h4[normalize-space()='Scheduled Services'],CLICK,,Y,5,FAIL@Executed@01_16PMOctober27
+Click on schedule service button,button,XPATH,//button[@name='Add Schedule Service'],CLICK,,Y,,FAIL@Executed@01_16PMOctober27
+Select veh from dropdown,dropdown,XPATH,//input[@placeholder='-- Select Vehicle --'],ENTER_TEXT_ENTER,Truck180,Y,3,FAIL@Executed@01_16PMOctober27
+Select service type,dropdown,XPATH,/html[1]/body[1]/div[5]/div[7]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[3]/span[2]/span[1]/span[1]/span[1],CLICK,,Y,3,FAIL@Executed@01_16PMOctober27
+select service type option,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,FAIL@Executed@01_16PMOctober27
+Select one time radio button,button,XPATH,//input[@value='ADHOC'],CLICK,,Y,,FAIL@Executed@01_16PMOctober27
+Click on time travel,button,XPATH,//*[normalize-space()='Time Interval'],CLICK,,N,3,SKIPPED
+Uncheck Odometer checkbox in schedule service form,checkbox,XPATH,//label[@for='odometer'],CLICK,,Y,2,FAIL@Executed@01_16PMOctober27
+Uncheck Engine Hours checkbox in schedule service form,checkbox,XPATH,//label[@for='engineHours'],CLICK,,Y,2,FAIL@Executed@01_16PMOctober27
+Select date,calender,XPATH,//input[@name='firstServiceDate'],CLICK,,Y,3,FAIL@Executed@01_17PMOctober27
+Select date from calender,calender,XPATH,//a[@class='ui-state-default'][normalize-space()='3'],CLICK,,Y,,FAIL@Executed@01_17PMOctober27
+Schedule at Every,textbox,XPATH,//input[@name='time_interval_value'],ENTER_TEXT,2,N,,SKIPPED
+Remind days,textbox,XPATH,//input[@placeholder='Days'],ENTER_TEXT,1,N,,SKIPPED
+Click save,button,XPATH,"//*[@id=""buttonSaveScheduledService""]",CLICK,,Y,5,FAIL@Executed@01_17PMOctober27
+click close,button,XPATH,"//*[@id=""close_send_msg""]",CLICK,,Y,4,FAIL@Executed@01_17PMOctober27
+clcik on cancel,button,XPATH,//div[@id='scheduleServiceModal']//div//button[@type='button'][normalize-space()='Cancel'],CLICK,,N,,SKIPPED
+Search added service,search,XPATH,//input[@name='search'],CLEAR_TEXT,,Y,5,FAIL@Executed@01_18PMOctober27
+Search added service,search,XPATH,//input[@name='search'],ENTER_TEXT_ENTER,Truck180,Y,5,FAIL@Executed@01_18PMOctober27
+click search icon,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,3,FAIL@Executed@01_18PMOctober27
+Get searched data,tabledata,XPATH,"//*[@id=""scheduledservice-table""]",GET_TABLE,,Y,,FAIL@Executed@01_18PMOctober27
+Click edit,icon,XPATH,//table//tbody//tr[1]//i[@class='fa fa-pencil'],CLICK,,Y,5,FAIL@Executed@01_18PMOctober27
+Enter notes,textbox,XPATH,//textarea[@name='service_notes'],CLEAR_TEXT,,Y,5,FAIL@Executed@01_18PMOctober27
+Enter notes,textbox,XPATH,//textarea[@name='service_notes'],ENTER_TEXT,testing,Y,,FAIL@Executed@01_19PMOctober27
+Click save,button,XPATH,//button[@id='buttonSaveScheduledService'],CLICK,,Y,,FAIL@Executed@01_19PMOctober27
+click close,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,Y,5,FAIL@Executed@01_19PMOctober27
+wait for backend to index edit,,,,SLEEP,20,Y,,Executed@01_20PMOctober27
+re-navigate via top nav,Menu item,XPATH,//a[@href='/servicing'],CLICK,,Y,5,FAIL@Executed@01_20PMOctober27
+re-select scheduled services,Menu item,XPATH,//h4[normalize-space()='Scheduled Services'],CLICK,,Y,12,FAIL@Executed@01_20PMOctober27
+click scheduled tab before delete,button,XPATH,//button[@name='Show Scheduled Services'],CLICK,,N,5,SKIPPED
+Re-search before delete,search,XPATH,//input[@name='search'],ENTER_TEXT_ENTER,Truck180,Y,5,FAIL@Executed@01_20PMOctober27
+re-click search icon before delete,icon,CSS_SELECTOR,div.input-group-btn.custom-actions-dropdown,CLICK,,Y,3,FAIL@Executed@01_21PMOctober27
+Click delete,icon,XPATH,//table//tbody//tr[1]//i[@class='fa fa-trash-o'],CLICK,,Y,5,FAIL@Executed@01_21PMOctober27
+Click delete retry,icon,XPATH,//table//tbody//tr[1]//i[@class='fa fa-trash-o'],CLICK,,N,5,SKIPPED
+popup,popup,,,SWITCH_TO_ACTIVE_WINDOW,,N,5,SKIPPED
+Click yes on pop up,button,XPATH,//button[@id='confirm_send_msg'],CLICK,,Y,5,FAIL@Executed@01_21PMOctober27
+Get data,tabledata,XPATH,"//*[@id=""scheduledservice-table""]",GET_TABLE,,Y,10,FAIL@Executed@01_22PMOctober27

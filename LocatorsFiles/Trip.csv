@@ -1,0 +1,15 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@11_16PMNovember06
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@11_16PMNovember06
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@11_16PMNovember06
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@11_16PMNovember06
+Click on Trip menu option,Menu item,XPATH,//ul[@class='nav navbar-nav navbar-right']//a[normalize-space()='Trips'],CLICK,,Y,,Executed@11_16PMNovember06
+Select date range,dropdown,XPATH,/html[1]/body[1]/div[5]/div[6]/div[1]/div[1]/div[4]/form[1]/div[1]/span[1]/div[1]/span[1]/span[1]/span[1]/span[1],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,Last 7 Days,Y,,Executed@11_16PMNovember06
+Wait,,,,,5,Y,,Executed@11_16PMNovember06
+Click on search button,button,XPATH,//button[normalize-space()='Search'],CLICK,,Y,3,Executed@11_17PMNovember06
+Click on dropdown arrow of purpose of trip,dropdown arrow,XPATH,/html[1]/body[1]/div[5]/div[6]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[6]/span[1]/span[1]/span[1]/span[1]/span[1],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,22 augst,Y,3,FAIL@Executed@11_17PMNovember06
+Click on dropdown arrow of  driver,dropdown arrow,XPATH,/html[1]/body[1]/div[5]/div[6]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[8]/span[1]/span[1]/span[1]/span[1]/span[2],ENTER_VALUE_FROM_DROPDOWN_OPTIONS,admin01,Y,7,FAIL@Executed@11_17PMNovember06
+export csv,button,XPATH,//button[@name='Export'],CLICK,,Y,,Executed@11_17PMNovember06
+Click on filter,button,XPATH,//button[@name='Filter'],CLICK,,Y,,Executed@11_17PMNovember06
+Select Business from drop down,dropdown,XPATH,//a[@aria-label='Business'],CLICK,,Y,,Executed@11_17PMNovember06
+Get filtered table,table,CSS_SELECTOR,#tripList,GET_TABLE,,Y,,Executed@11_17PMNovember06

@@ -1,0 +1,73 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@01_31PMNovember05
+# ===== VEHICLE MODULE - Login =====,,,,,,,,
+Navigate to the forcefieldshare login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@01_31PMNovember05
+Enter username in Login Form,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@01_31PMNovember05
+Enter password in Login Form,Input with name=password,XPATH,//input[@name='password'],ENTER_TEXT,<PASSWORD>,Y,,Executed@01_31PMNovember05
+Click on Sign In button,Button Sign In,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@01_31PMNovember05
+Wait for the login to complete before navigating,,,,SLEEP,8,Y,,Executed@01_31PMNovember05
+# ===== Section 1: Vehicle - Add / Edit / Notes / Incident / Delete =====,,,,,,Y,,
+Navigate directly to the Vehicle List page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/vehicles,Y,,Executed@01_31PMNovember05
+Wait for the Vehicle List page to load before checking the Add button,,,,SLEEP,6,Y,,Executed@01_31PMNovember05
+Wait for Vehicle List page to load,Button Add New Vehicle,XPATH,//button[normalize-space()='Add New Vehicle'],WAIT_FOR_ELEMENT,,Y,,Executed@01_32PMNovember05
+Click on Add New Vehicle button,Button Add New Vehicle,XPATH,//button[normalize-space()='Add New Vehicle'],CLICK,,Y,,Executed@01_32PMNovember05
+Wait for the add vehicle form to open,,,,SLEEP,3,Y,,Executed@01_32PMNovember05
+Enter the vehicle name in the Name field,Input with name=vehicle_name,XPATH,//input[@name='vehicle_name'],ENTER_TEXT,AutoVeh1105b,Y,,Executed@01_32PMNovember05
+Enter the registration number in the Registration Number field,Input with name=registrationNumber,XPATH,//input[@name='registrationNumber'],ENTER_TEXT,AUTOREG1105B,Y,,Executed@01_32PMNovember05
+Select HYUNDAI from the Make dropdown,Make dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='make']]//input[@type='text']",ENTER_TEXT_ENTER,HYUNDAI,Y,,Executed@01_33PMNovember05
+Wait for the Model dropdown to load for the selected make,,,,SLEEP,3,Y,,Executed@01_33PMNovember05
+Select ACCENT from the Model dropdown,Model dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='model']]//input[@type='text']",ENTER_TEXT_ENTER,ACCENT,Y,,Executed@01_33PMNovember05
+Wait for the Year dropdown to appear after selecting the model,,,,SLEEP,2,Y,,Executed@01_33PMNovember05
+Select 2007 from the Year dropdown - required field shown after Model,Year dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='year']]//input[@type='text']",ENTER_TEXT_ENTER,2007,Y,,Executed@01_34PMNovember05
+Select C - Car from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='Licence Type']]//input[@type='text']",ENTER_TEXT_ENTER,C - Car,Y,,Executed@01_34PMNovember05
+Select Branch_1 from the Branch dropdown,Branch dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='branch']]//input[@type='text']",ENTER_TEXT_ENTER,Branch_1,Y,,Executed@01_34PMNovember05
+Select Automatic from the Transmission dropdown,Transmission dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='Transmission']]//input[@type='text']",ENTER_TEXT_ENTER,Automatic,Y,,Executed@01_34PMNovember05
+Select 4 Wheel Drive from the Body Type dropdown,Body Type dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='Body Type']]//input[@type='text']",ENTER_TEXT_ENTER,4 Wheel Drive,Y,,Executed@01_34PMNovember05
+Click the Save button to create the vehicle,Button Save,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@01_35PMNovember05
+Wait for the vehicle save to complete,,,,SLEEP,4,Y,,Executed@01_35PMNovember05
+Reload the Vehicle List page so the add form is fully closed,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/vehicles,Y,,Executed@01_35PMNovember05
+Wait for the Vehicle List page to load after reload,,,,SLEEP,5,Y,,Executed@01_35PMNovember05
+Wait for the vehicle search box,Search Vehicles input,XPATH,//input[@placeholder='Search Vehicles'],WAIT_FOR_ELEMENT,,Y,,Executed@01_35PMNovember05
+Search for the created vehicle in the vehicle list,Search Vehicles input,XPATH,//input[@placeholder='Search Vehicles'],ENTER_TEXT_ENTER,AutoVeh1105b,Y,,Executed@01_35PMNovember05
+Wait for the vehicle search results to load,,,,SLEEP,4,Y,,Executed@01_35PMNovember05
+Verify the created vehicle appears in the search results,Created vehicle name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoVeh1105b'],WAIT_FOR_ELEMENT,,Y,,Executed@01_35PMNovember05
+Click the edit pencil icon on the created vehicle row,Row edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoVeh1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_36PMNovember05
+Wait for the edit vehicle form to open,,,,SLEEP,3,Y,,Executed@01_36PMNovember05
+Enter VIN in edit form,Input with name=vin,XPATH,//input[@name='vin'],ENTER_TEXT,VIN1105B,Y,,Executed@01_36PMNovember05
+Click the Save button to save the vehicle edit,Button Save,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@01_36PMNovember05
+Wait for the vehicle edit save to complete,,,,SLEEP,4,Y,,Executed@01_36PMNovember05
+Click the notes icon on the created vehicle row,Row notes icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoVeh1105b']]//button[@name='notes'],CLICK,,Y,,Executed@01_37PMNovember05
+Wait for the notes panel to open,,,,SLEEP,3,Y,,Executed@01_37PMNovember05
+Select Info from the Type of Note dropdown,Type of Note dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='type']]//input[@type='text']",ENTER_TEXT_ENTER,Info,Y,,Executed@01_37PMNovember05
+Enter the note text in the note box,Textarea with name=note,XPATH,//textarea[@name='note'],ENTER_TEXT,Autonotes1105b,Y,,Executed@01_37PMNovember05
+Click the Add Note button,Button Add Note,XPATH,//button[normalize-space()='Add Note'],CLICK,,Y,,Executed@01_38PMNovember05
+Wait for the note to be added,,,,SLEEP,3,Y,,Executed@01_38PMNovember05
+Verify the added note text is shown in the notes panel,Added note text,XPATH,"//*[contains(text(),'Autonotes1105b')]",WAIT_FOR_ELEMENT,,Y,,Executed@01_38PMNovember05
+Click the close cross of the notes panel,Notes panel close icon,XPATH,(//*[local-name()='svg' and @aria-label='Close']/parent::*)[last()],CLICK,,Y,,Executed@01_38PMNovember05
+Wait for the notes panel to close,,,,SLEEP,2,Y,,Executed@01_38PMNovember05
+Click the raise incident alert icon on the created vehicle row,Row raise incident icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoVeh1105b']]//abbr[@title='Raise Incident']//button,CLICK,,Y,,Executed@01_38PMNovember05
+Wait for the incident form to open,,,,SLEEP,4,Y,,Executed@01_39PMNovember05
+Select Break from the Type of incident dropdown,Type of incident dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='incidentType']]//input[@type='text']",ENTER_TEXT_ENTER,Break,Y,,Executed@01_39PMNovember05
+Select Yes from the Critical dropdown,Critical dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='isCritical']]//input[@type='text']",ENTER_TEXT_ENTER,Yes,Y,,Executed@01_39PMNovember05
+Enter the date of incident in the Date of Incident field,Date of Incident input,XPATH,//input[@placeholder='dd/mm/yyyy'],ENTER_TEXT,10/10/2026,Y,,Executed@01_39PMNovember05
+Select Date of Incident 10 Oct 2026,Calendar day button,XPATH,//button[@aria-label='Sat Oct 10 2026'],CLICK,,Y,,FAIL@Executed@01_40PMNovember05
+Enter India in the incident location search,Input with name=incidentLocation,XPATH,//input[@name='incidentLocation'],ENTER_TEXT,India,Y,,Executed@01_40PMNovember05
+Wait for the address suggestions to load,,,,SLEEP,3,Y,,Executed@01_40PMNovember05
+Click the first India address suggestion in the incident location list,Address suggestion,XPATH,"(//div[@tabindex='0']/span[contains(text(),'India')])[1]",CLICK,,Y,,Executed@01_40PMNovember05
+Select Reporter Yash Poniya (System Manager),Reporter dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='reportedBy']]//input[@type='text']",ENTER_TEXT_ENTER,Yash Poniya (System Manager),Y,,Executed@01_41PMNovember05
+Click the Save button to raise the incident,Button Save,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@01_41PMNovember05
+Wait for the incident save to complete,,,,SLEEP,4,Y,,Executed@01_41PMNovember05
+Reload the Vehicle List page before removing the test vehicle,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/vehicles,Y,,Executed@01_41PMNovember05
+Wait for the Vehicle List page to load after reload,,,,SLEEP,5,Y,,Executed@01_41PMNovember05
+Wait for the vehicle search box before removal,Search Vehicles input,XPATH,//input[@placeholder='Search Vehicles'],WAIT_FOR_ELEMENT,,Y,,Executed@01_41PMNovember05
+Search for the created vehicle again before removal,Search Vehicles input,XPATH,//input[@placeholder='Search Vehicles'],ENTER_TEXT_ENTER,AutoVeh1105b,Y,,Executed@01_41PMNovember05
+Wait for the search results before removal,,,,SLEEP,4,Y,,Executed@01_41PMNovember05
+Click the bin icon on the created vehicle row only,Row bin icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoVeh1105b']]//button[@name='delete'],CLICK,,Y,,Executed@01_42PMNovember05
+Click the Yes button to confirm removal,Button Yes,XPATH,//button[normalize-space()='Yes'],CLICK,,Y,,Executed@01_42PMNovember05
+# ===== Section 2: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@01_42PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@01_42PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@01_42PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@01_42PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,//button[normalize-space()='Logout'],CLICK,,Y,,Executed@01_42PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@01_42PMNovember05

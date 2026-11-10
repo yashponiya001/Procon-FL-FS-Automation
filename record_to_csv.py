@@ -1,0 +1,734 @@
+"""
+record_to_csv.py
+================
+Playwright Codegen → Selenium CSV Converter
+
+WORKFLOW
+--------
+1. Launches a live browser session using Playwright codegen.
+2. You interact with the page normally (click, type, navigate).
+3. On close, Playwright saves the recorded Python script.
+4. This tool parses that script and writes a ready-to-run
+   module CSV (e.g. CommunicationCenter.csv) that your
+   Selenium framework can execute directly.
+
+USAGE
+-----
+    # Install dependencies (once)
+    pip install playwright
+    playwright install chromium
+
+    # Record a session and convert to CSV
+    python record_to_csv.py --url https://yourapp.com --output CommunicationCenter.csv
+
+    # Record only (save raw Playwright script, convert later)
+    python record_to_csv.py --url https://yourapp.com --record-only --recorded-script session.py
+
+    # Convert an existing recorded script
+    python record_to_csv.py --convert-only --recorded-script session.py --output CommunicationCenter.csv
+
+    # Append to an existing CSV instead of overwriting
+    python record_to_csv.py --url https://yourapp.com --output CommunicationCenter.csv --append
+
+CONVERSION MAP
+--------------
+Playwright method              → Selenium Action    Locator strategy
+─────────────────────────────────────────────────────────────────────
+click / dblclick               → CLICK              text / role / placeholder / id
+fill                           → ENTER_TEXT         text / role / placeholder / id
+press Enter (after fill)       → ENTER_TEXT_ENTER   same as fill
+goto                           → OPEN_URL           (no locator — URL goes to Test Data)
+screenshot                     → TAKE_SCREENSHOT    (no locator)
+frame_locator                  → SWITCH_TO_IFRAME   CSS_SELECTOR
+(back to main)                 → SWITCH_OUT_IFRAME  (no locator)
+wait_for_timeout               → SLEEP              (seconds in Test Data)
+
+NOTES
+-----
+- Locators are generated as XPath expressions so they work with
+  your existing _build_locator() mapping in ActionEngine.
+- If a Playwright locator cannot be converted (e.g. complex
+  chained locators), the row is written with a TODO comment in
+  Basic Sanity and left for manual review.
+- All generated rows have Run = Y so they execute immediately.
+"""
+
+import os
+import re
+import csv
+import sys
+import json
+import shutil
+import argparse
+import textwrap
+import datetime
+import tempfile
+import subprocess
+
+# ─────────────────────────────────────────────────────────────
+# CSV column names — must match MOD_FIELDNAMES in the framework
+# ─────────────────────────────────────────────────────────────
+CSV_HEADERS = [
+    "Basic Sanity",
+    "Element",
+    "Locator",
+    "Locator Value",
+    "Action",
+    "Test Data",
+    "Run",
+    "Extra Data",
+    "Executed On",
+]
+
+
+# ─────────────────────────────────────────────────────────────
+# PLAYWRIGHT LOCATOR → SELENIUM XPATH CONVERTER
+# ─────────────────────────────────────────────────────────────
+
+class LocatorConverter:
+    """
+    Converts a single Playwright locator expression string into a
+    (locator_type, locator_value, element_hint) tuple usable by
+    the Selenium framework.
+
+    locator_type  : "XPATH" | "CSS_SELECTOR" | "ID" | "NAME"
+    locator_value : the actual selector string
+    element_hint  : short human-readable description for Basic Sanity
+    """
+
+    # Patterns for common Playwright locator methods
+    _GET_BY_ROLE        = re.compile(r'get_by_role\("(\w+)"(?:.*?name="((?:[^"\\]|\\.)*)")?|get_by_role\(\'(\w+)\'(?:.*?name=\'((?:[^\'\\]|\\.)*)\')?', re.S)
+    _GET_BY_TEXT        = re.compile(r'get_by_text\("((?:[^"\\]|\\.)*)"|get_by_text\(\'((?:[^\'\\]|\\.)*)\'' )
+    _GET_BY_PLACEHOLDER = re.compile(r'get_by_placeholder\("((?:[^"\\]|\\.)*)"|get_by_placeholder\(\'((?:[^\'\\]|\\.)*)\'' )
+    _GET_BY_LABEL       = re.compile(r'get_by_label\("((?:[^"\\]|\\.)*)"|get_by_label\(\'((?:[^\'\\]|\\.)*)\'' )
+    _GET_BY_TEST_ID     = re.compile(r'get_by_test_id\("((?:[^"\\]|\\.)*)"|get_by_test_id\(\'((?:[^\'\\]|\\.)*)\'' )
+    _LOCATOR_CSS        = re.compile(r'(?<!\.frame)\.locator\("((?:[^"\\]|\\.)*)"\)|(?<!\.frame)\.locator\(\'((?:[^\'\\]|\\.)*)\'\)')
+    _LOCATOR_XPATH      = re.compile(r'\.locator\(["\']xpath=([^"\']+)["\']')
+    _FRAME_LOCATOR      = re.compile(r'frame_locator\(["\']([^"\']+)["\']')
+
+    # HTML tags that are valid and map directly from Playwright role names
+    _VALID_HTML_TAGS = {
+        "button", "input", "textarea", "select", "a",
+        "h1", "h2", "h3", "h4", "h5", "h6",
+        "table", "td", "th", "tr", "form", "img",
+    }
+
+    # Playwright role → correct HTML tag mapping
+    # roles NOT in this map are ARIA roles only (no matching tag)
+    _ROLE_TO_TAG = {
+        "button":    "button",
+        "link":      "a",        # FIX 4: //link is invalid — must be //a
+        "textbox":   "input",
+        "checkbox":  "input",
+        "radio":     "input",
+        "heading":   "h1",
+        "img":       "img",
+    }
+
+    # Dynamic CSS class patterns — generated by CSS-in-JS tools, unstable
+    _DYNAMIC_CSS = re.compile(
+        r'[a-zA-Z]+-[a-z0-9]{5,}-[0-9]+|'   # pattern: name-hash-num
+        r'sc-[a-zA-Z0-9]{6,}|'               # styled-components: sc-xxxxxx
+        r'css-[a-zA-Z0-9]{6,}'               # emotion: css-xxxxxx
+    )
+
+    def _is_dynamic_css(self, css: str) -> bool:
+        """Return True if the selector contains unstable generated class names."""
+        return bool(self._DYNAMIC_CSS.search(css))
+
+    def _stable_css_fallback(self, css: str, nth: int = 1) -> tuple:
+        """
+        Replace an unstable dynamic CSS selector with a positional fallback.
+        Extracts the last meaningful class segment for a hint.
+        e.g. .StyledBox-sc-xxx > .select__value-container
+          →  (.select__value-container)[2]   (nth passed by caller)
+        """
+        # Try to pull the last non-dynamic class from the chain
+        segments = [seg.strip() for seg in css.split(">")]
+        stable   = [seg for seg in segments if not self._is_dynamic_css(seg)]
+
+        if stable:
+            last   = stable[-1].strip()
+            hint   = f"Element {last} (occurrence {nth})"
+            xpath  = f"(//*[contains(@class,'{last.lstrip('.')}')])[{nth}]"
+            return "XPATH", xpath, hint
+
+        # Fully dynamic — use nth positional CSS fallback
+        hint = f"Dynamic element (occurrence {nth})"
+        return "XPATH", f"(//*[contains(@class,'select__value-container')])[{nth}]", hint
+
+    def convert(self, playwright_locator: str, occurrence: int = 1):
+        """
+        Returns (locator_type, locator_value, hint) or
+        ("", "", hint_with_TODO) when conversion is not possible.
+
+        occurrence: used when the same locator appears multiple times
+                    to generate positional XPath like (...)[2]
+        """
+        s = playwright_locator.strip()
+
+        # ── get_by_role("button", name="Login") ───────────────
+        m = self._GET_BY_ROLE.search(s)
+        if m:
+            # Pattern has 4 groups: role_dq, name_dq, role_sq, name_sq
+            role = m.group(1) or m.group(3) or ""
+            name = (m.group(2) or m.group(4) or "").strip()
+
+            tag  = self._ROLE_TO_TAG.get(role, "*")
+
+            if name:
+                if tag != "*":
+                    xpath = (
+                        f"//{tag}[normalize-space(text())='{name}'] | "
+                        f"//*[@role='{role}' and normalize-space(text())='{name}'] | "
+                        f"//*[@role='{role}' and @aria-label='{name}']"
+                    )
+                else:
+                    xpath = (
+                        f"//*[@role='{role}' and normalize-space(text())='{name}'] | "
+                        f"//*[@role='{role}' and @aria-label='{name}']"
+                    )
+                hint = f"{role.title()} '{name}'"
+            else:
+                if tag != "*":
+                    xpath = f"(//{tag} | //*[@role='{role}'])[{occurrence}]"
+                else:
+                    xpath = f"(//*[@role='{role}'])[{occurrence}]"
+                hint  = f"{role.title()} element (occurrence {occurrence})"
+
+            return "XPATH", xpath, hint
+
+
+        # ── get_by_text("Submit") ──────────────────────────────
+        m = self._GET_BY_TEXT.search(s)
+        if m:
+            text  = (m.group(1) or m.group(2) or "").strip()
+            xpath = f"//*[normalize-space(text())='{text}']"
+            return "XPATH", xpath, f"Element with text '{text}'"
+
+
+        # ── get_by_placeholder("Enter username") ──────────────
+        m = self._GET_BY_PLACEHOLDER.search(s)
+        if m:
+            ph    = (m.group(1) or m.group(2) or "").strip()
+            xpath = (
+                f"//*[@placeholder='{ph}'] | "
+                f"//input[@name='{ph}'] | "
+                f"//input[@type='{ph.lower()}']"
+            )
+            return "XPATH", xpath, f"Field with placeholder '{ph}'"
+
+
+        # ── get_by_label("Password") ──────────────────────────
+        m = self._GET_BY_LABEL.search(s)
+        if m:
+            label = (m.group(1) or m.group(2) or "").strip()
+            xpath = (
+                f"//label[normalize-space(text())='{label}']"
+                f"/following::input[1] | "
+                f"//*[@aria-label='{label}']"
+            )
+            return "XPATH", xpath, f"Field labelled '{label}'"
+
+
+        # ── get_by_test_id("submit-btn") ──────────────────────
+        m = self._GET_BY_TEST_ID.search(s)
+        if m:
+            tid   = (m.group(1) or m.group(2) or "").strip()
+            xpath = f"//*[@data-testid='{tid}']"
+            return "XPATH", xpath, f"Element with test-id '{tid}'"
+
+
+        # ── frame_locator("#iframe") ──────────────────────────
+        m = self._FRAME_LOCATOR.search(s)
+        if m:
+            css  = m.group(1)
+            return "CSS_SELECTOR", css, f"iFrame '{css}'"
+
+        # ── .locator("xpath=//div") — must check before CSS ───
+        m = self._LOCATOR_XPATH.search(s)
+        if m:
+            return "XPATH", m.group(1), "XPath element"
+
+        # ── .locator("css-selector") ──────────────────────────
+        # _LOCATOR_CSS has two capture groups: double-quoted | single-quoted.
+        # Playwright escapes inner quotes as \\" so we unescape before using.
+        m = self._LOCATOR_CSS.search(s)
+        if m:
+            raw = m.group(1) if m.group(1) is not None else m.group(2)
+            if raw is None:
+                return "", "", f"TODO: truncated selector \u2192 {s[:60]}"
+
+            # Unescape \\" \u2192 "  and \\' \u2192 '
+            css = raw.replace('\\"', '"').replace("\\'", "'").strip()
+
+            if not css or css in ("[", "(", ".", "#"):
+                return "", "", f"TODO: truncated selector \u2192 {s[:60]}"
+
+            # id shorthand  #foo
+            if css.startswith("#") and " " not in css and ">" not in css:
+                return "ID", css[1:], f"Element id='{css[1:]}'"
+
+            # input[name="email"]  or  input[type="password"]
+            # Covers: tag[attr="val"]  tag[attr='val']  tag[attr=val]
+            attr_m = re.match(
+                r'^([\w*]+)\[([\w-]+)=' + r'(?:"([^"]*)"' + r"|'([^']*)'|([^\]]*))]\s*$",
+                css
+            )
+            if attr_m:
+                tag  = attr_m.group(1)
+                attr = attr_m.group(2)
+                val  = next(v for v in (attr_m.group(3), attr_m.group(4), attr_m.group(5)) if v is not None)
+                return "XPATH", f"//{tag}[@{attr}='{val}']", f"{tag.title()} with {attr}='{val}'"
+
+            # [id="nav-menu"]  — no tag
+            # Covers: [attr="val"]  [attr='val']  [attr=val]
+            attr_m2 = re.match(
+                r'^\[([\w-]+)=' + r'(?:"([^"]*)"' + r"|'([^']*)'|([^\]]*))]\s*$",
+                css
+            )
+            if attr_m2:
+                attr = attr_m2.group(1)
+                val  = next(v for v in (attr_m2.group(2), attr_m2.group(3), attr_m2.group(4)) if v is not None)
+                return "XPATH", f"//*[@{attr}='{val}']", f"Element with {attr}='{val}'"
+
+            # Dynamic/unstable CSS classes
+            if self._is_dynamic_css(css):
+                return self._stable_css_fallback(css, occurrence)
+
+            return "CSS_SELECTOR", css, f"CSS '{css}'"
+
+
+
+        # ── Could not convert ─────────────────────────────────
+        return "", "", f"TODO: convert manually → {s[:60]}"
+
+
+# ─────────────────────────────────────────────────────────────
+# PLAYWRIGHT SCRIPT PARSER
+# ─────────────────────────────────────────────────────────────
+
+class PlaywrightScriptParser:
+    """
+    Reads a Playwright-generated Python script line by line and
+    extracts a list of step dicts ready for CSV writing.
+    """
+
+    # Top-level action patterns
+    _GOTO       = re.compile(r'\.goto\(["\']([^"\']+)["\']')
+    _CLICK      = re.compile(r'([\w.()"\'\[\], ]+)\.click\(\)')
+    _DBLCLICK   = re.compile(r'([\w.()"\'\[\], ]+)\.dblclick\(\)')
+    _FILL       = re.compile(r'([\w.()"\'\[\], ]+)\.fill\(["\']([^"\']*)["\']')
+    _PRESS      = re.compile(r'([\w.()"\'\[\], ]+)\.press\(["\']([^"\']+)["\']')
+    _SCREENSHOT = re.compile(r'\.screenshot\(')
+    _WAIT       = re.compile(r'\.wait_for_timeout\((\d+)\)')
+    _FRAME_IN   = re.compile(r'frame_locator\(')
+    _FRAME_OUT  = re.compile(r'switch_to_default_content|\.main_frame')
+
+    def __init__(self):
+        self.converter    = LocatorConverter()
+        self._in_frame    = False
+        self._step_index  = 0
+
+    def _next_index(self):
+        self._step_index += 1
+        return self._step_index
+
+    def _make_row(
+        self,
+        description:   str,
+        element:       str = "",
+        locator_type:  str = "",
+        locator_value: str = "",
+        action:        str = "",
+        test_data:     str = "",
+        extra_data:    str = "",
+    ) -> dict:
+        return {
+            "Basic Sanity":  description,
+            "Element":       element,
+            "Locator":       locator_type,
+            "Locator Value": locator_value,
+            "Action":        action,
+            "Test Data":     test_data,
+            "Run":           "Y",
+            "Extra Data":    extra_data,
+            "Executed On":   "",
+        }
+
+    def _extract_locator_expr(self, line: str) -> str:
+        """
+        Pull the locator portion out of a full Playwright statement.
+        e.g. 'page.get_by_placeholder("Username").fill("admin")'
+          →  'page.get_by_placeholder("Username")'
+        """
+        # Strip the terminal action (.click(), .fill(...), .press(...))
+        line = re.sub(r'\.(click|dblclick|fill|press)\([^)]*\)\s*$', '', line).strip()
+        return line
+
+    def parse(self, script_text: str) -> list:
+        """
+        Parse the full script text and return a list of CSV row dicts.
+
+        Fixes applied during parsing:
+        - FIX 5a: goto lines are never treated as comments
+        - FIX 5b: consecutive click+fill on the same locator are
+                  collapsed (Playwright emits click before fill for
+                  the same element; we only need ENTER_TEXT)
+        - FIX 5c: occurrence counter per locator value so positional
+                  XPaths like (...)[2] are generated correctly for
+                  repeated unnamed roles / dynamic CSS classes
+        """
+        rows = []
+
+        # Track how many times each locator expression has appeared
+        # so the converter can use the right occurrence index
+        locator_occurrence: dict = {}
+
+        lines = script_text.splitlines()
+
+        i = 0
+        while i < len(lines):
+            raw_line = lines[i]
+            line     = raw_line.strip()
+            i       += 1
+
+            # Skip blank lines and pure comment lines
+            # FIX 5a: do NOT skip lines that contain goto even if they
+            # start with a comment character in some editors
+            if not line:
+                continue
+            if line.startswith("#") and ".goto(" not in line:
+                continue
+            if any(line.startswith(kw) for kw in (
+                "import ", "from ", "with ", "def ", "browser",
+                "playwright", "context", "page = ", "p.stop()"
+            )):
+                continue
+
+            # ── goto ──────────────────────────────────────────
+            m = self._GOTO.search(line)
+            if m:
+                url = m.group(1)
+                rows.append(self._make_row(
+                    description = f"Navigate to {url}",
+                    action      = "OPEN_URL",
+                    test_data   = url,
+                ))
+                continue
+
+            # ── screenshot ────────────────────────────────────
+            if self._SCREENSHOT.search(line):
+                rows.append(self._make_row(
+                    description = "Take screenshot",
+                    action      = "TAKE_SCREENSHOT",
+                ))
+                continue
+
+            # ── wait_for_timeout ──────────────────────────────
+            m = self._WAIT.search(line)
+            if m:
+                ms      = int(m.group(1))
+                seconds = round(ms / 1000, 1)
+                rows.append(self._make_row(
+                    description = f"Wait {seconds}s",
+                    action      = "SLEEP",
+                    test_data   = str(seconds),
+                ))
+                continue
+
+            # ── frame_locator (enter iframe) ──────────────────
+            if self._FRAME_IN.search(line):
+                loc_expr              = self._extract_locator_expr(line)
+                loc_type, loc_val, hint = self.converter.convert(loc_expr)
+                self._in_frame        = True
+                rows.append(self._make_row(
+                    description   = f"Switch to iFrame: {hint}",
+                    element       = hint,
+                    locator_type  = loc_type,
+                    locator_value = loc_val,
+                    action        = "SWITCH_TO_IFRAME",
+                ))
+                continue
+
+            # ── switch back from iframe ────────────────────────
+            if self._FRAME_OUT.search(line):
+                self._in_frame = False
+                rows.append(self._make_row(
+                    description = "Switch out of iFrame",
+                    action      = "SWITCH_OUT_IFRAME",
+                ))
+                continue
+
+            # ── fill → ENTER_TEXT or ENTER_TEXT_ENTER ─────────
+            m = self._FILL.search(line)
+            if m:
+                loc_expr = self._extract_locator_expr(line)
+                occ      = locator_occurrence.get(loc_expr, 1)
+                loc_type, loc_val, hint = self.converter.convert(loc_expr, occ)
+                locator_occurrence[loc_expr] = occ  # fill reuses same slot as click
+                text = m.group(2)
+
+                # FIX 5b: if the previous row was a CLICK on the exact
+                # same locator, remove it — Playwright emits click+fill
+                # for the same field; we only need ENTER_TEXT.
+                if (rows
+                        and rows[-1]["Action"] == "CLICK"
+                        and rows[-1]["Locator Value"] == loc_val):
+                    rows.pop()
+
+                rows.append(self._make_row(
+                    description   = f"Enter '{text}' in {hint}",
+                    element       = hint,
+                    locator_type  = loc_type,
+                    locator_value = loc_val,
+                    action        = "ENTER_TEXT",
+                    test_data     = text,
+                ))
+                continue
+
+            # ── press Enter / Tab / etc. ───────────────────────
+            m = self._PRESS.search(line)
+            if m:
+                key = m.group(2)
+                if key == "Enter":
+                    # Amend the previous ENTER_TEXT row → ENTER_TEXT_ENTER
+                    if rows and rows[-1]["Action"] == "ENTER_TEXT":
+                        rows[-1]["Action"]       = "ENTER_TEXT_ENTER"
+                        rows[-1]["Basic Sanity"] = (
+                            rows[-1]["Basic Sanity"].replace(
+                                "Enter '", "Enter (+ Return) '"
+                            )
+                        )
+                        continue
+                # Other keys — add a PRESS_ENTER row
+                loc_expr = self._extract_locator_expr(line)
+                occ      = locator_occurrence.get(loc_expr, 1)
+                loc_type, loc_val, hint = self.converter.convert(loc_expr, occ)
+                rows.append(self._make_row(
+                    description   = f"Press {key} on {hint}",
+                    element       = hint,
+                    locator_type  = loc_type,
+                    locator_value = loc_val,
+                    action        = "PRESS_ENTER",
+                ))
+                continue
+
+            # ── dblclick ──────────────────────────────────────
+            m = self._DBLCLICK.search(line)
+            if m:
+                loc_expr = self._extract_locator_expr(line)
+                occ      = locator_occurrence.get(loc_expr, 1)
+                loc_type, loc_val, hint = self.converter.convert(loc_expr, occ)
+                locator_occurrence[loc_expr] = occ + 1
+                rows.append(self._make_row(
+                    description   = f"Double-click {hint}",
+                    element       = hint,
+                    locator_type  = loc_type,
+                    locator_value = loc_val,
+                    action        = "DOUBLE_CLICK",
+                ))
+                continue
+
+            # ── click ─────────────────────────────────────────
+            m = self._CLICK.search(line)
+            if m and "page" in line:
+                loc_expr = self._extract_locator_expr(line)
+
+                # FIX 5c: increment occurrence counter per locator
+                occ = locator_occurrence.get(loc_expr, 1)
+                locator_occurrence[loc_expr] = occ + 1
+
+                loc_type, loc_val, hint = self.converter.convert(loc_expr, occ)
+
+                # FIX 5b: skip standalone click immediately followed by
+                # fill on the same locator (peek ahead one line)
+                peek = lines[i].strip() if i < len(lines) else ""
+                if self._FILL.search(peek):
+                    peek_loc = self._extract_locator_expr(peek)
+                    if peek_loc == loc_expr:
+                        # The next line fills this same element — skip the click
+                        continue
+
+                rows.append(self._make_row(
+                    description   = f"Click {hint}",
+                    element       = hint,
+                    locator_type  = loc_type,
+                    locator_value = loc_val,
+                    action        = "CLICK",
+                ))
+                continue
+
+        return rows
+
+
+# ─────────────────────────────────────────────────────────────
+# CSV WRITER
+# ─────────────────────────────────────────────────────────────
+
+def write_csv(output_path: str, rows: list, append: bool = False):
+    """
+    Write (or append) rows to a module CSV using the framework's
+    exact header spellings.
+    """
+    file_exists = os.path.exists(output_path)
+    mode        = "a" if append and file_exists else "w"
+
+    with open(output_path, mode, newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=CSV_HEADERS, extrasaction="ignore")
+
+        if mode == "w" or not file_exists:
+            writer.writeheader()
+
+        writer.writerows(rows)
+
+    print(f"\n✅  Written {len(rows)} rows → {output_path}")
+
+
+# ─────────────────────────────────────────────────────────────
+# RECORDER  (launches Playwright codegen)
+# ─────────────────────────────────────────────────────────────
+
+def run_codegen(url: str, recorded_script: str):
+    """
+    Launch `playwright codegen` targeting `url`.
+    Blocks until the browser window is closed.
+    Saves the recorded Python script to `recorded_script`.
+    """
+    # Check playwright is available
+    if not shutil.which("playwright"):
+        print(
+            "❌  playwright CLI not found.\n"
+            "    Install it with:\n"
+            "      pip install playwright\n"
+            "      playwright install chromium"
+        )
+        sys.exit(1)
+
+    print(f"\n🎬  Opening Playwright codegen for: {url}")
+    print("    Interact with the page, then close the browser to finish.\n")
+
+    cmd = ["playwright", "codegen", "--target", "python", "--output", recorded_script, url]
+
+    try:
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"❌  playwright codegen exited with error: {e}")
+        sys.exit(1)
+
+    if not os.path.exists(recorded_script):
+        print("❌  No script was saved. Did you close the browser?")
+        sys.exit(1)
+
+    print(f"✅  Session recorded → {recorded_script}")
+
+
+# ─────────────────────────────────────────────────────────────
+# PREVIEW
+# ─────────────────────────────────────────────────────────────
+
+def print_preview(rows: list):
+    """Print a human-readable table of the converted rows."""
+    print("\n" + "─" * 80)
+    print(f"{'#':<4} {'Basic Sanity':<35} {'Action':<22} {'Test Data':<15}")
+    print("─" * 80)
+    for i, row in enumerate(rows, 1):
+        desc      = row["Basic Sanity"][:34]
+        action    = row["Action"][:21]
+        test_data = (row["Test Data"] or "")[:14]
+        print(f"{i:<4} {desc:<35} {action:<22} {test_data:<15}")
+    print("─" * 80)
+    print(f"  Total: {len(rows)} steps\n")
+
+    # Warn about unconverted rows
+    todos = [r for r in rows if "TODO" in r["Basic Sanity"]]
+    if todos:
+        print(f"⚠️   {len(todos)} row(s) need manual locator review:")
+        for r in todos:
+            print(f"     • {r['Basic Sanity']}")
+        print()
+
+
+# ─────────────────────────────────────────────────────────────
+# MAIN
+# ─────────────────────────────────────────────────────────────
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Record a browser session with Playwright codegen "
+                    "and convert it to a Selenium framework CSV.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=textwrap.dedent("""
+        Examples:
+          # Full flow: record + convert
+          python record_to_csv.py --url https://app.example.com --output CommunicationCenter.csv
+
+          # Record only
+          python record_to_csv.py --url https://app.example.com --record-only --recorded-script session.py
+
+          # Convert only (from an existing recorded script)
+          python record_to_csv.py --convert-only --recorded-script session.py --output CommunicationCenter.csv
+
+          # Append to existing CSV
+          python record_to_csv.py --url https://app.example.com --output CommunicationCenter.csv --append
+        """),
+    )
+
+    parser.add_argument("--url",             default="",                help="URL to open in codegen")
+    parser.add_argument("--output",          default="output_module.csv", help="Output CSV file path")
+    parser.add_argument("--recorded-script", default="",                help="Path for the raw Playwright script")
+    parser.add_argument("--record-only",     action="store_true",       help="Record session but skip CSV conversion")
+    parser.add_argument("--convert-only",    action="store_true",       help="Convert existing script, skip recording")
+    parser.add_argument("--append",          action="store_true",       help="Append to existing CSV instead of overwriting")
+    parser.add_argument("--no-preview",      action="store_true",       help="Skip the preview table")
+
+    args = parser.parse_args()
+
+    # Determine script path
+    script_path = args.recorded_script or tempfile.mktemp(suffix=".py", prefix="pw_session_")
+
+    # ── Step 1: Record ────────────────────────────────────────
+    if not args.convert_only:
+        if not args.url:
+            parser.error("--url is required unless --convert-only is set")
+        run_codegen(args.url, script_path)
+
+    if args.record_only:
+        print(f"\nℹ️   Record-only mode. Script saved to: {script_path}")
+        print(f"    Convert later with:\n"
+              f"      python record_to_csv.py --convert-only "
+              f"--recorded-script {script_path} --output {args.output}")
+        return
+
+    # ── Step 2: Parse recorded script ─────────────────────────
+    if not os.path.exists(script_path):
+        print(f"❌  Recorded script not found: {script_path}")
+        sys.exit(1)
+
+    print(f"\n🔍  Parsing recorded script: {script_path}")
+
+    with open(script_path, encoding="utf-8") as f:
+        script_text = f.read()
+
+    parser_obj = PlaywrightScriptParser()
+    rows       = parser_obj.parse(script_text)
+
+    if not rows:
+        print("⚠️   No convertible steps found in the recorded script.")
+        print("    Check the script manually:", script_path)
+        sys.exit(0)
+
+    # ── Step 3: Preview ───────────────────────────────────────
+    if not args.no_preview:
+        print_preview(rows)
+
+    # ── Step 4: Write CSV ─────────────────────────────────────
+    write_csv(args.output, rows, append=args.append)
+
+    print(f"🚀  Ready to run with your Selenium framework:\n"
+          f"    Add '{os.path.splitext(os.path.basename(args.output))[0]}' "
+          f"to ExecutionSequence.csv and set Run = Y\n")
+
+
+if __name__ == "__main__":
+    main()

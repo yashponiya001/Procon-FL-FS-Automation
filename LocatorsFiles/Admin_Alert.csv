@@ -1,0 +1,35 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@10_58AMOctober27
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@10_58AMOctober27
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@10_58AMOctober27
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@10_58AMOctober27
+Click on Admin menu option,dropdown,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,10,Executed@10_58AMOctober27
+Click On Alert,dropdown,XPATH,//h4[normalize-space()='Alerts'],CLICK,,Y,10,Executed@10_58AMOctober27
+Click  on Export,button,XPATH,//button[@name='Export CSV'],CLICK,,Y,,Executed@10_58AMOctober27
+Click on Add Alert button,button,XPATH,//button[@name='Add Alerts'],CLICK,,Y,5,Executed@10_58AMOctober27
+Enter Alert name,textbox,XPATH,//input[@id='nameAlert'],ENTER_TEXT_WITH_TIMESTAMP,AutoAlert,Y,,Executed@10_59AMOctober27
+Select type,drpdown,XPATH,(//span[@class='select2-selection select2-selection--single'])[2]//span[2],CLICK,,Y,,Executed@10_59AMOctober27
+Select type,drpdown,XPATH,//span[@class='select2-search select2-search--dropdown']//input[@role='textbox'],ENTER_TEXT_ENTER,End of Trip,Y,3,Executed@10_59AMOctober27
+Select active Period,dropdown,XPATH,/html[1]/body[1]/div[5]/div[6]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[19]/span[1]/span[1]/span[1]/span[1],CLICK,,Y,3,Executed@10_59AMOctober27
+select active period option,dropdown,XPATH,"//li[contains(@class,'select2-results__option')][normalize-space()='Always Active']",CLICK,,Y,3,Executed@10_59AMOctober27
+Filter vehicle by,dropdown,XPATH,//input[@placeholder='-- All --'],ENTER_TEXT_ENTER,Geotab,Y,10,Executed@10_59AMOctober27
+Select vehicle,textbox,XPATH,//input[@placeholder='-- Select Vehicle --'],ENTER_TEXT,a,Y,3,Executed@10_59AMOctober27
+select vehicle option,textbox,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,Executed@10_59AMOctober27
+Select notification scheme,dropdown,XPATH,//input[@placeholder='-- Select Channels --'],ENTER_TEXT,a,Y,3,Executed@10_59AMOctober27
+select notification scheme option,dropdown,XPATH,"(//li[contains(@class,'select2-results__option')])[2]",CLICK,,Y,3,Executed@10_59AMOctober27
+Enter notes,textbox,ID,notesAlert,ENTER_TEXT,Done,Y,,Executed@10_59AMOctober27
+Click on save button,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveForm'],CLICK,,Y,15,Executed@10_59AMOctober27
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,5,SKIPPED
+Enter text in Search,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoAlert,Y,15,Executed@11_00AMOctober27
+Click on search icon,button,XPATH,(//button[@name='Search'])[1],CLICK,,Y,,Executed@11_00AMOctober27
+Click on Edit icon of a user,icon,XPATH,"(//td[@class=""text-center action-column pos-relative excludeViewAll""])[1]//span[1]//i",CLICK,,Y,15,Executed@11_00AMOctober27
+Enter Alert name,textbox,CSS_SELECTOR,#nameAlert,CLEAR_TEXT,,Y,5,Executed@11_00AMOctober27
+Enter Alert name,textbox,CSS_SELECTOR,#nameAlert,ENTER_TEXT_WITH_TIMESTAMP,AutoAlertUpdate,Y,,Executed@11_00AMOctober27
+Click on save button,button,XPATH,//button[@class='btn btn-primary pull-right mr-10 saveForm'],CLICK,,Y,,Executed@11_00AMOctober27
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,5,SKIPPED
+Clear text in Search,textbox,XPATH,//input[@placeholder='Search'],CLEAR_TEXT,,Y,15,Executed@11_01AMOctober27
+Enter text in Search,textbox,XPATH,//input[@placeholder='Search'],ENTER_TEXT,AutoAlertUpdate,Y,,Executed@11_01AMOctober27
+Click on search icon,button,XPATH,(//button[@name='Search'])[1],CLICK,,Y,,Executed@11_01AMOctober27
+Click on delete,icon,XPATH,"(//td[@class=""text-center action-column pos-relative excludeViewAll""])[1]//span[3]//i",CLICK,,Y,15,Executed@11_01AMOctober27
+Click on YES button,button,ID,confirm_send_msg,CLICK,,Y,3,Executed@11_01AMOctober27
+,,,,,,,,SKIPPED

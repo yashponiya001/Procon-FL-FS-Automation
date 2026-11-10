@@ -1,0 +1,73 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_40PMNovember05
+# ===== INCIDENTS MODULE - Login =====,,,,,,,,
+Open login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@12_40PMNovember05
+wait for login page,,,,SLEEP,4,Y,,Executed@12_41PMNovember05
+Enter username in Login Form,textbox,NAME,email,ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@12_41PMNovember05
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@12_41PMNovember05
+Click on Sign In button,button,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@12_41PMNovember05
+wait until dashboard loads after login,,,,WAIT_FOR_URL,dashboard,Y,,Executed@12_41PMNovember05
+wait after login,,,,SLEEP,8,Y,,Executed@12_41PMNovember05
+# ===== Section 1: Add Incident =====,,,,,,Y,,
+Open incidents page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incidents,Y,,Executed@12_41PMNovember05
+wait for incidents page,,,,SLEEP,6,Y,,Executed@12_41PMNovember05
+wait for add new incident button,button,XPATH,//button[normalize-space()='Add New Incident'],WAIT_FOR_ELEMENT,,Y,,Executed@12_41PMNovember05
+click on add new incident,button,XPATH,//button[normalize-space()='Add New Incident'],CLICK,,Y,,Executed@12_41PMNovember05
+wait for incident form,,,,SLEEP,4,Y,,Executed@12_42PMNovember05
+open search vehicle name dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='vehicle']]",CLICK,,Y,,Executed@12_42PMNovember05
+select first vehicle,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_42PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_42PMNovember05
+open type of incident dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='incidentType']]",CLICK,,Y,,Executed@12_43PMNovember05
+select first type of incident,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_43PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_43PMNovember05
+open critical dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='isCritical']]",CLICK,,Y,,Executed@12_43PMNovember05
+select first critical value,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_44PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_44PMNovember05
+enter location,textbox,XPATH,//input[@name='incidentLocation'],ENTER_TEXT,India,Y,,Executed@12_44PMNovember05
+wait for address suggestions,,,,SLEEP,4,Y,,Executed@12_44PMNovember05
+select first location suggestion,option,XPATH,"(//div[@tabindex='0']/span[contains(text(),'India')])[1]",CLICK,,Y,,Executed@12_45PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_45PMNovember05
+enter additional location details as unique tag,textbox,XPATH,(//input[@name='landmark'])[last()],ENTER_TEXT,AutoInc1105b,Y,,Executed@12_45PMNovember05
+open reporter dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='reportedBy']]",CLICK,,Y,,Executed@12_45PMNovember05
+select first reporter,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_46PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_46PMNovember05
+enter incident note,textbox,XPATH,//textarea[@name='note'],ENTER_TEXT,AutoIncCreate1105b,Y,,Executed@12_46PMNovember05
+click on save,button,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@12_46PMNovember05
+wait for save,,,,SLEEP,5,Y,,Executed@12_47PMNovember05
+# ===== Section 2: Verify Created Incident =====,,,,,,Y,,
+Open incidents newest first,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incidents?q=%7B%22ordering%22%3A%22-pk%22%7D,Y,,Executed@12_47PMNovember05
+wait for incidents list,,,,SLEEP,6,Y,,Executed@12_47PMNovember05
+verify created incident row is Open,row,XPATH,"//*[@role='row'][contains(.,'AutoInc1105b') and contains(.,'Open')]",WAIT_FOR_ELEMENT,,Y,,Executed@12_47PMNovember05
+# ===== Section 3: Edit Incident =====,,,,,,Y,,
+click on edit of created incident,button,XPATH,"//*[@role='row'][contains(.,'AutoInc1105b')]//button[@name='edit']",CLICK,,Y,,Executed@12_47PMNovember05
+wait for edit form,,,,SLEEP,5,Y,,Executed@12_47PMNovember05
+open status dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='incidentStatus']]",CLICK,,Y,,Executed@12_47PMNovember05
+select first status,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_48PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_48PMNovember05
+open critical dropdown in edit,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='isCritical']]",CLICK,,Y,,Executed@12_48PMNovember05
+select first critical value in edit,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_48PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_49PMNovember05
+click on save edit,button,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@12_49PMNovember05
+wait for edit save,,,,SLEEP,5,Y,,Executed@12_49PMNovember05
+Reopen incidents newest first,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incidents?q=%7B%22ordering%22%3A%22-pk%22%7D,Y,,Executed@12_49PMNovember05
+wait for incidents list,,,,SLEEP,6,Y,,Executed@12_49PMNovember05
+verify edited incident row is Completed,row,XPATH,"//*[@role='row'][contains(.,'AutoInc1105b') and contains(.,'Completed')]",WAIT_FOR_ELEMENT,,Y,,Executed@12_49PMNovember05
+# ===== Section 4: Incident Notes =====,,,,,,Y,,
+click on notes of created incident,icon,XPATH,"//*[@role='row'][contains(.,'AutoInc1105b')]//button[@name='notes']",CLICK,,Y,,Executed@12_50PMNovember05
+wait for notes panel,,,,SLEEP,4,Y,,Executed@12_50PMNovember05
+open type of note dropdown,dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='type']]",CLICK,,Y,,Executed@12_50PMNovember05
+select first type of note,dropdown,XPATH,"(//*[contains(@class,'select__option') and not(contains(@class,'disabled'))])[1]",CLICK,,Y,,Executed@12_50PMNovember05
+wait,,,,SLEEP,2,Y,,Executed@12_51PMNovember05
+Enter Note,textbox,XPATH,//textarea[@name='note'],ENTER_TEXT,AutoIncNote1105b,Y,,Executed@12_51PMNovember05
+Click on Add note,button,XPATH,//button[normalize-space()='Add Note'],CLICK,,Y,,Executed@12_51PMNovember05
+wait for note to be added,,,,SLEEP,4,Y,,Executed@12_51PMNovember05
+verify added note is shown,text,XPATH,"//*[contains(text(),'AutoIncNote1105b')]",WAIT_FOR_ELEMENT,,Y,,Executed@12_52PMNovember05
+Click on cross of notes panel,icon,XPATH,(//*[local-name()='svg' and @aria-label='Close']/parent::*)[last()],CLICK,,Y,,Executed@12_52PMNovember05
+wait,,,,SLEEP,3,Y,,Executed@12_52PMNovember05
+# ===== Section 5: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@12_52PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@12_52PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@12_52PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@12_52PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,//button[normalize-space()='Logout'],CLICK,,Y,,Executed@12_52PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@12_52PMNovember05

@@ -1,0 +1,108 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_40AMOctober28
+Enter username in Login Form,textbox,NAME,userid,ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@12_40AMOctober28
+Enter password in Login Form,textbox,NAME,password,ENTER_TEXT,<PASSWORD>,Y,,Executed@12_41AMOctober28
+Click on Sign In button,button,CSS_SELECTOR,button.btn.btn-primary,CLICK,,Y,10,Executed@12_41AMOctober28
+Click on Admin menu option,button,XPATH,//a[@role='option'][normalize-space()='Admin'],CLICK,,Y,10,Executed@12_41AMOctober28
+Click  on settings,button,XPATH,//h4[normalize-space()='Settings'],CLICK,,Y,10,Executed@12_41AMOctober28
+Click on Role and permission,button,XPATH,//h4[@class='media-heading' and text()='Roles & Permissions'],CLICK,,Y,10,Executed@12_42AMOctober28
+Create new role,button,XPATH,//button[normalize-space()='Create New Role'],CLICK,,Y,3,Executed@12_42AMOctober28
+Enter role name,textbox,XPATH,//input[@name='userRoleName'],ENTER_TEXT_WITH_TIMESTAMP,AutoRole,Y,3,Executed@12_42AMOctober28
+Enter Note,textbox,XPATH,//form[@id='add-user-role']//textarea[@name='notes'],ENTER_TEXT,Done,Y,3,Executed@12_42AMOctober28
+click Save button,button,XPATH,//div[@id='userRoleModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,10,Executed@12_42AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,4,Executed@12_42AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoRole,Y,,Executed@12_42AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_42AMOctober28
+Click on Edit icon,icon,XPATH,//div[@id='userRole']//tr[1]/td[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@12_42AMOctober28
+clear role name,clear text,XPATH,//input[@name='userRoleName'],CLEAR_TEXT,,Y,10,Executed@12_43AMOctober28
+enter name,textbox,XPATH,//input[@name='userRoleName'],ENTER_TEXT_WITH_TIMESTAMP,AutoRoleUpdate,Y,,Executed@12_43AMOctober28
+click Save button,button,XPATH,//div[@id='userRoleModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,,Executed@12_43AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,4,Executed@12_43AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoRoleUpdate,Y,,Executed@12_43AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_43AMOctober28
+click on delete,icon,XPATH,//div[@id='userRole']//tr[1]/td[1]//span[@title='Remove'],CLICK,,Y,10,Executed@12_43AMOctober28
+click on Yes in popup,button,ID,confirm_send_msg,CLICK,,Y,15,Executed@12_43AMOctober28
+Enter text Search,textbox,NAME,search,CLEAR_TEXT,,Y,3,Executed@12_43AMOctober28
+Click on left side Purpose of trip,button,XPATH,//span[@class='width-ie'][normalize-space()='Purpose Of Trips'],CLICK,,Y,5,Executed@12_43AMOctober28
+Click on left side Purpose of trip,button,XPATH,//span[@class='width-ie'][normalize-space()='Purpose Of Trips'],CLICK,,Y,10,Executed@12_44AMOctober28
+Click on export,button,XPATH,//button[@class='btn btn-default potExport ml-4'],CLICK,,Y,,Executed@12_44AMOctober28
+click on add purpose of trip,button,XPATH,//button[@class='pot_edit_btn btn btn-default add-pot ml-4'],CLICK,,Y,10,Executed@12_44AMOctober28
+enter name,textbox,XPATH,//input[@name='addPoTName'],ENTER_TEXT_WITH_TIMESTAMP,AutoPurpose,Y,8,Executed@12_44AMOctober28
+Click on SAVE button,button,XPATH,//div[@id='settingsModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,5,Executed@12_44AMOctober28
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,,SKIPPED
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@12_44AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoPurpose,Y,,Executed@12_44AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_44AMOctober28
+Click on Edit icon,icon,XPATH,//div[@id='potList_wrapper']//tr[1]/td[1]//i[@class='fa fa-pencil'],CLICK,,Y,5,Executed@12_44AMOctober28
+clear POT name,clear text,XPATH,//input[@name='addPoTName'],CLEAR_TEXT,,Y,5,Executed@12_45AMOctober28
+enter name,textbox,XPATH,//input[@name='addPoTName'],ENTER_TEXT_WITH_TIMESTAMP,AutoPurposeUpdate,Y,,Executed@12_45AMOctober28
+click Save button,button,XPATH,//div[@id='settingsModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,3,Executed@12_45AMOctober28
+Click on error pop up,button,XPATH,//div[@id='global_popup_box']//button[@id='close_send_msg'],CLICK,,N,,SKIPPED
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,,Executed@12_45AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoPurposeUpdate,Y,,Executed@12_45AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,3,Executed@12_45AMOctober28
+click on delete,icon,XPATH,//div[@id='potList_wrapper']//tr[1]/td[1]//span[@title='Remove'],CLICK,,Y,3,Executed@12_45AMOctober28
+click on Yes in popup,button,ID,confirm_send_msg,CLICK,,Y,5,Executed@12_45AMOctober28
+click on Close popup,button,XPATH,"//*[@id=""close_send_msg""]",CLICK,,Y,10,Executed@12_46AMOctober28
+click on left side schedule,button,XPATH,//span[@class='width-ie'][normalize-space()='Schedules'],CLICK,,Y,,Executed@12_46AMOctober28
+click Export csv,button,XPATH,//button[@class='btn btn-default exportScheduleCsv ml-4'],CLICK,,Y,,Executed@12_46AMOctober28
+Click Add schedule,button,XPATH,//button[normalize-space()='Add Schedule'],CLICK,,Y,,Executed@12_46AMOctober28
+Enter Schedule name,textbox,XPATH,//form[@id='add-ws']//input[@id='wsName'],ENTER_TEXT_WITH_TIMESTAMP,AutoSchedule,Y,5,Executed@12_46AMOctober28
+Enter note,textbox,XPATH,//form[@id='add-ws']//textarea[@id='notes_alert'],ENTER_TEXT,Done,Y,,Executed@12_46AMOctober28
+Click on SAVE button,button,XPATH,//div[@id='workSchedule']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,10,Executed@12_46AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,6,Executed@12_46AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoSchedule,Y,,Executed@12_46AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_46AMOctober28
+Click on Edit icon,icon,XPATH,//div[@id='workScheduleList_wrapper']//tr[1]/td[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@12_46AMOctober28
+clear role name,clear text,XPATH,//form[@id='add-ws']//input[@id='wsName'],CLEAR_TEXT,,Y,5,Executed@12_46AMOctober28
+enter name,textbox,XPATH,//form[@id='add-ws']//input[@id='wsName'],ENTER_TEXT_WITH_TIMESTAMP,AutoScheduleUpdate,Y,,Executed@12_47AMOctober28
+click Save button,button,XPATH,//div[@id='workSchedule']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,,Executed@12_47AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,6,Executed@12_47AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoScheduleUpdate,Y,,Executed@12_47AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_47AMOctober28
+click on delete,icon,XPATH,//div[@id='workScheduleList_wrapper']//tr[1]/td[1]//span[@title='Remove'],CLICK,,Y,3,Executed@12_47AMOctober28
+click on Yes in popup,button,ID,confirm_send_msg,CLICK,,Y,15,Executed@12_47AMOctober28
+click on left side notification schemes,button,XPATH,//span[@class='width-ie'][normalize-space()='Notification Schemes'],CLICK,,Y,15,Executed@12_48AMOctober28
+click on Expost csv,button,XPATH,//button[@class='btn btn-default channel-export'],CLICK,,Y,,Executed@12_48AMOctober28
+click on add schemes,button,XPATH,//button[normalize-space()='Add Scheme'],CLICK,,Y,5,Executed@12_48AMOctober28
+Enter name,textbox,CSS_SELECTOR,#recipientGroupName,ENTER_TEXT_WITH_TIMESTAMP,AutoScheme,Y,5,Executed@12_48AMOctober28
+click on email icon,icon,ID,deliveryEmail,CLICK,,Y,,Executed@12_48AMOctober28
+click on email icon,icon,ID,deliveryEmail,CLICK,,Y,3,Executed@12_48AMOctober28
+enter subscribers,dropdown,XPATH,(//input[@class='select2-search__field'])[2],ENTER_TEXT_ENTER,admin,Y,3,Executed@12_48AMOctober28
+Enter notes,textbox,ID,notes_scheme,ENTER_TEXT,Done,Y,,Executed@12_48AMOctober28
+Click on SAVE button,button,XPATH,//div[@id='newChannelModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,60,Executed@12_49AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,25,Executed@12_50AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoScheme,Y,6,Executed@12_50AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,5,Executed@12_50AMOctober28
+Click on Edit icon,icon,XPATH,//div[@id='notifications']//tr[1]/td[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@12_50AMOctober28
+clear role name,clear text,XPATH,"//*[@id=""recipientGroupName""]",CLEAR_TEXT,,Y,5,Executed@12_50AMOctober28
+enter name,textbox,XPATH,"//*[@id=""recipientGroupName""]",ENTER_TEXT_WITH_TIMESTAMP,AutoSchemeUpdate,Y,,Executed@12_50AMOctober28
+click Save button,button,XPATH,//div[@id='newChannelModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,30,Executed@12_51AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,25,Executed@12_51AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoSchemeUpdate,Y,,Executed@12_51AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_51AMOctober28
+click on delete,icon,XPATH,//div[@id='notifications']//tr[1]/td[1]//span[@title='Remove'],CLICK,,Y,3,Executed@12_51AMOctober28
+click on Yes in popup,button,ID,confirm_send_msg,CLICK,,Y,10,Executed@12_51AMOctober28
+Click on left side service type,button,XPATH,//span[@class='width-ie'][normalize-space()='Service Types'],CLICK,,Y,,Executed@12_51AMOctober28
+Click on Export csv,button,XPATH,//button[@class='btn btn-default service-types-export'],CLICK,,Y,,Executed@12_51AMOctober28
+click on add service,button,XPATH,//button[normalize-space()='Add Service Type'],CLICK,,Y,,Executed@12_52AMOctober28
+enter service name,textbox,XPATH,//input[@placeholder='Enter service type'],ENTER_TEXT_WITH_TIMESTAMP,AutoService,Y,5,Executed@12_52AMOctober28
+select service interval,icon,XPATH,"//*[@id=""time_interval""]",CLICK,,Y,,Executed@12_52AMOctober28
+select service interval,icon,XPATH,"//*[@id=""time_interval""]",CLICK,,Y,,Executed@12_52AMOctober28
+enter number of week,textbox,XPATH,//input[@name='time_interval_value'],ENTER_TEXT,1,Y,,Executed@12_52AMOctober28
+clear reminder days,clear text,XPATH,//input[@placeholder='Days'],CLEAR_TEXT,,Y,,Executed@12_52AMOctober28
+Enter reminder in days,textbox,XPATH,//input[@placeholder='Days'],ENTER_TEXT,2,Y,,Executed@12_52AMOctober28
+Enter notes,textbox,XPATH,(//div[@class='form-group']//textarea[@placeholder='Enter upto 250 characters.'])[7],ENTER_TEXT,Done,Y,,Executed@12_52AMOctober28
+Click on SAVE button,button,XPATH,//div[@id='serviceModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,7,Executed@12_52AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,4,Executed@12_52AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoService,Y,,Executed@12_52AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_52AMOctober28
+Click on Edit icon,icon,XPATH,//div[@id='maintenanceservicetypes']//tr[1]/td[1]//i[@class='fa fa-pencil'],CLICK,,Y,,Executed@12_52AMOctober28
+clear service name,clear text,XPATH,//input[@placeholder='Enter service type'],CLEAR_TEXT,,Y,5,Executed@12_52AMOctober28
+enter name,textbox,XPATH,//input[@placeholder='Enter service type'],ENTER_TEXT_WITH_TIMESTAMP,AutoServiceUpdate,Y,,Executed@12_53AMOctober28
+click Save button,button,XPATH,//div[@id='serviceModal']//div//button[@type='button'][normalize-space()='Save'],CLICK,,Y,5,Executed@12_53AMOctober28
+Clear text Search,textbox,NAME,search,CLEAR_TEXT,,Y,4,Executed@12_53AMOctober28
+Enter text Search,textbox,NAME,search,ENTER_TEXT,AutoServiceUpdate,Y,,Executed@12_53AMOctober28
+click on Search button,button,XPATH,//button[@name='Search'],CLICK,,Y,,Executed@12_53AMOctober28
+click on delete,icon,XPATH,//span[@title='Remove']//i[@alt='Remove'],CLICK,,Y,3,Executed@12_53AMOctober28
+click on Yes in popup,button,ID,confirm_send_msg,CLICK,,Y,15,Executed@12_53AMOctober28

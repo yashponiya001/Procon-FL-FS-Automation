@@ -1,0 +1,282 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@12_58PMNovember05
+# ===== SETTINGS FS MODULE - Login =====,,,,,,,,
+Navigate to the forcefieldshare login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@12_58PMNovember05
+Wait for the login page to load,,,,SLEEP,4,Y,,Executed@12_58PMNovember05
+Enter the admin email in the Email field,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@12_58PMNovember05
+Enter the admin password in the Password field,Input with name=password,XPATH,//input[@name='password'],ENTER_TEXT,<PASSWORD>,Y,,Executed@12_58PMNovember05
+Click the Sign In button to log in,Button Sign In,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@12_58PMNovember05
+Wait until the dashboard loads after login,,,,WAIT_FOR_URL,dashboard,Y,,Executed@12_58PMNovember05
+Wait for the dashboard to settle before navigating,,,,SLEEP,8,Y,,Executed@12_58PMNovember05
+# ===== Section 1: Dashboard Settings - Create / Edit / Delete =====,,,,,,Y,,
+Click Settings in the side menu to expand the settings sub menu,Side menu Settings,XPATH,//span[normalize-space(text())='Settings'],CLICK,,Y,,Executed@12_58PMNovember05
+Wait for the Settings sub menu to expand,,,,SLEEP,2,Y,,Executed@12_58PMNovember05
+Click Dashboard Settings in the Settings sub menu,Dashboard Settings link,XPATH,"//a[contains(@href,'/dashboards')]",CLICK,,Y,,Executed@12_58PMNovember05
+Wait until the Dashboard Settings page opens,,,,WAIT_FOR_URL,dashboards,Y,,Executed@12_58PMNovember05
+Wait for the dashboards list to load,,,,SLEEP,6,Y,,Executed@12_59PMNovember05
+Wait for the Create Dashboard button,Button Create Dashboard,XPATH,//button[normalize-space()='Create Dashboard'],WAIT_FOR_ELEMENT,,Y,,Executed@12_59PMNovember05
+Click on Create Dashboard,Button Create Dashboard,XPATH,//button[normalize-space()='Create Dashboard'],CLICK,,Y,,Executed@12_59PMNovember05
+Wait until the create dashboard form opens,,,,WAIT_FOR_URL,dashboards/add,Y,,Executed@12_59PMNovember05
+Wait for the create dashboard form to load,,,,SLEEP,3,Y,,Executed@12_59PMNovember05
+Add the dashboard name in the Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,Test_automate1105b,Y,,Executed@12_59PMNovember05
+Select Admin from the Role dropdown,Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='role']]//input[@type='text']",ENTER_TEXT_ENTER,Admin,Y,,Executed@12_59PMNovember05
+Wait for the role to be selected,,,,SLEEP,2,Y,,Executed@12_59PMNovember05
+Click on Save to create the dashboard,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@12_59PMNovember05
+Wait for the dashboard layout page to open,,,,SLEEP,6,Y,,Executed@12_59PMNovember05
+Click on Save on the dashboard layout page,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@12_59PMNovember05
+Wait for the dashboard to be saved,,,,SLEEP,5,Y,,Executed@01_00PMNovember05
+Reload the Dashboard Settings list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboards,Y,,Executed@01_00PMNovember05
+Wait for the dashboards list to load after reload,,,,SLEEP,6,Y,,Executed@01_00PMNovember05
+Wait for the dashboard search box,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_00PMNovember05
+Search the created dashboard record,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],ENTER_TEXT_ENTER,Test_automate1105b,Y,,Executed@01_00PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_00PMNovember05
+Verify the created dashboard appears in the search results,Created dashboard row,XPATH,//*[@role='row'][.//*[normalize-space(text())='Test_automate1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_00PMNovember05
+Click on Edit for the created dashboard,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='Test_automate1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_00PMNovember05
+Wait for the edit dashboard page to load,,,,SLEEP,6,Y,,Executed@01_00PMNovember05
+Wait for the Name field on the edit dashboard page,Input with name=name,XPATH,//input[@name='name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_00PMNovember05
+Select Line Manager from the Role dropdown,Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='role']]//input[@type='text']",ENTER_TEXT_ENTER,Line Manager,Y,,Executed@01_00PMNovember05
+Wait for the role to be selected,,,,SLEEP,2,Y,,Executed@01_01PMNovember05
+Click Save to save the dashboard edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_01PMNovember05
+Wait for the dashboard edit to save,,,,SLEEP,6,Y,,Executed@01_01PMNovember05
+Reload the Dashboard Settings list after the edit,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboards,Y,,Executed@01_01PMNovember05
+Wait for the dashboards list to load after the edit,,,,SLEEP,6,Y,,Executed@01_01PMNovember05
+Wait for the dashboard search box after the edit,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_01PMNovember05
+Search the edited dashboard record,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],ENTER_TEXT_ENTER,Test_automate1105b,Y,,Executed@01_01PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_01PMNovember05
+Click on Edit to reopen the edited dashboard,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='Test_automate1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_01PMNovember05
+Wait for the edit dashboard page to load,,,,SLEEP,6,Y,,Executed@01_01PMNovember05
+Verify Line Manager is now shown in the dashboard Role field,Line Manager role chip,XPATH,"(//*[contains(@class,'select__multi-value')][normalize-space()='Line Manager'])[1]",WAIT_FOR_ELEMENT,,Y,,Executed@01_01PMNovember05
+Return to the Dashboard Settings list without changing the dashboard,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboards,Y,,Executed@01_02PMNovember05
+Wait for the dashboards list to load,,,,SLEEP,6,Y,,Executed@01_02PMNovember05
+Wait for the dashboard search box before deleting,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_02PMNovember05
+Search the dashboard record to delete,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],ENTER_TEXT_ENTER,Test_automate1105b,Y,,Executed@01_02PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_02PMNovember05
+Click on Delete for the created dashboard,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='Test_automate1105b']]//button[@name='delete'],CLICK,,Y,,Executed@01_02PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_02PMNovember05
+Click on Yes to confirm the dashboard deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_02PMNovember05
+Wait for the dashboard deletion to complete,,,,SLEEP,5,Y,,Executed@01_02PMNovember05
+Reload the Dashboard Settings list after the deletion,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboards,Y,,Executed@01_02PMNovember05
+Wait for the dashboards list to load after the deletion,,,,SLEEP,6,Y,,Executed@01_03PMNovember05
+Wait for the dashboard search box after the deletion,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_03PMNovember05
+Search the deleted dashboard record,Search dashboards input,XPATH,//input[@placeholder='Search dashboards by name'],ENTER_TEXT_ENTER,Test_automate1105b,Y,,Executed@01_03PMNovember05
+Wait for the search results to load,,,,SLEEP,6,Y,,Executed@01_03PMNovember05
+Verify No Records Found is shown for the deleted dashboard,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@01_03PMNovember05
+# ===== Section 2: Roles and Permissions - Create / Rename / Delete =====,,,,,,Y,,
+Navigate to the Dashboard before opening Roles and Permissions from the menu,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@01_03PMNovember05
+Wait for the Dashboard to load,,,,SLEEP,6,Y,,Executed@01_03PMNovember05
+Click Settings in the side menu to expand the settings sub menu,Side menu Settings,XPATH,//span[normalize-space(text())='Settings'],CLICK,,Y,,Executed@01_03PMNovember05
+Wait for the Settings sub menu to expand,,,,SLEEP,2,Y,,Executed@01_03PMNovember05
+Click Roles and Permissions in the Settings sub menu,Roles and Permissions link,XPATH,"//a[contains(@href,'/user-roles')]",CLICK,,Y,,Executed@01_03PMNovember05
+Wait until the Roles and Permissions page opens,,,,WAIT_FOR_URL,user-roles,Y,,Executed@01_03PMNovember05
+Wait for the roles list to load,,,,SLEEP,6,Y,,Executed@01_04PMNovember05
+Verify the Add New Role button is shown on the Roles page,Button Add New Role,XPATH,//button[normalize-space()='Add New Role'],WAIT_FOR_ELEMENT,,Y,,Executed@01_04PMNovember05
+Click the Add New Role button to open the Create Role dialog,Button Add New Role,XPATH,//button[normalize-space()='Add New Role'],CLICK,,Y,,Executed@01_04PMNovember05
+Wait for the Create Role dialog to open,,,,SLEEP,3,Y,,Executed@01_04PMNovember05
+Enter the new role name in the Role Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetRole1105b,Y,,Executed@01_04PMNovember05
+Click the Submit button in the Create Role dialog,Button Submit,XPATH,//button[normalize-space()='Submit'],CLICK,,Y,,Executed@01_04PMNovember05
+Wait for the role permissions page to load,,,,SLEEP,6,Y,,Executed@01_05PMNovember05
+Click the Save button on the role permissions page to create the role,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_05PMNovember05
+Wait for the new role to be saved,,,,SLEEP,5,Y,,Executed@01_05PMNovember05
+Reload the Roles and Permissions list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/user-roles,Y,,Executed@01_05PMNovember05
+Wait for the roles list to load after reload,,,,SLEEP,8,Y,,Executed@01_05PMNovember05
+Verify the created role appears in the roles list,Created role row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetRole1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_05PMNovember05
+Click the Edit icon on the created role row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetRole1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_05PMNovember05
+Wait for the role edit page to load,,,,SLEEP,6,Y,,Executed@01_05PMNovember05
+Click the pencil icon next to the role name to rename the role,Role name pencil icon,XPATH,//*[normalize-space(text())='AutoSetRole1105b']/following::*[local-name()='svg' and @aria-label='FormEdit'][1]/parent::*,CLICK,,Y,,Executed@01_05PMNovember05
+Wait for the rename role dialog to open,,,,SLEEP,3,Y,,Executed@01_06PMNovember05
+Append _upd to the role name in the Role Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,_upd,Y,,Executed@01_06PMNovember05
+Click the Submit button to save the new role name,Button Submit,XPATH,//button[normalize-space()='Submit'],CLICK,,Y,,Executed@01_06PMNovember05
+Wait for the role rename to save,,,,SLEEP,4,Y,,Executed@01_06PMNovember05
+Verify the renamed role heading is shown on the edit page,Renamed role heading,XPATH,//*[normalize-space(text())='AutoSetRole1105b_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@01_06PMNovember05
+Click the Save button on the role permissions page after the rename,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_06PMNovember05
+Wait for the role update to save,,,,SLEEP,5,Y,,Executed@01_07PMNovember05
+Reload the Roles and Permissions list after the rename,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/user-roles,Y,,Executed@01_07PMNovember05
+Wait for the roles list to load after the rename,,,,SLEEP,8,Y,,Executed@01_07PMNovember05
+Verify the renamed role appears in the roles list,Renamed role row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetRole1105b_upd']],WAIT_FOR_ELEMENT,,Y,,Executed@01_07PMNovember05
+Click the Delete icon on the renamed role row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetRole1105b_upd']]//button[@name='delete'],CLICK,,Y,,Executed@01_07PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_07PMNovember05
+Click Yes to confirm the role deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_07PMNovember05
+Wait for the role deletion to complete,,,,SLEEP,5,Y,,Executed@01_07PMNovember05
+# ===== Section 3: Company Settings - Purpose of Trip - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Dashboard before opening Company settings from the menu,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@01_07PMNovember05
+Wait for the Dashboard to load,,,,SLEEP,6,Y,,Executed@01_08PMNovember05
+Click Settings in the side menu to expand the settings sub menu,Side menu Settings,XPATH,//span[normalize-space(text())='Settings'],CLICK,,Y,,Executed@01_08PMNovember05
+Wait for the Settings sub menu to expand,,,,SLEEP,2,Y,,Executed@01_08PMNovember05
+Click Company in the Settings sub menu,Company link,XPATH,"//a[contains(@href,'/company-settings')]",CLICK,,Y,,Executed@01_08PMNovember05
+Wait for the Company Settings page to load,,,,SLEEP,6,Y,,Executed@01_08PMNovember05
+Click the Purpose of Trip tab on the Company Settings page,Purpose of Trip tab,XPATH,//button[normalize-space()='Purpose of Trip'],CLICK,,Y,,Executed@01_08PMNovember05
+Wait for the Purpose of Trip list to load,,,,SLEEP,5,Y,,Executed@01_08PMNovember05
+Click the Add Purpose Of Trip button to open the add form,Button Add Purpose Of Trip,XPATH,//button[normalize-space()='Add Purpose Of Trip'],CLICK,,Y,,Executed@01_08PMNovember05
+Wait for the add purpose of trip form to open,,,,SLEEP,3,Y,,Executed@01_08PMNovember05
+Enter the purpose of trip name in the Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetPot1105b,Y,,Executed@01_09PMNovember05
+Enter the Telematics PoT ID for the purpose of trip,Input with name=telematicsPoTID,XPATH,//input[@name='telematicsPoTID'],ENTER_TEXT,POT1105b,Y,,Executed@01_09PMNovember05
+Click the Save button to create the purpose of trip,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_09PMNovember05
+Wait for the purpose of trip save to complete,,,,SLEEP,4,Y,,Executed@01_09PMNovember05
+Reload the Purpose of Trip list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/purpose-of-trip,Y,,Executed@01_09PMNovember05
+Wait for the Purpose of Trip list to load after reload,,,,SLEEP,6,Y,,Executed@01_10PMNovember05
+Wait for the purpose of trip search box,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],WAIT_FOR_ELEMENT,,Y,,Executed@01_10PMNovember05
+Search for the created purpose of trip,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],ENTER_TEXT_ENTER,AutoSetPot1105b,Y,,Executed@01_10PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_10PMNovember05
+Verify the created purpose of trip appears in the search results,Created purpose of trip row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetPot1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_10PMNovember05
+Click the Edit icon on the created purpose of trip row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetPot1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_10PMNovember05
+Wait for the edit purpose of trip form to load the record,,,,SLEEP,4,Y,,Executed@01_10PMNovember05
+Wait for the Name field in the edit purpose of trip form,Input with name=name,XPATH,//input[@name='name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_10PMNovember05
+Append _upd to the purpose of trip name,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,_upd,Y,,Executed@01_11PMNovember05
+Click the Save button to save the purpose of trip edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_11PMNovember05
+Wait for the purpose of trip edit to save,,,,SLEEP,4,Y,,Executed@01_11PMNovember05
+Reload the Purpose of Trip list after the edit,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/purpose-of-trip,Y,,Executed@01_11PMNovember05
+Wait for the Purpose of Trip list to load after the edit,,,,SLEEP,6,Y,,Executed@01_11PMNovember05
+Wait for the purpose of trip search box after the edit,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],WAIT_FOR_ELEMENT,,Y,,Executed@01_11PMNovember05
+Search for the edited purpose of trip,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],ENTER_TEXT_ENTER,AutoSetPot1105b_upd,Y,,Executed@01_12PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_12PMNovember05
+Verify the edited purpose of trip appears in the search results,Edited purpose of trip row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetPot1105b_upd']],WAIT_FOR_ELEMENT,,Y,,Executed@01_12PMNovember05
+Click the Delete icon on the edited purpose of trip row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetPot1105b_upd']]//button[@name='delete'],CLICK,,Y,,Executed@01_12PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_12PMNovember05
+Click Yes to confirm the purpose of trip deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_12PMNovember05
+Wait for the purpose of trip deletion to complete,,,,SLEEP,5,Y,,Executed@01_12PMNovember05
+Reload the Purpose of Trip list after the deletion,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/purpose-of-trip,Y,,Executed@01_12PMNovember05
+Wait for the Purpose of Trip list to load after the deletion,,,,SLEEP,6,Y,,Executed@01_12PMNovember05
+Wait for the purpose of trip search box after the deletion,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],WAIT_FOR_ELEMENT,,Y,,Executed@01_12PMNovember05
+Search for the deleted purpose of trip,Search purpose of trip input,XPATH,//input[@placeholder='Search Purpose of Trip'],ENTER_TEXT_ENTER,AutoSetPot1105b,Y,,Executed@01_12PMNovember05
+Wait for the search results to load,,,,SLEEP,6,Y,,Executed@01_13PMNovember05
+Verify No Records Found is shown for the deleted purpose of trip,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@01_13PMNovember05
+# ===== Section 4: Company Settings - Departments - Add / Edit / Delete =====,,,,,,Y,,
+Click the Departments tab on the Company Settings page,Departments tab,XPATH,//button[normalize-space()='Departments'],CLICK,,Y,,Executed@01_13PMNovember05
+Wait for the Departments list to load,,,,SLEEP,5,Y,,Executed@01_13PMNovember05
+Click the Add Department button to open the add form,Button Add Department,XPATH,//button[normalize-space()='Add Department'],CLICK,,Y,,Executed@01_13PMNovember05
+Wait for the add department form to open,,,,SLEEP,3,Y,,Executed@01_13PMNovember05
+Enter the department name in the Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetDept1105b,Y,,Executed@01_13PMNovember05
+Click the Save button to create the department,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_14PMNovember05
+Wait for the department save to complete,,,,SLEEP,4,Y,,Executed@01_14PMNovember05
+Reload the Departments list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/departments,Y,,Executed@01_14PMNovember05
+Wait for the Departments list to load after reload,,,,SLEEP,6,Y,,Executed@01_14PMNovember05
+Wait for the department search box,Search department input,XPATH,//input[@placeholder='Search Department'],WAIT_FOR_ELEMENT,,Y,,Executed@01_14PMNovember05
+Search for the created department,Search department input,XPATH,//input[@placeholder='Search Department'],ENTER_TEXT_ENTER,AutoSetDept1105b,Y,,Executed@01_14PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_14PMNovember05
+Verify the created department appears in the search results,Created department row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetDept1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_14PMNovember05
+Click the Edit icon on the created department row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetDept1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_14PMNovember05
+Wait for the edit department form to load the record,,,,SLEEP,4,Y,,Executed@01_15PMNovember05
+Wait for the Name field in the edit department form,Input with name=name,XPATH,//input[@name='name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_15PMNovember05
+Append _upd to the department name,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,_upd,Y,,Executed@01_15PMNovember05
+Click the Save button to save the department edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_15PMNovember05
+Wait for the department edit to save,,,,SLEEP,4,Y,,Executed@01_16PMNovember05
+Reload the Departments list after the edit,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/departments,Y,,Executed@01_16PMNovember05
+Wait for the Departments list to load after the edit,,,,SLEEP,6,Y,,Executed@01_16PMNovember05
+Wait for the department search box after the edit,Search department input,XPATH,//input[@placeholder='Search Department'],WAIT_FOR_ELEMENT,,Y,,Executed@01_16PMNovember05
+Search for the edited department,Search department input,XPATH,//input[@placeholder='Search Department'],ENTER_TEXT_ENTER,AutoSetDept1105b_upd,Y,,Executed@01_16PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_16PMNovember05
+Verify the edited department appears in the search results,Edited department row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetDept1105b_upd']],WAIT_FOR_ELEMENT,,Y,,Executed@01_16PMNovember05
+Click the Delete icon on the edited department row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetDept1105b_upd']]//button[@name='delete'],CLICK,,Y,,Executed@01_16PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_16PMNovember05
+Click Yes to confirm the department deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_16PMNovember05
+Wait for the department deletion to complete,,,,SLEEP,5,Y,,Executed@01_17PMNovember05
+Reload the Departments list after the deletion,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/departments,Y,,Executed@01_17PMNovember05
+Wait for the Departments list to load after the deletion,,,,SLEEP,6,Y,,Executed@01_17PMNovember05
+Wait for the department search box after the deletion,Search department input,XPATH,//input[@placeholder='Search Department'],WAIT_FOR_ELEMENT,,Y,,Executed@01_17PMNovember05
+Search for the deleted department,Search department input,XPATH,//input[@placeholder='Search Department'],ENTER_TEXT_ENTER,AutoSetDept1105b,Y,,Executed@01_17PMNovember05
+Wait for the search results to load,,,,SLEEP,6,Y,,Executed@01_17PMNovember05
+Verify No Records Found is shown for the deleted department,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@01_17PMNovember05
+# ===== Section 5: Company Settings - Cost Centres - Add / Edit / Delete =====,,,,,,Y,,
+Click the Cost Centres tab on the Company Settings page,Cost Centres tab,XPATH,//button[normalize-space()='Cost Centres'],CLICK,,Y,,Executed@01_17PMNovember05
+Wait for the Cost Centres list to load,,,,SLEEP,5,Y,,Executed@01_17PMNovember05
+Click the Add Cost Centre button to open the add form,Button Add Cost Centre,XPATH,//button[normalize-space()='Add Cost Centre'],CLICK,,Y,,Executed@01_17PMNovember05
+Wait for the add cost centre form to open,,,,SLEEP,3,Y,,Executed@01_18PMNovember05
+Enter the cost centre name in the Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetCc1105b,Y,,Executed@01_18PMNovember05
+Enter the cost centre ID in the Cost Centre ID field,Input with name=costCentreId,XPATH,//input[@name='costCentreId'],ENTER_TEXT,CC1105b,Y,,Executed@01_18PMNovember05
+Enter the project ID in the Project ID field,Input with name=projectId,XPATH,//input[@name='projectId'],ENTER_TEXT,PRJ1105b,Y,,Executed@01_18PMNovember05
+Enter the cost centre description in the Description field,Textarea with name=description,XPATH,//textarea[@name='description'],ENTER_TEXT,Automation cost centre,Y,,Executed@01_19PMNovember05
+Click the Save button to create the cost centre,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_19PMNovember05
+Wait for the cost centre save to complete,,,,SLEEP,4,Y,,Executed@01_19PMNovember05
+Reload the Cost Centres list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-centres,Y,,Executed@01_19PMNovember05
+Wait for the Cost Centres list to load after reload,,,,SLEEP,6,Y,,Executed@01_19PMNovember05
+Wait for the cost centre search box,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],WAIT_FOR_ELEMENT,,Y,,Executed@01_19PMNovember05
+Search for the created cost centre,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],ENTER_TEXT_ENTER,AutoSetCc1105b,Y,,Executed@01_19PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_20PMNovember05
+Verify the created cost centre appears in the search results,Created cost centre row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCc1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_20PMNovember05
+Click the Edit icon on the created cost centre row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCc1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_20PMNovember05
+Wait for the edit cost centre form to load the record,,,,SLEEP,4,Y,,Executed@01_20PMNovember05
+Wait for the Name field in the edit cost centre form,Input with name=name,XPATH,//input[@name='name'],WAIT_FOR_ELEMENT,,Y,,Executed@01_20PMNovember05
+Append _upd to the cost centre name,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,_upd,Y,,Executed@01_20PMNovember05
+Click the Save button to save the cost centre edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_21PMNovember05
+Wait for the cost centre edit to save,,,,SLEEP,4,Y,,Executed@01_21PMNovember05
+Reload the Cost Centres list after the edit,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-centres,Y,,Executed@01_21PMNovember05
+Wait for the Cost Centres list to load after the edit,,,,SLEEP,6,Y,,Executed@01_21PMNovember05
+Wait for the cost centre search box after the edit,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],WAIT_FOR_ELEMENT,,Y,,Executed@01_21PMNovember05
+Search for the edited cost centre,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],ENTER_TEXT_ENTER,AutoSetCc1105b_upd,Y,,Executed@01_21PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_21PMNovember05
+Verify the edited cost centre appears in the search results,Edited cost centre row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCc1105b_upd']],WAIT_FOR_ELEMENT,,Y,,Executed@01_21PMNovember05
+Click the Delete icon on the edited cost centre row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCc1105b_upd']]//button[@name='delete'],CLICK,,Y,,Executed@01_21PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_22PMNovember05
+Click Yes to confirm the cost centre deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_22PMNovember05
+Wait for the cost centre deletion to complete,,,,SLEEP,5,Y,,Executed@01_22PMNovember05
+Reload the Cost Centres list after the deletion,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-centres,Y,,Executed@01_22PMNovember05
+Wait for the Cost Centres list to load after the deletion,,,,SLEEP,6,Y,,Executed@01_22PMNovember05
+Wait for the cost centre search box after the deletion,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],WAIT_FOR_ELEMENT,,Y,,Executed@01_22PMNovember05
+Search for the deleted cost centre,Search cost centre input,XPATH,//input[@placeholder='Search Cost Centres'],ENTER_TEXT_ENTER,AutoSetCc1105b,Y,,Executed@01_22PMNovember05
+Wait for the search results to load,,,,SLEEP,6,Y,,Executed@01_22PMNovember05
+Verify No Records Found is shown for the deleted cost centre,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@01_22PMNovember05
+# ===== Section 6: Incident Settings - Incident Type - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Incident Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incident-settings,Y,,Executed@01_22PMNovember05
+Wait for the Incident Settings page to load,,,,SLEEP,8,Y,,Executed@01_23PMNovember05
+Wait for the incident type search box,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],WAIT_FOR_ELEMENT,,Y,,Executed@01_23PMNovember05
+Click the Add New Incident Type button to open the add form,Button Add New Incident Type,XPATH,//button[normalize-space()='Add New Incident Type'],CLICK,,Y,,Executed@01_23PMNovember05
+Wait for the add incident type form to open,,,,SLEEP,3,Y,,Executed@01_23PMNovember05
+Enter the incident type name in the Incident Type field,Input with name=type,XPATH,//input[@name='type'],ENTER_TEXT,AutoSetInc1105b,Y,,Executed@01_23PMNovember05
+Enter the incident subtype and press Enter to add it,Incident Subtype input,XPATH,(//*[normalize-space(text())='Incident Subtype']/following::input[@type='text'])[1],ENTER_TEXT_ENTER,AutoSetSub1105b,Y,,Executed@01_23PMNovember05
+Select Yash Poniya (System Manager) from the Recipients dropdown,Recipients dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='recipientsOptions']]//input[@type='text']",ENTER_TEXT_ENTER,Yash Poniya (System Manager),Y,,Executed@01_24PMNovember05
+Wait for the recipient to be added,,,,SLEEP,2,Y,,Executed@01_24PMNovember05
+Click the Incident Type label to close the recipients list before saving,Incident Type label,XPATH,"//label[starts-with(normalize-space(),'Incident Type')]",CLICK,,Y,,Executed@01_24PMNovember05
+Wait for the recipients list to close,,,,SLEEP,1,Y,,Executed@01_24PMNovember05
+Click the Save button to create the incident type,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_25PMNovember05
+Wait for the incident type save to complete,,,,SLEEP,5,Y,,Executed@01_25PMNovember05
+Reload the Incident Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incident-settings,Y,,Executed@01_25PMNovember05
+Wait for the Incident Settings page to load after reload,,,,SLEEP,8,Y,,Executed@01_25PMNovember05
+Wait for the incident type search box after reload,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],WAIT_FOR_ELEMENT,,Y,,Executed@01_25PMNovember05
+Search for the created incident type,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],ENTER_TEXT_ENTER,AutoSetInc1105b,Y,,Executed@01_25PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_25PMNovember05
+Verify the created incident type appears in the search results,Created incident type row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetInc1105b']],WAIT_FOR_ELEMENT,,Y,,Executed@01_25PMNovember05
+Click the Edit icon on the created incident type row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetInc1105b']]//button[@name='edit'],CLICK,,Y,,Executed@01_25PMNovember05
+Wait for the edit incident type form to load,,,,SLEEP,4,Y,,Executed@01_26PMNovember05
+Wait for the Incident Type field in the edit form,Input with name=type,XPATH,//input[@name='type'],WAIT_FOR_ELEMENT,,Y,,Executed@01_26PMNovember05
+Append _upd to the incident type name,Input with name=type,XPATH,//input[@name='type'],ENTER_TEXT,_upd,Y,,Executed@01_26PMNovember05
+Click the Save button to save the incident type edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@01_26PMNovember05
+Wait for the incident type edit to save,,,,SLEEP,5,Y,,Executed@01_27PMNovember05
+Reload the Incident Settings page after the edit,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incident-settings,Y,,Executed@01_27PMNovember05
+Wait for the Incident Settings page to load after the edit,,,,SLEEP,8,Y,,Executed@01_27PMNovember05
+Wait for the incident type search box after the edit,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],WAIT_FOR_ELEMENT,,Y,,Executed@01_27PMNovember05
+Search for the edited incident type,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],ENTER_TEXT_ENTER,AutoSetInc1105b_upd,Y,,Executed@01_27PMNovember05
+Wait for the search results to load,,,,SLEEP,4,Y,,Executed@01_27PMNovember05
+Verify the edited incident type appears in the search results,Edited incident type row,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetInc1105b_upd']],WAIT_FOR_ELEMENT,,Y,,Executed@01_27PMNovember05
+Click the Delete icon on the edited incident type row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetInc1105b_upd']]//button[@name='delete'],CLICK,,Y,,Executed@01_27PMNovember05
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@01_27PMNovember05
+Click Yes to confirm the incident type deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@01_28PMNovember05
+Wait for the incident type deletion to complete,,,,SLEEP,5,Y,,Executed@01_28PMNovember05
+Reload the Incident Settings page after the deletion,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/incident-settings,Y,,Executed@01_28PMNovember05
+Wait for the Incident Settings page to load after the deletion,,,,SLEEP,8,Y,,Executed@01_28PMNovember05
+Wait for the incident type search box after the deletion,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],WAIT_FOR_ELEMENT,,Y,,Executed@01_28PMNovember05
+Search for the deleted incident type,Search Incidents input,XPATH,//input[@placeholder='Search Incidents'],ENTER_TEXT_ENTER,AutoSetInc1105b,Y,,Executed@01_28PMNovember05
+Wait for the search results to load,,,,SLEEP,6,Y,,Executed@01_28PMNovember05
+Verify No Records Found is shown for the deleted incident type,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@01_28PMNovember05
+# ===== Section 7: Settings Pages - Load Check =====,,,,,,Y,,
+Navigate to the Booking Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-settings,Y,,Executed@01_28PMNovember05
+Wait for the Booking Settings page to load,,,,SLEEP,7,Y,,Executed@01_29PMNovember05
+Verify the Booking Settings page has loaded,Automatic booking cancellation input,XPATH,//input[@name='Automatic booking cancellation after X minutes'],WAIT_FOR_ELEMENT,,Y,,Executed@01_29PMNovember05
+Navigate to the Booking Approval Rules page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-approval-rules,Y,,Executed@01_29PMNovember05
+Wait for the Booking Approval Rules page to load,,,,SLEEP,7,Y,,Executed@01_29PMNovember05
+Verify the Booking Approval Rules page has loaded,Search Approval Rule input,XPATH,//input[@placeholder='Search Approval Rule'],WAIT_FOR_ELEMENT,,Y,,Executed@01_29PMNovember05
+Navigate to the Visibility Rules page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/visibility-rules,Y,,Executed@01_29PMNovember05
+Wait for the Visibility Rules page to load,,,,SLEEP,7,Y,,Executed@01_29PMNovember05
+Verify the Visibility Rules page has loaded,Search Rules input,XPATH,//input[@placeholder='Search Rules'],WAIT_FOR_ELEMENT,,Y,,Executed@01_29PMNovember05
+Navigate to the Custom Fields page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/tags,Y,,Executed@01_29PMNovember05
+Wait for the Custom Fields page to load,,,,SLEEP,7,Y,,Executed@01_29PMNovember05
+Verify the Custom Fields page has loaded,Search Custom Fields input,XPATH,//input[@placeholder='Search Custom Fields'],WAIT_FOR_ELEMENT,,Y,,Executed@01_29PMNovember05
+Navigate to the Company Branches page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/branches,Y,,Executed@01_30PMNovember05
+Wait for the Company Branches page to load,,,,SLEEP,7,Y,,Executed@01_30PMNovember05
+Verify the Company Branches page has loaded,Branch_1 row,XPATH,//*[@role='row'][.//*[normalize-space(text())='Branch_1']],WAIT_FOR_ELEMENT,,Y,,Executed@01_30PMNovember05
+# ===== Section 8: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@01_30PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@01_30PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@01_30PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@01_30PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,(//button[normalize-space()='Logout'])[last()],CLICK,,Y,,Executed@01_30PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@01_30PMNovember05

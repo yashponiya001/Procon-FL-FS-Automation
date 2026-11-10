@@ -1,0 +1,9 @@
+Firefox Driver Path,C:\Users\abhim\Downloads\chromedriver_win32.zip\chromedriver.exe
+Application URL,https://fleetv5-st.fleetlocate.com.au/
+Email Attachment File ,C:\Users\abhim\OneDrive\Desktop\Automation\Reports\Reports
+Report Quick Glance,C:\Users\abhim\OneDrive\Desktop\Automation\Reports\Reports
+Comman_Locators_In_Web_Application,C:\Users\abhim\OneDrive\Desktop\Automation\Common_Locators_Web_Application.csv
+Elements locator and Actions,C:\Users\abhim\OneDrive\Desktop\Automation\Locators_Actions_Procon_LOCATORINDEX.csv
+CounterFile,C:\Users\abhim\OneDrive\Desktop\Automation\counter.csv
+Locator File Path,C:\Users\abhim\OneDrive\Desktop\Automation\
+Exception ScreenShot path,C:\Users\abhim\OneDrive\Desktop\Automation\Reports\Reports

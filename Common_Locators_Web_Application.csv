@@ -1,0 +1,14 @@
+Application Page,HTML Element Type,Locator Type,Locator Value
+List View,table header,XPATH,".//table/thead/tr/th"
+List Name,List name,CSS_SELECTOR,span.input-group-addon.title
+Table row,Parent table row,XPATH,".//div[2]/table/tbody/tr"
+Table body,Parent table body,TAG_NAME,tbody
+All child tables,All child tables,XPATH,./tr/self::tr | ./tr/following-sibling::tr | ./tr 
+child table data,child table data,TAG_NAME,td
+records count,records count,CSS_SELECTOR,span.k-pager-info.k-label
+Yopmail page for all emails,emails,XPATH,//div[@id="m1"]
+Yopmail emails iframe,email iframe,XPATH,//div[@id="ifinbox"]
+Yopmail msg iFrame,msg iframe,XPATH,//div[@id="ifmail"]
+Yopmail email link, activation email,PARTIAL_LINK_TEXT,"Click here to Activate your account"
+JS code file number, checked in code JS file, XPATH, //html/body/table/tbody/tr/td[2]/span[22]/a
+Backend deployed code version number, version number, XPATH,//html/body/pre

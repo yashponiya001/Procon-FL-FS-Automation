@@ -1,0 +1,397 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@09_07AMNovember03
+# ===== SETTINGS FS MODULE - Login =====,,,,,,,,
+Navigate to the forcefieldshare login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@09_07AMNovember03
+Wait for the login page to load,,,,SLEEP,4,Y,,Executed@09_07AMNovember03
+Enter the admin email in the Email field,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@09_07AMNovember03
+Enter the admin password in the Password field,Input with name=password,XPATH,//input[@name='password'],ENTER_TEXT,<PASSWORD>,Y,,Executed@09_07AMNovember03
+Click the Sign In button to log in,Button Sign In,XPATH,//button[normalize-space()='Sign In'],CLICK,,Y,,Executed@09_07AMNovember03
+Wait until the dashboard loads after login,,,,WAIT_FOR_URL,dashboard,Y,,Executed@09_07AMNovember03
+Wait for the dashboard to settle before navigating,,,,SLEEP,8,Y,,Executed@09_07AMNovember03
+# ===== Section 7: Booking Approval Rules - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Booking Approval Rules page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-approval-rules,Y,,Executed@09_07AMNovember03
+Wait for the Booking Approval Rules page to load,,,,SLEEP,10,Y,,Executed@09_08AMNovember03
+Click Add New Rule to open the add form,Button Add New Rule,XPATH,//button[normalize-space()='Add New Rule'],CLICK,,Y,,Executed@09_08AMNovember03
+Wait for the add form to open,,,,SLEEP,3,Y,,Executed@09_08AMNovember03
+Enter the rule name in the Rule Name field,Input with name=ruleName,XPATH,//input[@name='ruleName'],ENTER_TEXT,AutoSetApr1103a,Y,,Executed@09_08AMNovember03
+Select Inactive from the Status dropdown,Status dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='isActive']]//input[@type='text']",ENTER_TEXT_ENTER,Inactive,Y,,Executed@09_08AMNovember03
+Enable the Overnight attribute,Overnight checkbox,XPATH,((//*[normalize-space(text())='Overnight'])[last()]/ancestor::*[.//input[@type='checkbox']][1]//label)[1],CLICK,,Y,,Executed@09_09AMNovember03
+Open the Overnight dropdown,Overnight dropdown,XPATH,"((//*[normalize-space(text())='Overnight'])[last()]/ancestor::*[.//input[@type='checkbox']][1]//*[contains(@class,'select__control')])[1]",CLICK,,Y,,Executed@09_09AMNovember03
+Select No from the Overnight dropdown,Overnight option No,XPATH,"//*[contains(@class,'select__option')][normalize-space()='No']",CLICK,,Y,,Executed@09_09AMNovember03
+Select Applicable across all branches,Applicable across all branches radio,XPATH,((//*[normalize-space(text())='Applicable across all branches'])[last()]/ancestor::*[.//input[@type='radio']][1]//label)[1],CLICK,,Y,,Executed@09_09AMNovember03
+Select Role as the approver type,Approver Role radio,XPATH,((//*[normalize-space(text())='Role'])[last()]/ancestor::*[.//input[@type='radio']][1]//label)[1],CLICK,,Y,,Executed@09_09AMNovember03
+Type Admin in the approver Role dropdown,Approver Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='approver_roles']]//input[@type='text']",ENTER_TEXT,Admin,Y,,Executed@09_10AMNovember03
+Wait for the approver role options to load,,,,SLEEP,2,Y,,Executed@09_10AMNovember03
+Press Enter to select the Admin approver role,Approver Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='approver_roles']]//input[@type='text']",PRESS_ENTER,,Y,,Executed@09_10AMNovember03
+Click Save to create the approval rule,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_10AMNovember03
+Wait for the approval rule to be saved,,,,SLEEP,5,Y,,Executed@09_11AMNovember03
+Reload the Booking Approval Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-approval-rules,Y,,Executed@09_11AMNovember03
+Wait for the Booking Approval Rules list to load,,,,SLEEP,8,Y,,Executed@09_11AMNovember03
+Wait for the approval rule search box,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],WAIT_FOR_ELEMENT,,Y,,Executed@09_11AMNovember03
+Search for AutoSetApr1103a,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],ENTER_TEXT_ENTER,AutoSetApr1103a,Y,,Executed@09_11AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_11AMNovember03
+Verify the created approval rule appears in the search results,approval rule name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetApr1103a'],WAIT_FOR_ELEMENT,,Y,,Executed@09_11AMNovember03
+Click the Edit icon on the created approval rule row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetApr1103a']]//button[@name='edit'],CLICK,,Y,,Executed@09_11AMNovember03
+Wait for the edit approval rule form to load,,,,SLEEP,5,Y,,Executed@09_12AMNovember03
+Wait for the editable field in the edit approval rule form,Edit field,XPATH,//input[@name='ruleName'],WAIT_FOR_ELEMENT,,Y,,Executed@09_12AMNovember03
+Append _upd to the approval rule name,Edit field,XPATH,//input[@name='ruleName'],ENTER_TEXT,_upd,Y,,Executed@09_12AMNovember03
+Click Save to save the approval rule edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_12AMNovember03
+Wait for the approval rule edit to save,,,,SLEEP,5,Y,,Executed@09_13AMNovember03
+Reload the Booking Approval Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-approval-rules,Y,,Executed@09_13AMNovember03
+Wait for the Booking Approval Rules list to load,,,,SLEEP,8,Y,,Executed@09_13AMNovember03
+Wait for the approval rule search box,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],WAIT_FOR_ELEMENT,,Y,,Executed@09_13AMNovember03
+Search for AutoSetApr1103a_upd,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],ENTER_TEXT_ENTER,AutoSetApr1103a_upd,Y,,Executed@09_13AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_13AMNovember03
+Verify the edited approval rule appears in the search results,approval rule name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetApr1103a_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@09_13AMNovember03
+Click the Delete icon on the approval rule row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetApr1103a_upd']]//button[@name='delete'],CLICK,,Y,,Executed@09_13AMNovember03
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@09_13AMNovember03
+Click Yes to confirm the approval rule deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@09_13AMNovember03
+Wait for the approval rule deletion to complete,,,,SLEEP,5,Y,,Executed@09_13AMNovember03
+Reload the Booking Approval Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-approval-rules,Y,,Executed@09_14AMNovember03
+Wait for the Booking Approval Rules list to load,,,,SLEEP,8,Y,,Executed@09_14AMNovember03
+Wait for the approval rule search box,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],WAIT_FOR_ELEMENT,,Y,,Executed@09_14AMNovember03
+Search for AutoSetApr1103a_upd,Search approval rule input,XPATH,//input[@placeholder='Search Approval Rule'],ENTER_TEXT_ENTER,AutoSetApr1103a_upd,Y,,Executed@09_14AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_14AMNovember03
+Verify No Records Found is shown for the deleted approval rule,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@09_14AMNovember03
+# ===== Section 8: Visibility Rules - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Visibility Rules page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/visibility-rules,Y,,Executed@09_14AMNovember03
+Wait for the Visibility Rules page to load,,,,SLEEP,10,Y,,Executed@09_14AMNovember03
+Click Add New Rule to open the add form,Button Add New Rule,XPATH,//button[normalize-space()='Add New Rule'],CLICK,,Y,,Executed@09_14AMNovember03
+Wait for the add form to open,,,,SLEEP,3,Y,,Executed@09_15AMNovember03
+Enter the rule name in the Rule Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetVis1103a,Y,,Executed@09_15AMNovember03
+Select Inactive from the Status dropdown,Status dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='isActive']]//input[@type='text']",ENTER_TEXT_ENTER,Inactive,Y,,Executed@09_15AMNovember03
+Select Allow as the rule type,Rule Type Allow,XPATH,//label[normalize-space()='Allow'],CLICK,,Y,,Executed@09_15AMNovember03
+Open the User Attributes tab,User Attributes tab,XPATH,//button[normalize-space()='User Attributes'],CLICK,,Y,,Executed@09_16AMNovember03
+Wait for the User Attributes tab to open,,,,SLEEP,2,Y,,Executed@09_16AMNovember03
+Type Branch_1 in the user Branch attribute,User Branch attribute,XPATH,(//label[normalize-space()='Branch'])[1]/following::input[@type='text'][1],ENTER_TEXT,Branch_1,Y,,Executed@09_16AMNovember03
+Wait for the branch options to load,,,,SLEEP,2,Y,,Executed@09_16AMNovember03
+Press Enter to select Branch_1 as the user attribute,User Branch attribute,XPATH,(//label[normalize-space()='Branch'])[1]/following::input[@type='text'][1],PRESS_ENTER,,Y,,Executed@09_17AMNovember03
+Open the Vehicle Attributes tab,Vehicle Attributes tab,XPATH,//button[normalize-space()='Vehicle Attributes'],CLICK,,Y,,Executed@09_17AMNovember03
+Wait for the Vehicle Attributes tab to open,,,,SLEEP,2,Y,,Executed@09_17AMNovember03
+Type Branch_1 in the vehicle Branch attribute,Vehicle Branch attribute,XPATH,(//label[normalize-space()='Branch'])[last()]/following::input[@type='text'][1],ENTER_TEXT,Branch_1,Y,,Executed@09_17AMNovember03
+Wait for the branch options to load,,,,SLEEP,2,Y,,Executed@09_18AMNovember03
+Press Enter to select Branch_1 as the vehicle attribute,Vehicle Branch attribute,XPATH,(//label[normalize-space()='Branch'])[last()]/following::input[@type='text'][1],PRESS_ENTER,,Y,,Executed@09_18AMNovember03
+Click Save to create the visibility rule,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_18AMNovember03
+Wait for the visibility rule to be saved,,,,SLEEP,5,Y,,Executed@09_18AMNovember03
+Reload the Visibility Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/visibility-rules,Y,,Executed@09_18AMNovember03
+Wait for the Visibility Rules list to load,,,,SLEEP,8,Y,,Executed@09_19AMNovember03
+Wait for the visibility rule search box,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],WAIT_FOR_ELEMENT,,Y,,Executed@09_19AMNovember03
+Search for AutoSetVis1103a,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],ENTER_TEXT_ENTER,AutoSetVis1103a,Y,,Executed@09_19AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_19AMNovember03
+Verify the created visibility rule appears in the search results,visibility rule name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetVis1103a'],WAIT_FOR_ELEMENT,,Y,,Executed@09_19AMNovember03
+Click the Edit icon on the created visibility rule row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetVis1103a']]//button[@name='edit'],CLICK,,Y,,Executed@09_19AMNovember03
+Wait for the edit visibility rule form to load,,,,SLEEP,5,Y,,Executed@09_19AMNovember03
+Wait for the editable field in the edit visibility rule form,Edit field,XPATH,//input[@name='name'],WAIT_FOR_ELEMENT,,Y,,Executed@09_19AMNovember03
+Append _upd to the visibility rule name,Edit field,XPATH,//input[@name='name'],ENTER_TEXT,_upd,Y,,Executed@09_20AMNovember03
+Click Save to save the visibility rule edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_20AMNovember03
+Wait for the visibility rule edit to save,,,,SLEEP,5,Y,,Executed@09_20AMNovember03
+Reload the Visibility Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/visibility-rules,Y,,Executed@09_20AMNovember03
+Wait for the Visibility Rules list to load,,,,SLEEP,8,Y,,Executed@09_20AMNovember03
+Wait for the visibility rule search box,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],WAIT_FOR_ELEMENT,,Y,,Executed@09_21AMNovember03
+Search for AutoSetVis1103a_upd,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],ENTER_TEXT_ENTER,AutoSetVis1103a_upd,Y,,Executed@09_21AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_21AMNovember03
+Verify the edited visibility rule appears in the search results,visibility rule name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetVis1103a_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@09_21AMNovember03
+Click the Delete icon on the visibility rule row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetVis1103a_upd']]//button[@name='delete'],CLICK,,Y,,Executed@09_21AMNovember03
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@09_21AMNovember03
+Click Yes to confirm the visibility rule deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@09_21AMNovember03
+Wait for the visibility rule deletion to complete,,,,SLEEP,5,Y,,Executed@09_21AMNovember03
+Reload the Visibility Rules list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/visibility-rules,Y,,Executed@09_21AMNovember03
+Wait for the Visibility Rules list to load,,,,SLEEP,8,Y,,Executed@09_21AMNovember03
+Wait for the visibility rule search box,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],WAIT_FOR_ELEMENT,,Y,,Executed@09_21AMNovember03
+Search for AutoSetVis1103a_upd,Search visibility rule input,XPATH,//input[@placeholder='Search Rules'],ENTER_TEXT_ENTER,AutoSetVis1103a_upd,Y,,Executed@09_21AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_22AMNovember03
+Verify No Records Found is shown for the deleted visibility rule,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@09_22AMNovember03
+# ===== Section 9: Custom Fields - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Custom Fields page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/tags,Y,,Executed@09_22AMNovember03
+Wait for the Custom Fields page to load,,,,SLEEP,10,Y,,Executed@09_22AMNovember03
+Click the Branch entity in the Entity List,Entity Branch,XPATH,//*[normalize-space()='Entity List']/following::*[normalize-space(text())='Branch'][1],CLICK,,Y,,Executed@09_22AMNovember03
+Wait for the Branch custom fields to load,,,,SLEEP,4,Y,,Executed@09_22AMNovember03
+Click Add Custom Field to open the add form,Button Add Custom Field,XPATH,//button[normalize-space()='Add Custom Field'],CLICK,,Y,,Executed@09_22AMNovember03
+Wait for the add form to open,,,,SLEEP,3,Y,,Executed@09_22AMNovember03
+Enter the custom field name in the Name field,Input with name=name,XPATH,//input[@name='name'],ENTER_TEXT,AutoSetCf1103a,Y,,Executed@09_23AMNovember03
+Enter the custom field label in the Label field,Input with name=label,XPATH,//input[@name='label'],ENTER_TEXT,AutoSetCf1103a,Y,,Executed@09_23AMNovember03
+Select Branch from the Belongs To dropdown,Belongs To dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='entity']]//input[@type='text']",ENTER_TEXT_ENTER,Branch,Y,,Executed@09_23AMNovember03
+Select Free Text Field from the Field Type dropdown,Field Type dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='type']]//input[@type='text']",ENTER_TEXT_ENTER,Free Text Field,Y,,Executed@09_23AMNovember03
+Click Save to create the custom field,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_24AMNovember03
+Wait for the custom field to be saved,,,,SLEEP,5,Y,,Executed@09_24AMNovember03
+Reload the Custom Fields list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/tags,Y,,Executed@09_24AMNovember03
+Wait for the Custom Fields list to load,,,,SLEEP,8,Y,,Executed@09_24AMNovember03
+Click the Branch entity in the Entity List,Entity Branch,XPATH,//*[normalize-space()='Entity List']/following::*[normalize-space(text())='Branch'][1],CLICK,,Y,,Executed@09_24AMNovember03
+Wait for the Branch custom fields to load,,,,SLEEP,4,Y,,Executed@09_24AMNovember03
+Wait for the custom field search box,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],WAIT_FOR_ELEMENT,,Y,,Executed@09_24AMNovember03
+Search for AutoSetCf1103a,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],ENTER_TEXT_ENTER,AutoSetCf1103a,Y,,Executed@09_24AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_25AMNovember03
+Verify the created custom field appears in the search results,custom field name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetCf1103a'],WAIT_FOR_ELEMENT,,Y,,Executed@09_25AMNovember03
+Click the Edit icon on the created custom field row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCf1103a']]//button[@name='edit'],CLICK,,Y,,Executed@09_25AMNovember03
+Wait for the edit custom field form to load,,,,SLEEP,5,Y,,Executed@09_25AMNovember03
+Wait for the editable field in the edit custom field form,Edit field,XPATH,//input[@name='label'],WAIT_FOR_ELEMENT,,Y,,Executed@09_25AMNovember03
+Append _upd to the custom field name,Edit field,XPATH,//input[@name='label'],ENTER_TEXT,_upd,Y,,Executed@09_25AMNovember03
+Click Save to save the custom field edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_26AMNovember03
+Wait for the custom field edit to save,,,,SLEEP,5,Y,,Executed@09_26AMNovember03
+Reload the Custom Fields list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/tags,Y,,Executed@09_26AMNovember03
+Wait for the Custom Fields list to load,,,,SLEEP,8,Y,,Executed@09_26AMNovember03
+Click the Branch entity in the Entity List,Entity Branch,XPATH,//*[normalize-space()='Entity List']/following::*[normalize-space(text())='Branch'][1],CLICK,,Y,,Executed@09_26AMNovember03
+Wait for the Branch custom fields to load,,,,SLEEP,4,Y,,Executed@09_26AMNovember03
+Wait for the custom field search box,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],WAIT_FOR_ELEMENT,,Y,,Executed@09_26AMNovember03
+Search for AutoSetCf1103a,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],ENTER_TEXT_ENTER,AutoSetCf1103a,Y,,Executed@09_26AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_27AMNovember03
+Verify the edited custom field appears in the search results,custom field name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetCf1103a_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@09_27AMNovember03
+Click the Delete icon on the custom field row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCf1103a_upd']]//button[@name='delete'],CLICK,,Y,,Executed@09_27AMNovember03
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@09_27AMNovember03
+Click Yes to confirm the custom field deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@09_27AMNovember03
+Wait for the custom field deletion to complete,,,,SLEEP,5,Y,,Executed@09_27AMNovember03
+Reload the Custom Fields list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/tags,Y,,Executed@09_27AMNovember03
+Wait for the Custom Fields list to load,,,,SLEEP,8,Y,,Executed@09_27AMNovember03
+Click the Branch entity in the Entity List,Entity Branch,XPATH,//*[normalize-space()='Entity List']/following::*[normalize-space(text())='Branch'][1],CLICK,,Y,,Executed@09_27AMNovember03
+Wait for the Branch custom fields to load,,,,SLEEP,4,Y,,Executed@09_27AMNovember03
+Wait for the custom field search box,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],WAIT_FOR_ELEMENT,,Y,,Executed@09_28AMNovember03
+Search for AutoSetCf1103a,Search custom field input,XPATH,//input[@placeholder='Search Custom Fields'],ENTER_TEXT_ENTER,AutoSetCf1103a,Y,,Executed@09_28AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_28AMNovember03
+Verify No Records Found is shown for the deleted custom field,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@09_28AMNovember03
+# ===== Section 10: Company Settings - Cost Model - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Cost Model page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-model,Y,,Executed@09_28AMNovember03
+Wait for the Cost Model page to load,,,,SLEEP,10,Y,,Executed@09_28AMNovember03
+Click Add Cost Model to open the add form,Button Add Cost Model,XPATH,//button[normalize-space()='Add Cost Model'],CLICK,,Y,,Executed@09_28AMNovember03
+Wait for the add form to open,,,,SLEEP,3,Y,,Executed@09_28AMNovember03
+Enter the cost model name in the Name field,Input with name=name,XPATH,//input[@name='name' and @required],ENTER_TEXT,AutoSetCm1103a,Y,,Executed@09_29AMNovember03
+Enter Daily KMs Allowance in the Daily KMs Allowance field,Input with name=includedKms,XPATH,//input[@name='includedKms'],ENTER_TEXT,100,Y,,Executed@09_29AMNovember03
+Enter Flat Fee Per Booking in the Flat Fee Per Booking field,Input with name=feePerBooking,XPATH,//input[@name='feePerBooking'],ENTER_TEXT,5,Y,,Executed@09_29AMNovember03
+Enter Hourly Rate in the Hourly Rate field,Input with name=hourlyRate,XPATH,//input[@name='hourlyRate'],ENTER_TEXT,2,Y,,Executed@09_29AMNovember03
+Enter Daily Rate in the Daily Rate field,Input with name=dailyRate,XPATH,//input[@name='dailyRate'],ENTER_TEXT,10,Y,,Executed@09_30AMNovember03
+Enter Weekly Rate in the Weekly Rate field,Input with name=weeklyRate,XPATH,//input[@name='weeklyRate'],ENTER_TEXT,50,Y,,Executed@09_30AMNovember03
+Enter Monthly Rate in the Monthly Rate field,Input with name=monthlyRate,XPATH,//input[@name='monthlyRate'],ENTER_TEXT,150,Y,,Executed@09_30AMNovember03
+Enter Late Fee in the Late Fee field,Input with name=lateFee,XPATH,//input[@name='lateFee'],ENTER_TEXT,20,Y,,Executed@09_30AMNovember03
+Enter Fee per extra hour in the Fee per extra hour field,Input with name=feePerExtraHour,XPATH,//input[@name='feePerExtraHour'],ENTER_TEXT,3,Y,,Executed@09_31AMNovember03
+Enter Fee per extra KM in the Fee per extra KM field,Input with name=feePerExtraKM,XPATH,//input[@name='feePerExtraKM'],ENTER_TEXT,1,Y,,Executed@09_31AMNovember03
+Click Save to create the cost model,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_31AMNovember03
+Wait for the cost model to be saved,,,,SLEEP,5,Y,,Executed@09_31AMNovember03
+Reload the Cost Model list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-model,Y,,Executed@09_31AMNovember03
+Wait for the Cost Model list to load,,,,SLEEP,8,Y,,Executed@09_31AMNovember03
+Wait for the cost model search box,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],WAIT_FOR_ELEMENT,,Y,,Executed@09_32AMNovember03
+Search for AutoSetCm1103a,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],ENTER_TEXT_ENTER,AutoSetCm1103a,Y,,Executed@09_32AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_32AMNovember03
+Verify the created cost model appears in the search results,cost model name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetCm1103a'],WAIT_FOR_ELEMENT,,Y,,Executed@09_32AMNovember03
+Click the Edit icon on the created cost model row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCm1103a']]//button[@name='edit'],CLICK,,Y,,Executed@09_32AMNovember03
+Wait for the edit cost model form to load,,,,SLEEP,5,Y,,Executed@09_32AMNovember03
+Wait for the editable field in the edit cost model form,Edit field,XPATH,//input[@name='name' and @required],WAIT_FOR_ELEMENT,,Y,,Executed@09_32AMNovember03
+Append _upd to the cost model name,Edit field,XPATH,//input[@name='name' and @required],ENTER_TEXT,_upd,Y,,Executed@09_33AMNovember03
+Click Save to save the cost model edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_33AMNovember03
+Wait for the cost model edit to save,,,,SLEEP,5,Y,,Executed@09_33AMNovember03
+Reload the Cost Model list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-model,Y,,Executed@09_33AMNovember03
+Wait for the Cost Model list to load,,,,SLEEP,8,Y,,Executed@09_33AMNovember03
+Wait for the cost model search box,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],WAIT_FOR_ELEMENT,,Y,,Executed@09_33AMNovember03
+Search for AutoSetCm1103a_upd,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],ENTER_TEXT_ENTER,AutoSetCm1103a_upd,Y,,Executed@09_33AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_34AMNovember03
+Verify the edited cost model appears in the search results,cost model name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetCm1103a_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@09_34AMNovember03
+Click the Delete icon on the cost model row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetCm1103a_upd']]//button[@name='delete'],CLICK,,Y,,Executed@09_34AMNovember03
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@09_34AMNovember03
+Click Yes to confirm the cost model deletion,Button Yes,XPATH,(//button[normalize-space()='Yes'])[last()],CLICK,,Y,,Executed@09_34AMNovember03
+Wait for the cost model deletion to complete,,,,SLEEP,5,Y,,Executed@09_34AMNovember03
+Reload the Cost Model list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/cost-model,Y,,Executed@09_34AMNovember03
+Wait for the Cost Model list to load,,,,SLEEP,8,Y,,Executed@09_34AMNovember03
+Wait for the cost model search box,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],WAIT_FOR_ELEMENT,,Y,,Executed@09_34AMNovember03
+Search for AutoSetCm1103a_upd,Search cost model input,XPATH,//input[@placeholder='Search Cost Model'],ENTER_TEXT_ENTER,AutoSetCm1103a_upd,Y,,Executed@09_34AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_35AMNovember03
+Verify No Records Found is shown for the deleted cost model,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@09_35AMNovember03
+# ===== Section 11: Company Settings - Branches - Add / Edit / Delete =====,,,,,,Y,,
+Navigate to the Company Branches page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/branches,Y,,Executed@09_35AMNovember03
+Wait for the Company Branches page to load,,,,SLEEP,10,Y,,Executed@09_35AMNovember03
+Click Add Branch to open the add form,Button Add Branch,XPATH,//button[normalize-space()='Add Branch'],CLICK,,Y,,Executed@09_35AMNovember03
+Wait for the add form to open,,,,SLEEP,3,Y,,Executed@09_35AMNovember03
+Enter the branch name in the Name field,Input with name=name,XPATH,//input[@name='name' and @required],ENTER_TEXT,AutoSetBr1103a,Y,,Executed@09_35AMNovember03
+Switch the branch Status to Inactive,Status toggle,XPATH,//input[@name='status']/ancestor::label[1],CLICK,,Y,,Executed@09_36AMNovember03
+Type Melbourne VIC in the Enter Location field,Input id=autocomplete,XPATH,//input[@id='autocomplete'],ENTER_TEXT,Melbourne VIC,Y,,Executed@09_36AMNovember03
+Wait for the address suggestions,,,,SLEEP,3,Y,,Executed@09_36AMNovember03
+"Select Melbourne VIC, Australia from the address suggestions",Address suggestion,XPATH,"//*[normalize-space(text())='Melbourne VIC, Australia']",CLICK,,Y,,Executed@09_36AMNovember03
+Open the Branch Timezone dropdown,Branch Timezone dropdown,XPATH,"//label[starts-with(normalize-space(),'Branch Timezone')]/following::*[contains(@class,'select__control')][1]",CLICK,,Y,,Executed@09_37AMNovember03
+Select Australia/Melbourne from the Branch Timezone dropdown,Timezone option,XPATH,"//*[contains(@class,'select__option')][normalize-space()='Australia/Melbourne']",CLICK,,Y,,Executed@09_37AMNovember03
+Click Set Business Hours,Set Business Hours link,XPATH,//*[normalize-space(text())='Set Business Hours'],CLICK,,Y,,Executed@09_37AMNovember03
+Wait for the Set Business Hours dialog,,,,SLEEP,2,Y,,Executed@09_37AMNovember03
+Open the Business Days dropdown,Business Days dropdown,XPATH,"(//*[normalize-space(text())='Business Days'])[last()]/ancestor::*[.//*[contains(@class,'select__control')]][1]//*[contains(@class,'select__control')]",CLICK,,Y,,Executed@09_38AMNovember03
+Select Weekdays from the Business Days dropdown,Business Days option Weekdays,XPATH,"//*[contains(@class,'select__option')][normalize-space()='Weekdays']",CLICK,,Y,,Executed@09_38AMNovember03
+Open the Start Time dropdown,Start Time dropdown,XPATH,"(//*[normalize-space(text())='Start Time'])[last()]/ancestor::*[.//*[contains(@class,'select__control')]][1]//*[contains(@class,'select__control')]",CLICK,,Y,,Executed@09_38AMNovember03
+Select 9:00 AM from the Start Time dropdown,Start Time option 9:00 AM,XPATH,"//*[contains(@class,'select__option')][normalize-space()='9:00 AM']",CLICK,,Y,,Executed@09_38AMNovember03
+Open the End Time dropdown,End Time dropdown,XPATH,"(//*[normalize-space(text())='End Time'])[last()]/ancestor::*[.//*[contains(@class,'select__control')]][1]//*[contains(@class,'select__control')]",CLICK,,Y,,Executed@09_39AMNovember03
+Select 5:00 PM from the End Time dropdown,End Time option 5:00 PM,XPATH,"//*[contains(@class,'select__option')][normalize-space()='5:00 PM']",CLICK,,Y,,Executed@09_39AMNovember03
+Click Save in the Set Business Hours dialog,Button Save,XPATH,//button[@type='submit' and normalize-space()='Save'],CLICK,,Y,,Executed@09_39AMNovember03
+Wait for the business hours dialog to close,,,,SLEEP,2,Y,,Executed@09_39AMNovember03
+Click Save to create the branch,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_39AMNovember03
+Wait for the branch to be saved,,,,SLEEP,5,Y,,Executed@09_40AMNovember03
+Reload the Company Branches list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/branches,Y,,Executed@09_40AMNovember03
+Wait for the Company Branches list to load,,,,SLEEP,8,Y,,Executed@09_40AMNovember03
+Wait for the branch search box,Search branch input,XPATH,//input[@placeholder='Search Branch'],WAIT_FOR_ELEMENT,,Y,,Executed@09_40AMNovember03
+Search for AutoSetBr1103a,Search branch input,XPATH,//input[@placeholder='Search Branch'],ENTER_TEXT_ENTER,AutoSetBr1103a,Y,,Executed@09_40AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_40AMNovember03
+Verify the created branch appears in the search results,branch name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetBr1103a'],WAIT_FOR_ELEMENT,,Y,,Executed@09_40AMNovember03
+Click the Edit icon on the created branch row,Row Edit icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetBr1103a']]//button[@name='edit'],CLICK,,Y,,Executed@09_40AMNovember03
+Wait for the edit branch form to load,,,,SLEEP,5,Y,,Executed@09_41AMNovember03
+Wait for the editable field in the edit branch form,Edit field,XPATH,//input[@name='name' and @required],WAIT_FOR_ELEMENT,,Y,,Executed@09_41AMNovember03
+Append _upd to the branch name,Edit field,XPATH,//input[@name='name' and @required],ENTER_TEXT,_upd,Y,,Executed@09_41AMNovember03
+Click Save to save the branch edit,Button Save,XPATH,(//button[normalize-space()='Save'])[last()],CLICK,,Y,,Executed@09_41AMNovember03
+Wait for the branch edit to save,,,,SLEEP,5,Y,,Executed@09_42AMNovember03
+Reload the Company Branches list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/branches,Y,,Executed@09_42AMNovember03
+Wait for the Company Branches list to load,,,,SLEEP,8,Y,,Executed@09_42AMNovember03
+Wait for the branch search box,Search branch input,XPATH,//input[@placeholder='Search Branch'],WAIT_FOR_ELEMENT,,Y,,Executed@09_42AMNovember03
+Search for AutoSetBr1103a_upd,Search branch input,XPATH,//input[@placeholder='Search Branch'],ENTER_TEXT_ENTER,AutoSetBr1103a_upd,Y,,Executed@09_42AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_42AMNovember03
+Verify the edited branch appears in the search results,branch name cell,XPATH,//*[@role='row']//*[normalize-space(text())='AutoSetBr1103a_upd'],WAIT_FOR_ELEMENT,,Y,,Executed@09_42AMNovember03
+Click the Delete icon on the branch row,Row Delete icon,XPATH,//*[@role='row'][.//*[normalize-space(text())='AutoSetBr1103a_upd']]//button[@name='delete'],CLICK,,Y,,Executed@09_42AMNovember03
+Wait for the delete confirmation to open,,,,SLEEP,3,Y,,Executed@09_42AMNovember03
+Click Yes to confirm the branch deletion,Button Yes,XPATH,//*[normalize-space(text())='Are you sure ?']/following::button[normalize-space()='Yes'][1],CLICK,,Y,,Executed@09_42AMNovember03
+Wait for the branch deletion to complete,,,,SLEEP,5,Y,,Executed@09_43AMNovember03
+Reload the Company Branches list,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/branches,Y,,Executed@09_43AMNovember03
+Wait for the Company Branches list to load,,,,SLEEP,8,Y,,Executed@09_43AMNovember03
+Wait for the branch search box,Search branch input,XPATH,//input[@placeholder='Search Branch'],WAIT_FOR_ELEMENT,,Y,,Executed@09_43AMNovember03
+Search for AutoSetBr1103a_upd,Search branch input,XPATH,//input[@placeholder='Search Branch'],ENTER_TEXT_ENTER,AutoSetBr1103a_upd,Y,,Executed@09_43AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_43AMNovember03
+Verify No Records Found is shown for the deleted branch,No Records Found message,XPATH,//*[normalize-space(text())='No Records Found'] | //*[normalize-space()='Total Records: 0'],WAIT_FOR_ELEMENT,,Y,,Executed@09_43AMNovember03
+# ===== Section 12: Booking Settings - Update and Revert =====,,,,,,Y,,
+Open the Booking Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-settings,Y,,Executed@09_43AMNovember03
+Wait for the Booking Settings page to load,,,,SLEEP,10,Y,,Executed@09_43AMNovember03
+Verify Max number of search days shows the original value before the change,Max number of search days,XPATH,//input[@name='Max number of search days'][@value='30'],WAIT_FOR_ELEMENT,,Y,,Executed@09_43AMNovember03
+Set Max number of search days to the test value,Max number of search days,XPATH,//input[@name='Max number of search days'],ENTER_TEXT,a31,Y,,Executed@09_43AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_44AMNovember03
+Click Save on the Booking Settings section,Button Save,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@09_44AMNovember03
+Wait for the Booking Settings to be saved,,,,SLEEP,5,Y,,Executed@09_44AMNovember03
+Reload the Booking Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-settings,Y,,Executed@09_44AMNovember03
+Wait for the Booking Settings page to load after saving,,,,SLEEP,10,Y,,Executed@09_44AMNovember03
+Verify Max number of search days now shows the test value,Max number of search days,XPATH,//input[@name='Max number of search days'][@value='31'],WAIT_FOR_ELEMENT,,Y,,Executed@09_44AMNovember03
+Open the Booking Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-settings,Y,,Executed@09_44AMNovember03
+Wait for the Booking Settings page to load,,,,SLEEP,10,Y,,Executed@09_44AMNovember03
+Set Max number of search days to the original value,Max number of search days,XPATH,//input[@name='Max number of search days'],ENTER_TEXT,a30,Y,,Executed@09_44AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_45AMNovember03
+Click Save on the Booking Settings section,Button Save,XPATH,//button[normalize-space()='Save'],CLICK,,Y,,Executed@09_45AMNovember03
+Wait for the Booking Settings to be saved,,,,SLEEP,5,Y,,Executed@09_45AMNovember03
+Reload the Booking Settings page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/booking-settings,Y,,Executed@09_45AMNovember03
+Wait for the Booking Settings page to load after saving,,,,SLEEP,10,Y,,Executed@09_45AMNovember03
+Verify Max number of search days now shows the original value,Max number of search days,XPATH,//input[@name='Max number of search days'][@value='30'],WAIT_FOR_ELEMENT,,Y,,Executed@09_45AMNovember03
+# ===== Section 13: Company Profile - Helpdesk Contact - Update and Revert =====,,,,,,Y,,
+Open the Company Profile page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/profile,Y,,Executed@09_45AMNovember03
+Wait for the Company Profile page to load,,,,SLEEP,10,Y,,Executed@09_45AMNovember03
+Click Edit on the Helpdesk Contact section,Helpdesk Edit button,XPATH,//*[normalize-space(text())='Helpdesk Contact']/following::button[normalize-space()='Edit'][1],CLICK,,Y,,Executed@09_45AMNovember03
+Wait for the helpdesk fields to open,,,,SLEEP,3,Y,,Executed@09_46AMNovember03
+Verify the Helpdesk message shows the original value before the change,the Helpdesk message,XPATH,//input[@name='message'][@value='Message'],WAIT_FOR_ELEMENT,,Y,,Executed@09_46AMNovember03
+Set the Helpdesk message to the test value,the Helpdesk message,XPATH,//input[@name='message'],ENTER_TEXT,auto,Y,,Executed@09_46AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_46AMNovember03
+Click Save on the Company Profile section,Button Save,XPATH,//input[@name='message']/following::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_47AMNovember03
+Wait for the Company Profile to be saved,,,,SLEEP,5,Y,,Executed@09_47AMNovember03
+Reload the Company Profile page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/profile,Y,,Executed@09_47AMNovember03
+Wait for the Company Profile page to load after saving,,,,SLEEP,10,Y,,Executed@09_47AMNovember03
+Click Edit on the Helpdesk Contact section,Helpdesk Edit button,XPATH,//*[normalize-space(text())='Helpdesk Contact']/following::button[normalize-space()='Edit'][1],CLICK,,Y,,Executed@09_47AMNovember03
+Wait for the helpdesk fields to open,,,,SLEEP,3,Y,,Executed@09_47AMNovember03
+Verify the Helpdesk message now shows the test value,the Helpdesk message,XPATH,//input[@name='message'][@value='Messageauto'],WAIT_FOR_ELEMENT,,Y,,Executed@09_48AMNovember03
+Open the Company Profile page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/profile,Y,,Executed@09_48AMNovember03
+Wait for the Company Profile page to load,,,,SLEEP,10,Y,,Executed@09_48AMNovember03
+Click Edit on the Helpdesk Contact section,Helpdesk Edit button,XPATH,//*[normalize-space(text())='Helpdesk Contact']/following::button[normalize-space()='Edit'][1],CLICK,,Y,,Executed@09_48AMNovember03
+Wait for the helpdesk fields to open,,,,SLEEP,3,Y,,Executed@09_49AMNovember03
+Set the Helpdesk message to the original value,the Helpdesk message,XPATH,//input[@name='message'],ENTER_TEXT,aMessage,Y,,Executed@09_49AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_49AMNovember03
+Click Save on the Company Profile section,Button Save,XPATH,//input[@name='message']/following::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_49AMNovember03
+Wait for the Company Profile to be saved,,,,SLEEP,5,Y,,Executed@09_49AMNovember03
+Reload the Company Profile page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/profile,Y,,Executed@09_50AMNovember03
+Wait for the Company Profile page to load after saving,,,,SLEEP,10,Y,,Executed@09_50AMNovember03
+Click Edit on the Helpdesk Contact section,Helpdesk Edit button,XPATH,//*[normalize-space(text())='Helpdesk Contact']/following::button[normalize-space()='Edit'][1],CLICK,,Y,,Executed@09_50AMNovember03
+Wait for the helpdesk fields to open,,,,SLEEP,3,Y,,Executed@09_50AMNovember03
+Verify the Helpdesk message now shows the original value,the Helpdesk message,XPATH,//input[@name='message'][@value='Message'],WAIT_FOR_ELEMENT,,Y,,Executed@09_50AMNovember03
+# ===== Section 14: Checklist and Odometer - Update and Revert =====,,,,,,Y,,
+Open the Checklist and Odometer page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/checklist,Y,,Executed@09_51AMNovember03
+Wait for the Checklist and Odometer page to load,,,,SLEEP,10,Y,,Executed@09_51AMNovember03
+Verify the Auto adjust completed bookings odometer toggle shows the original value before the change,the Auto adjust completed bookings odometer toggle,XPATH,"//input[@name='autoAdjustCompBooking']/following-sibling::span[1]/span[contains(@class,'jQrxoU')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_51AMNovember03
+Set the Auto adjust completed bookings odometer toggle to the test value,the Auto adjust completed bookings odometer toggle,XPATH,//input[@name='autoAdjustCompBooking']/..,CLICK,,Y,,Executed@09_51AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_51AMNovember03
+Click Save on the Checklist and Odometer section,Button Save,XPATH,//input[@name='autoAdjustCompBooking']/preceding::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_51AMNovember03
+Wait for the Checklist and Odometer to be saved,,,,SLEEP,5,Y,,Executed@09_51AMNovember03
+Reload the Checklist and Odometer page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/checklist,Y,,Executed@09_51AMNovember03
+Wait for the Checklist and Odometer page to load after saving,,,,SLEEP,10,Y,,Executed@09_51AMNovember03
+Verify the Auto adjust completed bookings odometer toggle now shows the test value,the Auto adjust completed bookings odometer toggle,XPATH,"//input[@name='autoAdjustCompBooking']/following-sibling::span[1]/span[contains(@class,'mKQYG')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_52AMNovember03
+Open the Checklist and Odometer page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/checklist,Y,,Executed@09_52AMNovember03
+Wait for the Checklist and Odometer page to load,,,,SLEEP,10,Y,,Executed@09_52AMNovember03
+Set the Auto adjust completed bookings odometer toggle to the original value,the Auto adjust completed bookings odometer toggle,XPATH,//input[@name='autoAdjustCompBooking']/..,CLICK,,Y,,Executed@09_52AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_52AMNovember03
+Click Save on the Checklist and Odometer section,Button Save,XPATH,//input[@name='autoAdjustCompBooking']/preceding::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_52AMNovember03
+Wait for the Checklist and Odometer to be saved,,,,SLEEP,5,Y,,Executed@09_52AMNovember03
+Reload the Checklist and Odometer page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/checklist,Y,,Executed@09_52AMNovember03
+Wait for the Checklist and Odometer page to load after saving,,,,SLEEP,10,Y,,Executed@09_52AMNovember03
+Verify the Auto adjust completed bookings odometer toggle now shows the original value,the Auto adjust completed bookings odometer toggle,XPATH,"//input[@name='autoAdjustCompBooking']/following-sibling::span[1]/span[contains(@class,'jQrxoU')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_53AMNovember03
+# ===== Section 15: Configs - Update and Revert =====,,,,,,Y,,
+Open the Configs page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/configs,Y,,Executed@09_53AMNovember03
+Wait for the Configs page to load,,,,SLEEP,25,Y,,Executed@09_53AMNovember03
+Verify the Hide Date of Birth on UI toggle shows the original value before the change,the Hide Date of Birth on UI toggle,XPATH,"//input[@name='hideDateOfBirth']/following-sibling::span[1]/span[contains(@class,'jQrxoU')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_53AMNovember03
+Set the Hide Date of Birth on UI toggle to the test value,the Hide Date of Birth on UI toggle,XPATH,//input[@name='hideDateOfBirth']/..,CLICK,,Y,,Executed@09_53AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_53AMNovember03
+Click Save on the Configs section,Button Save,XPATH,//input[@name='hideDateOfBirth']/preceding::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_53AMNovember03
+Wait for the Configs to be saved,,,,SLEEP,5,Y,,Executed@09_53AMNovember03
+Reload the Configs page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/configs,Y,,Executed@09_54AMNovember03
+Wait for the Configs page to load after saving,,,,SLEEP,25,Y,,Executed@09_54AMNovember03
+Verify the Hide Date of Birth on UI toggle now shows the test value,the Hide Date of Birth on UI toggle,XPATH,"//input[@name='hideDateOfBirth']/following-sibling::span[1]/span[contains(@class,'mKQYG')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_54AMNovember03
+Open the Configs page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/configs,Y,,Executed@09_54AMNovember03
+Wait for the Configs page to load,,,,SLEEP,25,Y,,Executed@09_55AMNovember03
+Set the Hide Date of Birth on UI toggle to the original value,the Hide Date of Birth on UI toggle,XPATH,//input[@name='hideDateOfBirth']/..,CLICK,,Y,,Executed@09_55AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_55AMNovember03
+Click Save on the Configs section,Button Save,XPATH,//input[@name='hideDateOfBirth']/preceding::button[normalize-space()='Save'][1],CLICK,,Y,,Executed@09_55AMNovember03
+Wait for the Configs to be saved,,,,SLEEP,5,Y,,Executed@09_55AMNovember03
+Reload the Configs page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/company-settings/configs,Y,,Executed@09_55AMNovember03
+Wait for the Configs page to load after saving,,,,SLEEP,25,Y,,Executed@09_55AMNovember03
+Verify the Hide Date of Birth on UI toggle now shows the original value,the Hide Date of Birth on UI toggle,XPATH,"//input[@name='hideDateOfBirth']/following-sibling::span[1]/span[contains(@class,'jQrxoU')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_56AMNovember03
+# ===== Section 16: Notification Templates - Update and Revert =====,,,,,,Y,,
+Open the Notification Templates page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/notification-templates,Y,,Executed@09_56AMNovember03
+Wait for the Notification Templates page to load,,,,SLEEP,12,Y,,Executed@09_56AMNovember03
+Wait for the notification template search box,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],WAIT_FOR_ELEMENT,,Y,,Executed@09_56AMNovember03
+Search for the Incident On Hold | Roles template,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],ENTER_TEXT_ENTER,Incident On Hold | Roles,Y,,Executed@09_56AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_56AMNovember03
+Click Edit on the Incident On Hold | Roles template,Row Edit icon,XPATH,(//*[@role='row'][.//*[normalize-space(text())='Incident On Hold | Roles']]//button[@name='edit'])[1],CLICK,,Y,,Executed@09_56AMNovember03
+Wait for the template editor to load,,,,SLEEP,5,Y,,Executed@09_56AMNovember03
+Verify the template Subject shows the original value before the change,the template Subject,XPATH,"//input[@name='subject'][@value='ForceField Share - Incident Status Changed to On Hold ID {{incident[""pk""]}}']",WAIT_FOR_ELEMENT,,Y,,Executed@09_56AMNovember03
+Set the template Subject to the test value,the template Subject,XPATH,//input[@name='subject'],ENTER_TEXT,AUTO,Y,,Executed@09_56AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_56AMNovember03
+Click Save on the Notification Templates section,Button Save,XPATH,//button[@type='submit' and normalize-space()='Submit'],CLICK,,Y,,Executed@09_57AMNovember03
+Wait for the Notification Templates to be saved,,,,SLEEP,5,Y,,Executed@09_57AMNovember03
+Reload the Notification Templates page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/notification-templates,Y,,Executed@09_57AMNovember03
+Wait for the Notification Templates page to load after saving,,,,SLEEP,12,Y,,Executed@09_57AMNovember03
+Wait for the notification template search box,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],WAIT_FOR_ELEMENT,,Y,,Executed@09_57AMNovember03
+Search for the Incident On Hold | Roles template,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],ENTER_TEXT_ENTER,Incident On Hold | Roles,Y,,Executed@09_57AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_57AMNovember03
+Click Edit on the Incident On Hold | Roles template,Row Edit icon,XPATH,(//*[@role='row'][.//*[normalize-space(text())='Incident On Hold | Roles']]//button[@name='edit'])[1],CLICK,,Y,,Executed@09_57AMNovember03
+Wait for the template editor to load,,,,SLEEP,5,Y,,Executed@09_57AMNovember03
+Verify the template Subject now shows the test value,the template Subject,XPATH,"//input[@name='subject'][contains(@value,'}}AUTO')]",WAIT_FOR_ELEMENT,,Y,,Executed@09_58AMNovember03
+Open the Notification Templates page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/notification-templates,Y,,Executed@09_58AMNovember03
+Wait for the Notification Templates page to load,,,,SLEEP,12,Y,,Executed@09_58AMNovember03
+Wait for the notification template search box,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],WAIT_FOR_ELEMENT,,Y,,Executed@09_58AMNovember03
+Search for the Incident On Hold | Roles template,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],ENTER_TEXT_ENTER,Incident On Hold | Roles,Y,,Executed@09_58AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_58AMNovember03
+Click Edit on the Incident On Hold | Roles template,Row Edit icon,XPATH,(//*[@role='row'][.//*[normalize-space(text())='Incident On Hold | Roles']]//button[@name='edit'])[1],CLICK,,Y,,Executed@09_58AMNovember03
+Wait for the template editor to load,,,,SLEEP,5,Y,,Executed@09_58AMNovember03
+Set the template Subject to the original value,the template Subject,XPATH,//input[@name='subject'],ENTER_TEXT,"aForceField Share - Incident Status Changed to On Hold ID {{incident[""pk""]}}",Y,,Executed@09_58AMNovember03
+Wait for the change to register,,,,SLEEP,1,Y,,Executed@09_59AMNovember03
+Click Save on the Notification Templates section,Button Save,XPATH,//button[@type='submit' and normalize-space()='Submit'],CLICK,,Y,,Executed@09_59AMNovember03
+Wait for the Notification Templates to be saved,,,,SLEEP,5,Y,,Executed@09_59AMNovember03
+Reload the Notification Templates page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/notification-templates,Y,,Executed@09_59AMNovember03
+Wait for the Notification Templates page to load after saving,,,,SLEEP,12,Y,,Executed@09_59AMNovember03
+Wait for the notification template search box,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],WAIT_FOR_ELEMENT,,Y,,Executed@09_59AMNovember03
+Search for the Incident On Hold | Roles template,Search templates input,XPATH,//input[@placeholder='Search notification templates by name'],ENTER_TEXT_ENTER,Incident On Hold | Roles,Y,,Executed@09_59AMNovember03
+Wait for the search results to load,,,,SLEEP,5,Y,,Executed@09_59AMNovember03
+Click Edit on the Incident On Hold | Roles template,Row Edit icon,XPATH,(//*[@role='row'][.//*[normalize-space(text())='Incident On Hold | Roles']]//button[@name='edit'])[1],CLICK,,Y,,FAIL@Executed@10_00AMNovember03
+Wait for the template editor to load,,,,SLEEP,5,Y,,Executed@10_00AMNovember03
+Verify the template Subject now shows the original value,the template Subject,XPATH,"//input[@name='subject'][@value='ForceField Share - Incident Status Changed to On Hold ID {{incident[""pk""]}}']",WAIT_FOR_ELEMENT,,Y,,FAIL@Executed@10_00AMNovember03
+# ===== Section 17: App Theme - Colour Picker Check (no save) =====,,,,,,Y,,
+Open the App Theme page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/theme,Y,,Executed@10_00AMNovember03
+Wait for the App Theme page to load,,,,SLEEP,20,Y,,Executed@10_01AMNovember03
+Verify the Brand Color setting is shown,Brand Color label,XPATH,//label[normalize-space()='Brand Color'],WAIT_FOR_ELEMENT,,Y,,Executed@10_01AMNovember03
+Click the Border Color swatch to open the colour picker,Border Color swatch,XPATH,//label[normalize-space()='Border Color']/following::*[@tabindex='0'][1],CLICK,,Y,,Executed@10_01AMNovember03
+Wait for the colour picker to open,,,,SLEEP,2,Y,,Executed@10_01AMNovember03
+Verify the colour picker hex field is shown,Hex input,XPATH,//input[not(@type)],WAIT_FOR_ELEMENT,,Y,,Executed@10_01AMNovember03
+Click the Global Theme heading to close the colour picker without saving,Global Theme heading,XPATH,//*[normalize-space()='Global Theme'],CLICK,,Y,,Executed@10_01AMNovember03
+# ===== Section 18: Settings Pages - Load Check =====,,,,,,Y,,
+Navigate to the My Branch page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/my-branch,Y,,Executed@10_01AMNovember03
+Wait for the My Branch page to load,,,,SLEEP,8,Y,,Executed@10_01AMNovember03
+Verify the My Branch page has loaded,My Branch status,XPATH,//*[normalize-space(text())='No Branch Assigned'] | //*[normalize-space(text())='My Branch'],WAIT_FOR_ELEMENT,,Y,,Executed@10_01AMNovember03
+Navigate to the Plugins page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/plugins,Y,,Executed@10_02AMNovember03
+Wait for the Plugins page to load,,,,SLEEP,8,Y,,Executed@10_02AMNovember03
+Verify the Plugins page lists the Bulk Upload CSV plugin,Bulk Upload CSV plugin,XPATH,(//*[normalize-space(text())='Bulk Upload CSV'])[1],WAIT_FOR_ELEMENT,,Y,,Executed@10_02AMNovember03
+# ===== Section 19: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@10_02AMNovember03
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@10_02AMNovember03
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@10_02AMNovember03
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@10_02AMNovember03
+Click the Logout button in the profile menu,Button Logout,XPATH,(//button[normalize-space()='Logout'])[last()],CLICK,,Y,,Executed@10_02AMNovember03
+Verify the login page is shown after logout,,,,WAIT_FOR_URL,login,Y,,Executed@10_02AMNovember03

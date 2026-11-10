@@ -1,0 +1,75 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@01_43PMNovember05
+# ===== USER_TFM MODULE - Login =====,,,,,,,,
+Navigate to the TFM login page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/login,Y,,Executed@01_43PMNovember05
+Enter the admin login email in the Email field,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+1@thoughts2binary.com,Y,,Executed@01_43PMNovember05
+Enter the admin password in the Password field,Input with name=password,XPATH,//input[@name='password'],ENTER_TEXT,<PASSWORD>,Y,,Executed@01_43PMNovember05
+Click the Sign In button to log in,Button Sign In,XPATH,//button[normalize-space(text())='Sign In'] | //*[@role='button' and normalize-space(text())='Sign In'] | //*[@role='button' and @aria-label='Sign In'],CLICK,,Y,,Executed@01_43PMNovember05
+Wait for the login to complete before navigating,,,,SLEEP,8,Y,,Executed@01_43PMNovember05
+# ===== Section 1: User - Create Driver / Invite / Search / Edit / Reset Password =====,,,,,,Y,,
+Navigate to the Business Dashboard,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/my-boards/248/Business%20Dashboard,Y,,Executed@01_43PMNovember05
+Navigate directly to the User List page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/users,Y,,Executed@01_43PMNovember05
+Wait for the User List page to finish loading,,,,SLEEP,6,Y,,Executed@01_43PMNovember05
+Wait for the Add New User button to confirm the User List page loaded,Button Add New User,XPATH,//button[normalize-space(.)='Add New User'],WAIT_FOR_ELEMENT,,Y,,Executed@01_43PMNovember05
+Click the Add New User button to open the add user menu,Button Add New User,XPATH,//button[normalize-space(.)='Add New User'],CLICK,,Y,,Executed@01_43PMNovember05
+Click the Create New User option to open the create user form,Create New User option,XPATH,//span[normalize-space()='Create New User'],CLICK,,Y,,Executed@01_44PMNovember05
+Enter the employee ID in the Employee ID field,Input with name=employeeId,XPATH,//input[@name='employeeId'],ENTER_TEXT,1105002,Y,,Executed@01_44PMNovember05
+Enter the first name in the First Name field,Input with name=firstName,XPATH,//input[@name='firstName'],ENTER_TEXT,TFMDriver1105b,Y,,Executed@01_44PMNovember05
+Enter the last name in the Last Name field,Input with name=lastName,XPATH,//input[@name='lastName'],ENTER_TEXT,TFM,Y,,Executed@01_44PMNovember05
+Enter the email address in the Email Address field,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+tfmdrv1105b@thoughts2binary.com,Y,,Executed@01_44PMNovember05
+Select Driver from the Role dropdown,Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='role']]//input[@type='text']",ENTER_TEXT_ENTER,Driver,Y,,Executed@01_45PMNovember05
+Enter the mobile number in the Contact Number field,Input with name=phone,XPATH,//input[@name='phone'],ENTER_TEXT,421142481,Y,,Executed@01_45PMNovember05
+Enter the date of birth in the Date of Birth field,Date of Birth input,XPATH,(//input[@placeholder='dd/mm/yyyy'])[1],ENTER_TEXT,15/07/1995,Y,,Executed@01_45PMNovember05
+Select Date of Birth 15 Jul 1995,Calendar day button,XPATH,//button[@aria-label='Sat Jul 15 1995'],CLICK,,Y,,Executed@01_45PMNovember05
+Select Branch_1 from the Branch dropdown,Branch dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='branch']]//input[@type='text']",ENTER_TEXT_ENTER,Branch_1,Y,,Executed@01_46PMNovember05
+Select test_automate from the Department dropdown,Department dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='departments']]//input[@type='text']",ENTER_TEXT_ENTER,test_automate,Y,,Executed@01_46PMNovember05
+Select Test from the Cost Centre dropdown,Cost Centre dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='costCentre']]//input[@type='text']",ENTER_TEXT_ENTER,Test,Y,,Executed@01_46PMNovember05
+Select Active from the User Status dropdown,User Status dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='userStatus']]//input[@type='text']",ENTER_TEXT_ENTER,Active,Y,,Executed@01_46PMNovember05
+Enter the line manager email in the Line Manager Email field,Input with name=manager,XPATH,//input[@name='manager'],ENTER_TEXT,yash.poniya@thoughts2binary.com,Y,,Executed@01_47PMNovember05
+Select C - Car from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,C - Car,Y,,Executed@01_47PMNovember05
+Select HC - Heavy Combination from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,HC - Heavy Combination,Y,,Executed@01_47PMNovember05
+Select HR - Heavy Rigid from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,HR - Heavy Rigid,Y,,Executed@01_47PMNovember05
+Select LR - Light Rigid from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,LR - Light Rigid,Y,,Executed@01_48PMNovember05
+Select MC - Multi Combination from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,MC - Multi Combination,Y,,Executed@01_48PMNovember05
+Select MR - Medium Rigid from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,MR - Medium Rigid,Y,,Executed@01_48PMNovember05
+Select Commercial Passenger from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,Commercial Passenger,Y,,Executed@01_48PMNovember05
+Select R - Rider from the License Class dropdown,License Class dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='License Class']]//input[@type='text']",ENTER_TEXT_ENTER,R - Rider,Y,,Executed@01_48PMNovember05
+Enter the license expiry date in the License Expiry Date field,License Expiry Date input,XPATH,(//input[@placeholder='dd/mm/yyyy'])[2],ENTER_TEXT,31/07/2027,Y,,Executed@01_49PMNovember05
+Select License Expiry Date 31 Jul 2027,Calendar day button,XPATH,//button[@aria-label='Sat Jul 31 2027'],CLICK,,Y,,Executed@01_49PMNovember05
+Select Australia from the Country of issue dropdown,Country of issue dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='licenseCountryOfIssue']]//input[@type='text']",ENTER_TEXT_ENTER,Australia,Y,,Executed@01_49PMNovember05
+Click the Save button to create the new driver user,Button Save,XPATH,//button[normalize-space(.)='Save'],CLICK,,Y,,Executed@01_49PMNovember05
+Wait for the create user save to complete,,,,SLEEP,3,Y,,Executed@01_50PMNovember05
+Reload User List page,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/users,Y,,Executed@01_50PMNovember05
+Wait for the User List page to load before starting the invite,,,,SLEEP,6,Y,,Executed@01_50PMNovember05
+Wait for the Add New User button before starting the invite,Button Add New User,XPATH,//button[normalize-space(.)='Add New User'],WAIT_FOR_ELEMENT,,Y,,Executed@01_50PMNovember05
+Click the Add New User button to open the add user menu for invite,Button Add New User,XPATH,//button[normalize-space(.)='Add New User'],CLICK,,Y,,Executed@01_50PMNovember05
+Wait for the add user menu to open before choosing invite,,,,SLEEP,2,Y,,Executed@01_50PMNovember05
+Click the Invite New User option to open the invite user form,Invite New User option,XPATH,(//span[normalize-space()='Invite New User'])[last()],CLICK,,Y,,Executed@01_50PMNovember05
+Enter the invite first name in the First Name field,Input with name=firstName,XPATH,//input[@name='firstName'],ENTER_TEXT,YashfleetManager,Y,,Executed@01_50PMNovember05
+Enter the invite last name in the Last Name field,Input with name=lastName,XPATH,//input[@name='lastName'],ENTER_TEXT,TFM,Y,,Executed@01_51PMNovember05
+Enter the invite email address in the Email field,Input with name=email,XPATH,//input[@name='email'],ENTER_TEXT,yash.poniya+tfmbm1105b@thoughts2binary.com,Y,,Executed@01_51PMNovember05
+Select Branch Manager from the invite Role dropdown,Role dropdown,XPATH,"//*[contains(@class,'select__control') and ..//input[@name='role']]//input[@type='text']",ENTER_TEXT_ENTER,Branch Manager,Y,,Executed@01_51PMNovember05
+Click the Save button to send the user invite,Button Save,XPATH,//button[normalize-space(.)='Save'],CLICK,,Y,,Executed@01_51PMNovember05
+Wait for the invite save to complete,,,,SLEEP,3,Y,,Executed@01_52PMNovember05
+Clear the empty Role filter chip if shown so the user list shows all users,Role filter chip close icon or page subtitle,XPATH,(//*[normalize-space(text())='View & manage all your User profiles'] | //button[@aria-label='Open Drop'][.//*[normalize-space(text())='Role:']]//*[local-name()='svg' and @aria-label='FormClose']/parent::*)[last()],CLICK,,Y,,Executed@01_52PMNovember05
+Wait for the user list to reload without the Role filter,,,,SLEEP,5,Y,,Executed@01_52PMNovember05
+Search for the created driver user in the user list,Search Users input,XPATH,//input[@type='search'],ENTER_TEXT_ENTER,TFMDriver1105b,Y,,Executed@01_52PMNovember05
+Wait for the search results to load,,,,SLEEP,3,Y,,Executed@01_52PMNovember05
+Verify the created driver user appears in the search results,Created user name cell,XPATH,//*[normalize-space(text())='TFMDriver1105b TFM'],WAIT_FOR_ELEMENT,,Y,,Executed@01_52PMNovember05
+Click the Edit pencil icon in the first search result row,Row Edit icon,XPATH,(//*[@role='row']//button[@name='edit'])[1],CLICK,,Y,,Executed@01_52PMNovember05
+Click the Last Name field in the edit form,Input with name=lastName,XPATH,//input[@name='lastName'],CLICK,,Y,,Executed@01_52PMNovember05
+Append _user_001 to Last Name,Input with name=lastName,XPATH,//input[@name='lastName'],ENTER_TEXT,_user_001,Y,,Executed@01_53PMNovember05
+Click the Save button to save the user edit,Button Save,XPATH,//button[normalize-space(.)='Save'],CLICK,,Y,,Executed@01_53PMNovember05
+Wait for the user edit save to complete,,,,SLEEP,3,Y,,Executed@01_53PMNovember05
+Click the Catalog icon in the first row to open the Audit Logs,Row Audit Logs icon,XPATH,(//*[@role='row']//button[@name='auditLogs'])[1],CLICK,,Y,,Executed@01_53PMNovember05
+Wait for the Audit Logs view to open,,,,SLEEP,2,Y,,Executed@01_53PMNovember05
+Click the Close button to close the Audit Logs view,Close button,XPATH,(//*[normalize-space(text())='Audit Logs']/following::*[local-name()='svg'])[1]/parent::*,CLICK,,Y,,Executed@01_54PMNovember05
+Click the Lock icon in the first row to reset the user password,Row Reset Password icon,XPATH,(//*[@role='row']//button[@name='reset_password'])[1],CLICK,,Y,,Executed@01_54PMNovember05
+Click the Yes button to confirm the password reset,Button Yes,XPATH,//button[normalize-space(text())='Yes'] | //*[@role='button' and normalize-space(text())='Yes'] | //*[@role='button' and @aria-label='Yes'],CLICK,,Y,,Executed@01_54PMNovember05
+# ===== Section 2: Logout =====,,,,,,Y,,
+Navigate to the Dashboard before logging out,url,,,OPEN_URL,https://forcefieldshare.fleetlocate.com.au/dashboard,Y,,Executed@01_54PMNovember05
+Wait for the Dashboard to load before logging out,,,,SLEEP,6,Y,,Executed@01_54PMNovember05
+Click the user profile menu at the bottom of the side menu,User profile menu,XPATH,"//button[contains(@class,'user-menu')]",CLICK,,Y,,Executed@01_54PMNovember05
+Wait for the profile menu to open,,,,SLEEP,2,Y,,Executed@01_54PMNovember05
+Click the Logout button in the profile menu,Button Logout,XPATH,(//button[normalize-space()='Logout'])[last()],CLICK,,Y,,Executed@01_54PMNovember05
+Wait for the login page to load after logout,,,,SLEEP,4,Y,,Executed@01_55PMNovember05

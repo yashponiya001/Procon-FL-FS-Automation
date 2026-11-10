@@ -1,0 +1,32 @@
+Basic Sanity,Element,Locator,Locator Value,Action,Test Data,Run,Extra Data,Executed On
+Wait 6 seconds for the browser to finish launching,,,,SLEEP,6,Y,,Executed@11_03PMNovember06
+Enter username in Login Form,textbox,XPATH,//input[@id='userid'],ENTER_TEXT,yash.poniya+1561@thoughts2binary.com,Y,,Executed@11_03PMNovember06
+Enter password in Login Form,Password field,XPATH,//input[@name='password'],ENTER_TEXT,<PASSWORD>,Y,,Executed@11_03PMNovember06
+Click Sign In button,Sign In button,XPATH,//button[@id='submitButton'],CLICK,,Y,3,Executed@11_03PMNovember06
+Click on Time Traveller button,Time Traveller button,XPATH,//button[@title='Time Traveller'],CLICK,,Y,2,Executed@11_03PMNovember06
+Click All set to time travel,Time travel button,XPATH,//*[@id='initTimeTraveller'],CLICK,,Y,1,Executed@11_03PMNovember06
+Click Horizontal Split View,Horizontal Split button,XPATH,//button[@title='Horizontal Split View'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Live Status tab,Live Status tab,XPATH,//a[@role='option'][normalize-space()='Live Status'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Vertical Split View,Vertical Split button,XPATH,//button[@title='Vertical Split View'],CLICK,,Y,1,Executed@11_04PMNovember06
+Take screenshot of vehicles list,,,,TAKE_SCREENSHOT,,Y,,Executed@11_04PMNovember06
+Click Moving status filter,Moving button,XPATH,//button[@title='Show Moving Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Take screenshot of moving vehicles,,,,TAKE_SCREENSHOT,,Y,,Executed@11_04PMNovember06
+Click Moving status filter to deselect,Moving button,XPATH,//button[@title='Show Moving Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Idle status filter,Idle button,XPATH,//button[@title='Show Idle Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Take screenshot of idle vehicles,,,,TAKE_SCREENSHOT,,Y,,Executed@11_04PMNovember06
+Click Idle status filter to deselect,Idle button,XPATH,//button[@title='Show Idle Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Stopped status filter,Stopped button,XPATH,//button[@title='Show Stopped Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Take screenshot of stopped vehicles,,,,TAKE_SCREENSHOT,,Y,,Executed@11_04PMNovember06
+Click Stopped status filter to deselect,Stopped button,XPATH,//button[@title='Show Stopped Vehicles'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Inside Landmarks status filter,Landmarks button,XPATH,//button[@title='Show Vehicles Inside Landmark'],CLICK,,Y,1,Executed@11_04PMNovember06
+Take screenshot of landmark vehicles,,,,TAKE_SCREENSHOT,,Y,,Executed@11_04PMNovember06
+Click Inside Landmarks filter to deselect,Landmarks button,XPATH,//button[@title='Show Vehicles Inside Landmark'],CLICK,,Y,1,Executed@11_04PMNovember06
+Click Refresh button,Refresh button,XPATH,//span[normalize-space()='Refresh'],CLICK,,Y,1,FAIL@Executed@11_05PMNovember06
+Click History icon,History icon,XPATH,//span[@title='View History'],CLICK,,Y,2,Executed@11_05PMNovember06
+Click Alerts tab,Alerts tab,XPATH,//a[@data-toggle='tab'][normalize-space()='Alerts'],CLICK,,Y,1,Executed@11_05PMNovember06
+Click Close history button,Close button,XPATH,//button[@class='close_histroy_btn btn btn-default'],CLICK,,Y,1,Executed@11_05PMNovember06
+Click Horizontal Split View,Horizontal Split button,XPATH,//button[@title='Horizontal Split View'],CLICK,,Y,1,Executed@11_05PMNovember06
+Click Map Only View,Map Only button,XPATH,//button[@name='Map Only View'],CLICK,,Y,1,Executed@11_05PMNovember06
+Click List Only View,List Only button,XPATH,//button[@title='List Only View'],CLICK,,Y,1,Executed@11_05PMNovember06
+Click Map Rotate Focus button,Map Rotate button,XPATH,//button[@name='Map Rotate Focus'],CLICK,,Y,1,Executed@11_06PMNovember06
+Take final screenshot,,,,TAKE_SCREENSHOT,,Y,10,Executed@11_06PMNovember06
